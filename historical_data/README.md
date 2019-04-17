@@ -2,7 +2,7 @@
 Various data exports we will use to train our machine learning algorithm. Data points where rides are down for maintenance mid-day are ignored. Samples are averaged.
 
 ## [5rides-basic.csv](./5rides-basic.csv)
----
+
 Contains most basic park info along with 5 rides.
 
 Fields:
