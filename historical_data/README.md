@@ -15,19 +15,15 @@ Fields:
 * dlr_open: Hour Disneyland opens
 * dca_open: Hour California Adventure opens
 * dlr_close: Hour Disneyland closes (00 represents midnight)
-* dca_close: Hour California Adventure closes (00 represnets midnight)
-* ride-0: ID for ride 0 (always 353405, which is Pirates)
-* wait-0: Wait minutes for ride-0
-* open-0: Status of ride-0 (1 for open, 0 for closed)
-* ride-1: ID for ride 1 (always 353293, which is Autopia)
-* wait-1: Wait minutes for ride-1
-* open-1: Status of ride-1 (1 for open, 0 for closed)
-* ride-2: ID for ride 1 (always 353347, which is Haunted Mansion)
-* wait-2: Wait minutes for ride-1
-* open-2: Status of ride-1 (1 for open, 0 for closed)
-* ride-3: ID for ride 3 (always 353435, which is Space Mountain)
-* wait-3: Wait minutes for ride-3
-* open-3: Status of ride-3 (1 for open, 0 for closed)
-* ride-4: ID for ride 4 (always 353435, which is Splash Mountain)
-* wait-4: Wait minutes for ride-4
-* open-4: Status of ride-4 (1 for open, 0 for closed)
+* dca_close: Hour California Adventure closes (00 represents midnight)
+* ride-(0-4): ID for specified ride. 0 is 353405 (Pirates), 1 is 353293 (Autopia), 2 is 353347 (Haunted Mansion), 3 is 353435 (Space Mountain), 4 is 353437 (Splash Mountain)
+* wait-(0-4): Wait minutes for specified ride
+* open-(0-4): Status of specified ride (1 for open, 0 for closed)
+
+
+## [2018-population.csv](./2018-population.csv)
+Contains the normalized park "busyness" level on a scale of 1-100. This was calculated by taking the max wait time for several popular rides on a given day and averaging their waits. This was then normalized to 100 using the maximum time found.
+
+Fields:
+* Date (as yyyy-MM-dd)
+* Wait (from 1-100, 100 being busiest)
