@@ -3,9 +3,10 @@
 import React from 'react';
 
 function Header(){
+	const title = "Magic Minutes!"
 	return(
 		<div>
-			<h1 className = "head">Magic Minutes!</h1>
+			<h1 className = "head">{title}</h1>
 		</div>
 	)
 }

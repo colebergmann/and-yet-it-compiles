@@ -6,7 +6,7 @@ import React from "react"
 function Title(){
 	return(
 	<div>
-	<h1> Magic Minutes! </h1> 
+		<h1> Magic Minutes! </h1> 
  	</div>
 	)
 }
