@@ -18,7 +18,7 @@ def parse(x):
     return datetime.strptime(x, '%Y %m')
 
 # REPLACE THIS ADRESS WITH THE ADRESS OF YOUR DOWNLOADED CSV FILE
-dataset = read_csv('C:\\Users\\denve\\OneDrive\\Documents\\MLData\\DL\\5rides-basic.csv',  parse_dates = [['year','month']], index_col=0, date_parser=parse)
+dataset = read_csv('../historical_data/5rides-basic.csv',  parse_dates = [['year','month']], index_col=0, date_parser=parse)
 dataset.drop('ride-0', axis=1, inplace=True)
 dataset.drop('ride-1', axis=1, inplace=True)
 dataset.drop('ride-2', axis=1, inplace=True)
