@@ -24,6 +24,15 @@ dataset.drop('ride-1', axis=1, inplace=True)
 dataset.drop('ride-2', axis=1, inplace=True)
 dataset.drop('ride-3', axis=1, inplace=True)
 dataset.drop('ride-4', axis=1, inplace=True)
+#dataset.drop('day_of_month', axis=1, inplace=True)
+#dataset.drop('day_of_week', axis=1, inplace=True)
+#dataset.drop('hour_of_day', axis=1, inplace=True)
+#dataset.drop('minute', axis=1, inplace=True)
+#dataset.drop('dlr_open', axis=1, inplace=True)
+#dataset.drop('dca_open', axis=1, inplace=True)
+#dataset.drop('dlr_close', axis=1, inplace=True)
+#dataset.drop('dca_close', axis=1, inplace=True)
+#dataset.columns = ['Wait Ride 0', 'Open Ride 0', 'Wait Ride 1', 'Open Ride 1', 'Wait Ride 2', 'Open Ride 2', 'Wait Ride 3', 'Open Ride 3', 'Wait Ride 4', 'Open Ride 4']
 dataset.columns = ['Month Day', 'Week day', 'Hour', 'Minute', 'DLR Open', 'DCA Open', 'DLR Close', 'DCA Close', 'Wait Ride 0', 'Open Ride 0', 'Wait Ride 1', 'Open Ride 1', 'Wait Ride 2', 'Open Ride 2', 'Wait Ride 3', 'Open Ride 3', 'Wait Ride 4', 'Open Ride 4']
 dataset.index.name = 'date'
 
@@ -41,23 +50,26 @@ max = scaler.data_max_
 
 # specify number of features / number of time steps / time in future to predict
 
-# MESS WITH THIS!
-# which feature(ride) to predict (rides are: 8, 10, 12, 14, 16)
-f_predictor = 16
-
 # MESS WITH THIS
 # number of steps used as input
-n_steps = 4
+n_steps = 5
 
 n_rides = 5
-n_features = 8 + 2 * n_rides
+n_external_features = 8
+n_features = n_external_features + 2 * n_rides
+
+# MESS WITH THIS!
+# which ride to predict (rides are: 0, 1, 2, 3...)
+f_ride = 4
+
+f_predictor = n_external_features + 2 * f_ride
 
 # MESS WITH THIS!
 # how many steps(15 minute intervals) in future to predict
 n_future_steps = 4
 
 # frame as supervised learning (shift data)
-values = sts.series_to_supervised(values, n_steps, 1, n_future_steps)
+values = sts.series_to_supervised(values, n_steps, 1, n_future_steps-1)
 
 # split into train and test sets
 ####################################################################################################################
@@ -77,18 +89,22 @@ test_x, test_y = test[:, :n_obs], test[:, -n_features + f_predictor]
 train_x = train_x.reshape((train_x.shape[0], n_steps, n_features))
 test_x = test_x.reshape((test_x.shape[0], n_steps, n_features))
 
+print(train_x)
+print(train_y)
+
 # MESS WITH THIS
 # design network
 ####################################################################################################################
 model = ts.keras.models.Sequential()
 model.add(ts.keras.layers.LSTM(70, return_sequences=True, input_shape=(n_steps, n_features)))
+model.add(ts.keras.layers.LSTM(50, return_sequences=True))
 model.add(ts.keras.layers.LSTM(50))
 model.add(ts.keras.layers.Dense(1))
 model.compile(loss='mae', optimizer='adam')
 
 # fit network
 ####################################################################################################################
-history = model.fit(train_x, train_y, epochs=60, batch_size=100, validation_data=(test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(train_x, train_y, epochs=100, batch_size=100, validation_data=(test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################
@@ -108,7 +124,7 @@ invert_actual_y = test_y * (max[f_predictor] - min[f_predictor]) + min[f_predict
 
 # MESS WITH THIS
 # graph last n_points points of predictions (60 is last recorded day, 120 is two days ect)
-n_points = 120
+n_points = 60
 invert_predicted_y = invert_predicted_y[-n_points:]
 invert_actual_y = invert_actual_y[-n_points:]
 pyplot.figure()
