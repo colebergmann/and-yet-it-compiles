@@ -3,7 +3,7 @@ Various data exports we will use to train our machine learning algorithm. Data p
 
 ## [5rides-basic.csv](./5rides-basic.csv)
 
-Contains most basic park info along with 5 rides.
+Contains most basic park info along with 5 rides. Wait times are averaged with their nearest samples.
 
 Fields:
 * Year
@@ -19,6 +19,32 @@ Fields:
 * ride-(0-4): ID for specified ride. 0 is 353405 (Pirates), 1 is 353293 (Autopia), 2 is 353347 (Haunted Mansion), 3 is 353435 (Space Mountain), 4 is 353437 (Splash Mountain)
 * wait-(0-4): Wait minutes for specified ride
 * open-(0-4): Status of specified ride (1 for open, 0 for closed)
+
+## [8rides-weather-averaged.csv](./8rides-weather-averaged.csv)
+Contains the same information as above, except with some additional rides and fields for weather. The wait times are averaged with their nearest samples.
+* year
+* month	day_of_month
+* day_of_week
+* hour_of_day	minute
+* dlr_open
+* dca_open
+* dlr_close
+* dca_close
+* weather_daily_temperatureHigh
+* weather_daily_temperatureLow
+* weather_daily_precipProbability
+* weather_hourly_temperature
+* weather_hourly_precipProbability
+* Rides:
+  * 353405 - Pirates (DLR)
+  * 353293 - Autopia (DLR)
+  * 16514416 - Radiator Springs Racers (DCA)
+  * 353295 - Thunder Mountain (DLR)
+  * 353451 - Guardians of the Galaxy (DCA)
+  * 353431 - Soarin' around the world (DCA)
+  * 353435 - Space Mountain (DLR)
+  * 353347 - Haunted Mansion (DLR)
+  * 353437 - Splash Mountain (DLR)
 
 
 ## [2018-population.csv](./2018-population.csv)
