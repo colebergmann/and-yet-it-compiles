@@ -2,6 +2,7 @@ import sts
 from datetime import datetime
 from matplotlib import pyplot
 import tensorflow as ts
+import numpy as np
 from math import sqrt
 from numpy import concatenate
 from pandas import read_csv
@@ -18,7 +19,7 @@ def parse(x):
     return datetime.strptime(x, '%Y %m')
 
 # REPLACE THIS ADRESS WITH THE ADRESS OF YOUR DOWNLOADED CSV FILE
-dataset = read_csv('../historical_data/5rides-basic.csv',  parse_dates = [['year','month']], index_col=0, date_parser=parse)
+dataset = read_csv('5rides-basic.csv',  parse_dates = [['year','month']], index_col=0, date_parser=parse)
 dataset.drop('ride-0', axis=1, inplace=True)
 dataset.drop('ride-1', axis=1, inplace=True)
 dataset.drop('ride-2', axis=1, inplace=True)
@@ -52,7 +53,7 @@ max = scaler.data_max_
 
 # MESS WITH THIS
 # number of steps used as input
-n_steps = 8
+n_past_steps = 1
 
 n_rides = 5
 n_external_features = 2
@@ -67,10 +68,10 @@ f_predictor = n_external_features + 2 * f_ride
 
 # MESS WITH THIS!
 # how many steps(15 minute intervals) in future to predict
-n_future_steps = 1
+n_future_steps = 8
 
 # frame as supervised learning (shift data)
-values = sts.series_to_supervised(values, n_steps, 1, n_future_steps-1)
+values = sts.series_to_supervised(values, n_past_steps, 1, n_future_steps-1)
 
 # split into train and test sets
 ####################################################################################################################
@@ -83,7 +84,7 @@ n_train_steps = 21000
 train = values[:n_train_steps, :]
 test = values[n_train_steps:, :]
 # split into input and outputs
-n_obs = n_steps * n_features
+n_obs = n_past_steps * n_features
 train_x, train_y = train[:, :n_obs], train[:, -n_features + f_predictor]
 test_x, test_y = test[:, :n_obs], test[:, -n_features + f_predictor]
 
@@ -92,24 +93,22 @@ test_x, test_y = test[:, :n_obs], test[:, -n_features + f_predictor]
 train_y = train_y - train_x[:,-n_features + f_predictor]
 test_y = test_y - test_x[:,-n_features + f_predictor]
 
-
 # reshape input to be 3D [samples, timesteps, features]
-train_x = train_x.reshape((train_x.shape[0], n_steps, n_features))
-test_x = test_x.reshape((test_x.shape[0], n_steps, n_features))
+r_train_x = train_x.reshape((train_x.shape[0], n_past_steps, n_features))
+r_test_x = test_x.reshape((test_x.shape[0], n_past_steps, n_features))
 
 
 # MESS WITH THIS
 # design network
 ####################################################################################################################
 model = ts.keras.models.Sequential()
-model.add(ts.keras.layers.LSTM(100, input_shape=(n_steps, n_features)))
-model.add(ts.keras.layers.Dense(50))
+model.add(ts.keras.layers.LSTM(100, input_shape=(n_past_steps, n_features)))
 model.add(ts.keras.layers.Dense(1))
 model.compile(loss='mae', optimizer='adam')
 
 # fit network
 ####################################################################################################################
-history = model.fit(train_x, train_y, epochs=1, batch_size=60, validation_data=(test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(r_train_x, train_y, epochs=100, batch_size=60, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################
@@ -120,24 +119,26 @@ pyplot.show()
 
 # Show results
 ####################################################################################################################
+pred_y = model.predict(r_test_x).flatten()
 
-pred_y = model.predict(test_x)
-print(type(pred_y))
-print(type(test_y))
-pred_y = pred_y + test_y
-print(pred_y)
-pred_y = pred_y.shift(n_future_steps)
-print(pred_y)
-invert_predicted_y = pred_y * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
+# Format prediction
+####################################################################################################################
 
-invert_actual_y = test_y * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
+a_x = test_x[:,-n_features + f_predictor]
+a_pred_y = pred_y + test_x[:,-n_features + f_predictor]
+a_test_y = test_y + test_x[:,-n_features + f_predictor]
 
+invert_predicted_y = a_pred_y * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
+invert_actual_y = a_test_y * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
+invert_x = a_x * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
 # MESS WITH THIS
 # graph last n_points points of predictions (60 is last recorded day, 120 is two days ect)
-n_points = 600
+n_points = 120
 invert_predicted_y = invert_predicted_y[-n_points:]
 invert_actual_y = invert_actual_y[-n_points:]
+invert_x = invert_x[-n_points:]
 pyplot.figure()
-pyplot.plot(invert_predicted_y, 'r')
-pyplot.plot(invert_actual_y, 'g')
+pyplot.plot(invert_predicted_y, 'r', label = 'Prediction')
+pyplot.plot(invert_actual_y, 'g', label = 'Actual')
+pyplot.plot(invert_x, 'b', label = 'Input')
 pyplot.show()
