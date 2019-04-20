@@ -14,7 +14,6 @@ import BarGraph from "./BarGraph"
 
 function App(){
 	return(
-
 		<div>
 			<nav>
 				<Header />
@@ -24,7 +23,7 @@ function App(){
 			</nav>
 			<main>		
 				<RideForm />
-				<BarGraph />
+				<Chart />
 				<Footer />
 			</main>
 		</div>

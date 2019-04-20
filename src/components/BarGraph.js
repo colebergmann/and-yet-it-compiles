@@ -14,7 +14,7 @@ class BarGraph extends Component{
 				datasets: [
 					{
 						label:'Park Population',
-						data:[46.0645,44.5,47.19,48.367,52.065,50.633,49.742,46.45,42.767,55.065,46.467,48.276],
+						data:[46.0645,44.5,47.89,48.367,52.065,51.286,50.276,46.451,43.286,55.065,47.286,50.222],
 						backgroundColor: [
 						'rgba(255, 99, 132, .6)',
 						'rgba(52, 162, 235, .6)',
@@ -42,7 +42,7 @@ class BarGraph extends Component{
 					options={{
 						title: {
 							display:true,
-							text:"Largest Cities in Massachusetts",
+							text:"Disneyland Park Population",
 							fontSize:25
 						},
 						legend:{
