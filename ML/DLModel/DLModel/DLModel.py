@@ -52,7 +52,11 @@ max = scaler.data_max_
 
 # MESS WITH THIS
 # number of steps used as input
-n_past_steps = 1
+n_past_steps = 4
+
+# MESS WITH THIS!
+# how many steps(15 minute intervals) in future to predict
+n_future_steps = 4
 
 n_rides = 5
 n_external_features = 2
@@ -61,13 +65,9 @@ n_features = n_external_features + 2 * n_rides
 
 # MESS WITH THIS!
 # which ride to predict (rides are: 0, 1, 2, 3...)
-f_ride = 4
+f_ride = 3
 
 f_predictor = n_external_features + 2 * f_ride
-
-# MESS WITH THIS!
-# how many steps(15 minute intervals) in future to predict
-n_future_steps = 8
 
 # frame as supervised learning (shift data)
 values = sts.series_to_supervised(values, n_past_steps, 1, n_future_steps-1)
@@ -78,7 +78,7 @@ values = values.values
 
 #CAREFULLY MESS WITH THIS! IF THERE IS NOT ENOUGH TESTING DATA THE TESTS WILL BE INACURATE
 # number of data points to use as training data(out of 30287 points). remaining data will be delegated for testing
-n_train_steps = 21000
+n_train_steps = 25000
 
 train = values[:n_train_steps, :]
 test = values[n_train_steps:, :]
@@ -101,13 +101,16 @@ r_test_x = test_x.reshape((test_x.shape[0], n_past_steps, n_features))
 # design network
 ####################################################################################################################
 model = ts.keras.models.Sequential()
-model.add(ts.keras.layers.LSTM(100, input_shape=(n_past_steps, n_features)))
+model.add(ts.keras.layers.LSTM(50, return_sequences=True, input_shape=(n_past_steps, n_features)))
+model.add(ts.keras.layers.LSTM(50, return_sequences=True))
+model.add(ts.keras.layers.LSTM(50))
 model.add(ts.keras.layers.Dense(1))
-model.compile(loss='mae', optimizer='adam')
+opt = ts.keras.optimizers.Adam(lr=0.001)
+model.compile(loss='mae', optimizer=opt)
 
 # fit network
 ####################################################################################################################
-history = model.fit(r_train_x, train_y, epochs=100, batch_size=60, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(r_train_x, train_y, epochs=50, batch_size=60, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################
@@ -132,7 +135,7 @@ invert_actual_y = a_test_y * (max[f_predictor] - min[f_predictor]) + min[f_predi
 invert_x = a_x * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
 # MESS WITH THIS
 # graph last n_points points of predictions (60 is last recorded day, 120 is two days ect)
-n_points = 120
+n_points = 5000
 invert_predicted_y = invert_predicted_y[-n_points:]
 invert_actual_y = invert_actual_y[-n_points:]
 invert_x = invert_x[-n_points:]
