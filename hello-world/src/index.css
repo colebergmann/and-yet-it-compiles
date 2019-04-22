@@ -1,0 +1,22 @@
+/*index.css*/
+
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+  background: #00B8EC;
+}
+
+.head{
+	/*background-color: pink;*/
+  color: black;
+	font: 50px "Century Gothic", Futura, sans-serif;
+  font-weight: bold;
+  margin: 20px;
+
+}
+
+.foot{
+	font: 15px "Century Gothic", Futura, sans-serif;
+  font-weight: initial;
+  margin: 20px;
+}
