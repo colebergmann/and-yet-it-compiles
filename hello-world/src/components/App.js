@@ -11,6 +11,8 @@ import RideForm from "./RideForm"
 import Chart from "./Chart"
 import BarGraph from "./BarGraph"
 
+//import { Router, Route, browserHistory } from 'react-router'
+
 
 function App(){
 	return(
