@@ -3,6 +3,7 @@ from datetime import datetime
 from matplotlib import pyplot
 import tensorflow as ts
 import numpy as np
+import os
 from math import sqrt
 from numpy import concatenate
 from pandas import read_csv
@@ -18,7 +19,7 @@ def parse(x):
     return datetime.strptime(x, '%Y %m')
 
 # REPLACE THIS ADRESS WITH THE ADRESS OF YOUR DOWNLOADED CSV FILE
-dataset = read_csv('8rides-weather-averaged.csv',  parse_dates = [['year','month']], index_col=0, date_parser=parse)
+dataset = read_csv('8rides-10min.csv',  parse_dates = [['year','month']], index_col=0, date_parser=parse)
 dataset.drop('ride-0', axis=1, inplace=True)
 dataset.drop('ride-1', axis=1, inplace=True)
 dataset.drop('ride-2', axis=1, inplace=True)
@@ -57,7 +58,7 @@ max = scaler.data_max_
 
 # MESS WITH THIS
 # number of steps used as input
-n_past_steps = 8
+n_past_steps = 5
 
 # MESS WITH THIS!
 # how many steps(15 minute intervals) in future to predict
@@ -82,8 +83,8 @@ values = sts.series_to_supervised(values, n_past_steps, 1, n_future_steps-1)
 values = values.values
 
 #CAREFULLY MESS WITH THIS! IF THERE IS NOT ENOUGH TESTING DATA THE TESTS WILL BE INACURATE
-# number of data points to use as training data(out of 30287 points). remaining data will be delegated for testing
-n_train_steps = 25000
+# number of data points to use as training data(out of 45329 points). remaining data will be delegated for testing
+n_train_steps = 40000
 
 train = values[:n_train_steps, :]
 test = values[n_train_steps:, :]
@@ -107,15 +108,16 @@ r_test_x = test_x.reshape((test_x.shape[0], n_past_steps, n_features))
 ####################################################################################################################
 model = ts.keras.models.Sequential()
 model.add(ts.keras.layers.LSTM(50, return_sequences=True, input_shape=(n_past_steps, n_features)))
-#model.add(ts.keras.layers.LSTM(50, return_sequences=True))
 model.add(ts.keras.layers.LSTM(50))
+#model.add(ts.keras.layers.LSTM(30, activation = 'relu'))
+model.add(ts.keras.layers.Dense(30, activation = 'relu'))
 model.add(ts.keras.layers.Dense(1))
-opt = ts.keras.optimizers.Adam(lr=0.0004)
+opt = ts.keras.optimizers.Adam(lr=0.0007)
 model.compile(loss='mse', optimizer=opt)
 
 # fit network
 ####################################################################################################################
-history = model.fit(r_train_x, train_y, epochs=40, batch_size=120, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(r_train_x, train_y, epochs=20, batch_size=120, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################
@@ -128,6 +130,14 @@ pyplot.show()
 ####################################################################################################################
 pred_y = model.predict(r_test_x).flatten()
 
+pyplot.figure()
+pyplot.plot(pred_y, 'g')
+pyplot.plot(test_y, 'r')
+pyplot.show()
+
+rmse = sqrt(mean_squared_error(test_y, pred_y))
+print('Test RMSE: %.4f' % rmse)
+
 # Format prediction
 ####################################################################################################################
 
@@ -139,9 +149,6 @@ invert_predicted_y = a_pred_y * (max[f_predictor] - min[f_predictor]) + min[f_pr
 invert_actual_y = a_test_y * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
 invert_x = a_x * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
 
-rmse = sqrt(mean_squared_error(invert_actual_y, invert_predicted_y))
-print('Test RMSE: %.3f' % rmse)
-
 # MESS WITH THIS
 # graph last n_points points of predictions (60 is last recorded day, 120 is two days ect)
 n_points = 5000
@@ -149,8 +156,22 @@ n_points = 5000
 invert_predicted_y = invert_predicted_y[-n_points:]
 invert_actual_y = invert_actual_y[-n_points:]
 invert_x = invert_x[-n_points:]
+
+rmse = sqrt(mean_squared_error(invert_actual_y, invert_predicted_y))
+print('Test B RMSE: %.4f' % rmse)
+
+rmse = sqrt(mean_squared_error(invert_actual_y, invert_x))
+print('Normal Test RMSE: %.4f' % rmse)
+
 pyplot.figure()
 pyplot.plot(invert_predicted_y, 'r', label = 'Prediction')
 pyplot.plot(invert_actual_y, 'g', label = 'Actual')
-#pyplot.plot(invert_x, 'b', label = 'Input')
+pyplot.plot(invert_x, 'b', label = 'Input')
 pyplot.show()
+
+# save model to json
+model_json = model.to_json()
+with open("model.json", "w") as json_file:
+    json_file.write(model_json)
+# save weights to HDF5
+model.save_weights("model.h5")

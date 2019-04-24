@@ -25,6 +25,9 @@
     <Compile Include="formatCSV.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OpenModelTest.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="sts.py">
       <SubType>Code</SubType>
     </Compile>
