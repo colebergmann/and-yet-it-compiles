@@ -58,7 +58,7 @@ max = scaler.data_max_
 
 # MESS WITH THIS
 # number of steps used as input
-n_past_steps = 5
+n_past_steps = 20
 
 # MESS WITH THIS!
 # how many steps(15 minute intervals) in future to predict
@@ -102,12 +102,13 @@ test_y = test_y - test_x[:,-n_features + f_predictor]
 r_train_x = train_x.reshape((train_x.shape[0], n_past_steps, n_features))
 r_test_x = test_x.reshape((test_x.shape[0], n_past_steps, n_features))
 
+print(r_train_x)
 
 # MESS WITH THIS
 # design network
 ####################################################################################################################
 model = ts.keras.models.Sequential()
-model.add(ts.keras.layers.LSTM(50, return_sequences=True, input_shape=(n_past_steps, n_features)))
+model.add(ts.keras.layers.LSTM(500, return_sequences=True, input_shape=(n_past_steps, n_features)))
 model.add(ts.keras.layers.LSTM(50))
 #model.add(ts.keras.layers.LSTM(30, activation = 'relu'))
 model.add(ts.keras.layers.Dense(30, activation = 'relu'))
@@ -129,7 +130,6 @@ pyplot.show()
 # Show results
 ####################################################################################################################
 pred_y = model.predict(r_test_x).flatten()
-
 pyplot.figure()
 pyplot.plot(pred_y, 'g')
 pyplot.plot(test_y, 'r')
