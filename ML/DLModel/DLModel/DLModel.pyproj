@@ -25,7 +25,11 @@
     <Compile Include="formatCSV.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="myModel2.py" />
     <Compile Include="myModel.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="myModels.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="sts.py">
