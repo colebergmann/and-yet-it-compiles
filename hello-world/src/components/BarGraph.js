@@ -2,6 +2,7 @@
 
 import React, {Component} from "react"
 import {Bar, Line, Pie} from "react-chartjs-2"
+import { popData, yearLabels } from "./DataGraph";
 
 /* Title function header*/
 class BarGraph extends Component{
@@ -10,11 +11,11 @@ class BarGraph extends Component{
 		super(props);
 		this.state = {
 			chartData:{
-				labels: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+				labels: yearLabels,
 				datasets: [
 					{
-						label:'Park Population',
-						data:[46.0645,44.5,47.89,48.367,52.065,51.286,50.276,46.451,43.286,55.065,47.286,50.222],
+						
+						data: popData,
 						backgroundColor: [
 						'rgba(255, 99, 132, .6)',
 						'rgba(52, 162, 235, .6)',

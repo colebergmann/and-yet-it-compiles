@@ -24,8 +24,7 @@ function App(){
 			<nav>
 				<Logo />
 				<Header />
-				<List />
-				
+				//<List />
 				<InputBox />
 				<CheckBox />
 			</nav>
