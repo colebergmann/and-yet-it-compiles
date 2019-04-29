@@ -10,6 +10,9 @@ import ContactCard from "./ContactCard"
 import RideForm from "./RideForm"
 import Chart from "./Chart"
 import BarGraph from "./BarGraph"
+//import AppRouter from "./AppRouter"
+//import { ReactComponent as Logo } from './Magic Minutes Transparent.png'; // Tell Webpack this JS file uses this image
+
 
 //import { Router, Route, browserHistory } from 'react-router'
 
@@ -20,6 +23,7 @@ function App(){
 			<nav>
 				<Header />
 				<List />
+				
 				<InputBox />
 				<CheckBox />
 			</nav>
