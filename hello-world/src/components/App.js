@@ -22,8 +22,8 @@ function App(){
 	return(
 		<div>
 			<nav>
-				<Header />
 				<Logo />
+				<Header />
 				<List />
 				
 				<InputBox />
