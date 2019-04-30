@@ -17,7 +17,8 @@ class InputBox extends React.Component {
   }
 //no where to lead right now, so it just gives a pop up that something was submitted for testing
   handleSubmit(event) {
-    alert('A date was submitted: ' + this.state.value);
+    this.props.history.push('/Today')
+    //alert('A date was submitted: ' + this.state.value);
     event.preventDefault();
   }
 //labeling "date:" and accepting submits 

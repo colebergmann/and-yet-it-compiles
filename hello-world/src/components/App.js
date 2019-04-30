@@ -11,6 +11,9 @@ import RideForm from "./RideForm"
 import Chart from "./Chart"
 import BarGraph from "./BarGraph"
 import Logo from "./Logo"
+import TodayButton from "./TodayButton"
+import PlanButton from "./PlanButton"
+import MyComponent from "./MyComponent"
 //import AppRouter from "./AppRouter"
 //import { ReactComponent as Logo } from './Magic Minutes Transparent.png'; // Tell Webpack this JS file uses this image
 
@@ -23,13 +26,10 @@ function App(){
 		<div>
 			<nav>
 				<Logo />
-				<Header />
-				//<List />
-				<InputBox />
-				<CheckBox />
+				<TodayButton />
+				<PlanButton />
 			</nav>
 			<main>		
-				<RideForm />
 				<Chart />
 				<Footer />
 			</main>

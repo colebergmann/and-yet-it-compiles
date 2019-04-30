@@ -10,8 +10,8 @@ function Logo() {
         <Image
           img src={logo} alt="logo" 
           //src="./logo.png"
-          height={500}
-          width={500}
+          height={300}
+          width={600}
         />
       </div>
     );
