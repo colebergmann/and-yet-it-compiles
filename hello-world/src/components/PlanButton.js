@@ -1,6 +1,7 @@
 //PlanButton.js
 import React from 'react'
 import { Redirect } from 'react-router-dom'
+import Header from "./Header"
 
 class PlanButton extends React.Component {
   state = {
@@ -14,6 +15,7 @@ class PlanButton extends React.Component {
   renderRedirect = () => {
     if (this.state.redirect) {
       return <Redirect to='/plan' />
+
     }
   }
   render () {
@@ -27,3 +29,4 @@ class PlanButton extends React.Component {
 }
 
 export default PlanButton
+
