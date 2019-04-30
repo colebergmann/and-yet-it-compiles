@@ -58,11 +58,11 @@ max = scaler.data_max_
 
 # MESS WITH THIS
 # number of steps used as input
-n_past_steps = 5
+n_past_steps = 1
 
 # MESS WITH THIS!
-# how many steps(15 minute intervals) in future to predict
-n_future_steps = 12
+# how many steps(10 minute intervals) in future to predict
+n_future_steps = 6
 
 n_rides = 9
 n_external_features = 4
@@ -84,7 +84,7 @@ values = values.values
 
 #CAREFULLY MESS WITH THIS! IF THERE IS NOT ENOUGH TESTING DATA THE TESTS WILL BE INACURATE
 # number of data points to use as training data(out of 45329 points). remaining data will be delegated for testing
-n_train_steps = 40000
+n_train_steps = 43000
 
 train = values[:n_train_steps, :]
 test = values[n_train_steps:, :]
@@ -106,9 +106,9 @@ r_test_x = test_x.reshape((test_x.shape[0], n_past_steps, n_features))
 # design network
 ####################################################################################################################
 model = ts.keras.models.Sequential()
-model.add(ts.keras.layers.LSTM(50, return_sequences=True, input_shape=(n_past_steps, n_features)))
-model.add(ts.keras.layers.LSTM(50))
-#model.add(ts.keras.layers.LSTM(30, activation = 'relu'))
+model.add(ts.keras.layers.LSTM(200, return_sequences=False, input_shape=(n_past_steps, n_features)))
+model.add(ts.keras.layers.Dropout(0.2))
+#model.add(ts.keras.layers.LSTM(50))
 model.add(ts.keras.layers.Dense(30, activation = 'relu'))
 model.add(ts.keras.layers.Dense(1))
 opt = ts.keras.optimizers.Adam(lr=0.0007)
@@ -116,7 +116,7 @@ model.compile(loss='mse', optimizer=opt)
 
 # fit network
 ####################################################################################################################
-history = model.fit(r_train_x, train_y, epochs=20, batch_size=120, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(r_train_x, train_y, epochs=11, batch_size=90, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################
@@ -148,7 +148,6 @@ invert_actual_y = a_test_y * (max[f_predictor] - min[f_predictor]) + min[f_predi
 invert_x = a_x * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
 
 # MESS WITH THIS
-# graph last n_points points of predictions (60 is last recorded day, 120 is two days ect)
 n_points = 5000
 
 invert_predicted_y = invert_predicted_y[-n_points:]
@@ -164,12 +163,12 @@ print('Normal Test RMSE: %.4f' % rmse)
 pyplot.figure()
 pyplot.plot(invert_predicted_y, 'r', label = 'Prediction')
 pyplot.plot(invert_actual_y, 'g', label = 'Actual')
-#pyplot.plot(invert_x, 'b', label = 'Input')
+pyplot.plot(invert_x, 'b', alpha=0.4, label = 'Input')
 pyplot.show()
 
 # save model to json
 model_json = model.to_json()
-with open("model.json", "w") as json_file:
+with open("model_03.json", "w") as json_file:
     json_file.write(model_json)
 # save weights to HDF5
-model.save_weights("model.h5")
+model.save_weights("model_03.h5")
