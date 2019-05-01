@@ -56,8 +56,8 @@ class myModels(object):
         row = self.scaler.fit_transform(self.values)
         np.append(self.values, row, axis=0)
 
-    def setupModel(self, model_num, model_json, model_weights, numFeatures, numPastSteps, ride):
-        self.model_list[model_num].setup(model_json, model_weights, numFeatures, numPastSteps, ride)
+    def setupModel(self, model_num, model_json, model_weights, numFeatures, ride):
+        self.model_list[model_num].setup(model_json, model_weights, numFeatures, ride)
 
     def predict(self, model_num, num_past_points):
         return self.model_list[model_num].predict(self.values, num_past_points, self.min, self.max)

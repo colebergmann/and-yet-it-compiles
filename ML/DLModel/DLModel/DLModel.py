@@ -83,7 +83,7 @@ values = sts.series_to_supervised(values, n_past_steps, 1, n_future_steps-1)
 values = values.values
 
 #CAREFULLY MESS WITH THIS! IF THERE IS NOT ENOUGH TESTING DATA THE TESTS WILL BE INACURATE
-# number of data points to use as training data(out of 45329 points). remaining data will be delegated for testing
+# number of data points to use as training data(out of 45329 points). Remaining data will be delegated for testing
 n_train_steps = 44000
 
 train = values[:n_train_steps, :]
@@ -110,7 +110,7 @@ model.add(ts.keras.layers.LSTM(200, return_sequences=False, input_shape=(n_past_
 model.add(ts.keras.layers.Dropout(0.1))
 model.add(ts.keras.layers.Dense(30, activation = 'relu'))
 model.add(ts.keras.layers.Dense(1))
-opt = ts.keras.optimizers.Adam(lr=0.0007)
+opt = ts.keras.optimizers.Adam(lr=0.001)
 model.compile(loss='mse', optimizer=opt)
 
 # fit network
@@ -137,10 +137,9 @@ print('Test RMSE: %.4f' % rmse)
 
 # Format prediction
 ####################################################################################################################
-
 a_x = test_x[:,-n_features + f_predictor]
-a_pred_y = pred_y + test_x[:,-n_features + f_predictor]
-a_test_y = test_y + test_x[:,-n_features + f_predictor]
+a_pred_y = pred_y + a_x
+a_test_y = test_y + a_x
 
 invert_predicted_y = a_pred_y * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
 invert_actual_y = a_test_y * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
