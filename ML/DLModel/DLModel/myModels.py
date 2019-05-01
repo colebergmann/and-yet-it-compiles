@@ -14,7 +14,7 @@ from sklearn.preprocessing import MinMaxScaler
 class myModels(object):
     def __init__(self, csv):
         self.loadCSV(csv)
-        self.model_list = [myModel.myModel() for count in range(10)]
+        self.model_list = [myModel.myModel() for count in range(50)]
 
     def parse(self, x):
         return datetime.strptime(x, '%Y %m')

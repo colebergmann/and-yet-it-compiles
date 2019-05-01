@@ -1,5 +1,3 @@
-import sts
-from datetime import datetime
 import tensorflow as tf
 import numpy as np
 import os
@@ -8,12 +6,11 @@ from numpy import concatenate
 from pandas import read_csv
 from pandas import DataFrame
 from pandas import concat
-from sklearn.preprocessing import MinMaxScaler
 
 class myModel(object):
-    def setup(self, model_json, model_weights, numFeatures, numPastSteps, ride):
+    def setup(self, model_json, model_weights, numFeatures, ride):
         self.n_features = numFeatures
-        self.n_past_steps = numPastSteps
+        self.n_past_steps = 1
         self.f_predictor = 4 + 2 * ride;
         self.loadModel(model_json, model_weights)
 

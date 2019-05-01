@@ -62,7 +62,7 @@ n_past_steps = 1
 
 # MESS WITH THIS!
 # how many steps(10 minute intervals) in future to predict
-n_future_steps = 6
+n_future_steps = 12
 
 n_rides = 9
 n_external_features = 4
@@ -84,7 +84,7 @@ values = values.values
 
 #CAREFULLY MESS WITH THIS! IF THERE IS NOT ENOUGH TESTING DATA THE TESTS WILL BE INACURATE
 # number of data points to use as training data(out of 45329 points). remaining data will be delegated for testing
-n_train_steps = 43000
+n_train_steps = 44000
 
 train = values[:n_train_steps, :]
 test = values[n_train_steps:, :]
@@ -107,8 +107,7 @@ r_test_x = test_x.reshape((test_x.shape[0], n_past_steps, n_features))
 ####################################################################################################################
 model = ts.keras.models.Sequential()
 model.add(ts.keras.layers.LSTM(200, return_sequences=False, input_shape=(n_past_steps, n_features)))
-model.add(ts.keras.layers.Dropout(0.2))
-#model.add(ts.keras.layers.LSTM(50))
+model.add(ts.keras.layers.Dropout(0.1))
 model.add(ts.keras.layers.Dense(30, activation = 'relu'))
 model.add(ts.keras.layers.Dense(1))
 opt = ts.keras.optimizers.Adam(lr=0.0007)
@@ -116,7 +115,7 @@ model.compile(loss='mse', optimizer=opt)
 
 # fit network
 ####################################################################################################################
-history = model.fit(r_train_x, train_y, epochs=11, batch_size=90, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(r_train_x, train_y, epochs=15, batch_size=90, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################
@@ -129,8 +128,8 @@ pyplot.show()
 ####################################################################################################################
 pred_y = model.predict(r_test_x).flatten()
 pyplot.figure()
-pyplot.plot(pred_y, 'g')
-pyplot.plot(test_y, 'r')
+pyplot.plot(pred_y, 'r')
+pyplot.plot(test_y, 'g')
 pyplot.show()
 
 rmse = sqrt(mean_squared_error(test_y, pred_y))
@@ -168,7 +167,7 @@ pyplot.show()
 
 # save model to json
 model_json = model.to_json()
-with open("model_03.json", "w") as json_file:
+with open("model_124.json", "w") as json_file:
     json_file.write(model_json)
 # save weights to HDF5
-model.save_weights("model_03.h5")
+model.save_weights("model_124.h5")
