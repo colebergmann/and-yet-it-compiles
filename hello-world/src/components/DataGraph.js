@@ -1,5 +1,16 @@
 export const popData = [
-    46.0645,44.5,47.89,48.367,52.065,51.286,50.276,46.451,43.286,55.065,47.286,50.222
+    55.8,45.7,37.54545455,
+						40.8,45.55555556,47.55555556,
+						39.8,48.6,52.63636364,
+						50.1,44.3,50.7,
+						51.4,49.4,55.09090909,
+						53,51.3,47.6,
+						44.6,51.2,53.09090909,
+						47.9,45.5,46,
+						43,41.4,43.9,
+						55.8,41.4,43.9,
+						40.1,53.9,45.4,
+						38.3,41.3,67.11111111
 ];
 
-export const yearLabels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+export const yearLabels = ['January','','','February','','','March','','','April','','','May','','','June','','','July','','','August','','','September','','','October','','','November','','','December'];

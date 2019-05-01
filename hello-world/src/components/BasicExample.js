@@ -1,5 +1,6 @@
 import Logo from './Logo'
 import Chart from './Chart'
+import PlanGraph from './PlanGraph'
 import Footer from './Footer'
 import RideForm from './RideForm'
 import React from "react";
@@ -44,7 +45,7 @@ function Plan() {
   return (
     <div>
       <h2>The crowds for the next 30 days</h2>
-      <Chart />
+      <PlanGraph />
     </div>
   );
 }
