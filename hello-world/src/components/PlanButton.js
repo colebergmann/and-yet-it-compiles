@@ -1,6 +1,6 @@
 //PlanButton.js
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import Header from "./Header"
 
 class PlanButton extends React.Component {

@@ -14,6 +14,9 @@ import Logo from "./Logo"
 import TodayButton from "./TodayButton"
 import PlanButton from "./PlanButton"
 import MyComponent from "./MyComponent"
+import BasicExample from "./BasicExample"
+
+
 //import AppRouter from "./AppRouter"
 //import { ReactComponent as Logo } from './Magic Minutes Transparent.png'; // Tell Webpack this JS file uses this image
 
@@ -26,11 +29,11 @@ function App(){
 		<div>
 			<nav>
 				<Logo />
-				<TodayButton />
-				<PlanButton />
+				<BasicExample />
+
 			</nav>
 			<main>		
-				<Chart />
+				<h2>Thank you for visiting Magic Minutes!</h2>
 				<Footer />
 			</main>
 		</div>
@@ -46,5 +49,6 @@ function App(){
 		*/
 	)
 }
+
 
 export default App
