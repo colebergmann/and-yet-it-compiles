@@ -1,5 +1,6 @@
 import Logo from './Logo'
 import Chart from './Chart'
+import PopulationChart from './PopulationChart'
 import PlanGraph from './PlanGraph'
 import Footer from './Footer'
 import RideForm from './RideForm'
@@ -35,7 +36,7 @@ function BasicExample() {
 function Home() {
   return (
     <div>
-      <Chart />
+      <PopulationChart />
       <Footer />
     </div>
   );
