@@ -58,9 +58,17 @@ class Chart extends Component{
 						scales: {
             				yAxes: [{
                 				ticks: {
-                    				beginAtZero: true
+                    				beginAtZero: true,
+                    				fontColor: 'black'
 				                }
-				            }]
+				            }],
+				            xAxes: [{
+				            	ticks:{
+				            		fontColor: 'black'
+				            	}
+				            }],
+
+				            fontColor: 'black'
 
 				        }
 					}}
