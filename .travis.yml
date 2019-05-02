@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - oraclejdk12
+  - oraclejdk8
 
 script:
   - cd data\ programs/LiveData
