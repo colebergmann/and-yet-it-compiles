@@ -37,7 +37,6 @@ function Home() {
   return (
     <div>
       <PopulationChart />
-      <Footer />
     </div>
   );
 }

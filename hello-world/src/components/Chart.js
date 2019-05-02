@@ -2,7 +2,7 @@
 
 import React, {Component} from "react"
 import {Bar, Line, Pie} from "react-chartjs-2"
-import { popData, yearLabels } from "./DataGraph";
+import { daytimeData, dayLabels } from "./TodayData";
 
 /* Title function header*/
 class Chart extends Component{
@@ -11,14 +11,14 @@ class Chart extends Component{
 		super(props);
 		this.state = {
 			chartData:{
-				labels: yearLabels,
+				labels: dayLabels,
 				datasets: [
 					{
-						label:'Park Population',
+						label:'Wait Times',
 						//data:[46.06451613,44.5,47.23333333,48.36666667,52.06451613,50.79310345,49.83333333,46.76666667,42.79310345,56.03333333,46.65517241,42.96153846],
-						data:popData,
-						borderColor: 'rgba(255, 206, 86, .6)',
-						backgroundColor: 'rgba(255, 206, 86, .6)'
+						data:daytimeData,
+						borderColor: 'rgba(20, 206, 206, .6)',
+						backgroundColor: 'rgba(20, 206, 206, .6)'
 						// [
 						// 'rgba(255, 99, 132, .6)','rgba(255, 99, 132, .6)','rgba(255, 99, 132, .6)',
 						// 'rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)',
@@ -47,7 +47,7 @@ class Chart extends Component{
 					options={{
 						title: {
 							display:true,
-							text:"Disneyland Park Population",
+							text:"Disneyland Wait Time",
 							fontSize:25,
 							fontColor: 'black'
 						},
