@@ -1,3 +1,7 @@
-language: node_js
-node_js:
- - "node"
+language: java
+jdk:
+  - oraclejdk12
+
+script:
+  - cd data\ programs/LiveData
+  - ./gradlew test
