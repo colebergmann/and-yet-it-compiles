@@ -48,7 +48,8 @@ class Chart extends Component{
 						title: {
 							display:true,
 							text:"Disneyland Park Population",
-							fontSize:25
+							fontSize:25,
+							fontColor: 'black'
 						},
 						legend:{
 							display: true,
