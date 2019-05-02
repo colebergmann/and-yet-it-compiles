@@ -30,7 +30,7 @@ function App(){
 			<nav>
 				<Logo />
 				<BasicExample />
-
+				
 			</nav>
 			<main>		
 				<h2>Thank you for visiting Magic Minutes!</h2>

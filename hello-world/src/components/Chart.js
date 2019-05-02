@@ -68,8 +68,6 @@ class Chart extends Component{
 				            	}
 				            }],
 
-				            fontColor: 'black'
-
 				        }
 					}}
 				/>

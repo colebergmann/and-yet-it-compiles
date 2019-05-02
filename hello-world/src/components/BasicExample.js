@@ -61,4 +61,3 @@ function Today() {
 }
 
 export default BasicExample;
-
