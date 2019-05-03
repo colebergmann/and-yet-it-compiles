@@ -85,7 +85,7 @@ values = values.values
 
 #CAREFULLY MESS WITH THIS! IF THERE IS NOT ENOUGH TESTING DATA THE TESTS WILL BE INACURATE
 # number of data points to use as training data(out of 46723 points). Remaining data will be delegated for testing
-n_train_steps = 45000
+n_train_steps = 40000
 
 train = values[:n_train_steps, :]
 test = values[n_train_steps:, :]
@@ -116,7 +116,7 @@ model.compile(loss='mse', optimizer=opt)
 
 # fit network
 ####################################################################################################################
-history = model.fit(r_train_x, train_y, epochs=17, batch_size=90, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(r_train_x, train_y, epochs=42, batch_size=40, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################

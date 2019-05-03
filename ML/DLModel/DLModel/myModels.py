@@ -58,7 +58,7 @@ class myModels(object):
         np.append(self.values, row, axis=0)
 
     def setupModel(self, model_num, model_json, model_weights, ride):
-        self.model_list[model_num].setup(model_json, model_weights, numFeatures, ride)
+        self.model_list[model_num].setup(model_json, model_weights, ride)
 
     def predict(self, model_num, num_past_points):
         return self.model_list[model_num].predict(self.values, num_past_points, self.min, self.max)
