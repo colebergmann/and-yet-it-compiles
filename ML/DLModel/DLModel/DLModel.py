@@ -63,7 +63,7 @@ n_past_steps = 1
 
 # MESS WITH THIS!
 # how many steps(10 minute intervals) in future to predict
-n_future_steps = 24
+n_future_steps = 3
 
 n_rides = 10
 n_external_features = 4
@@ -167,7 +167,7 @@ pyplot.show()
 
 # save model to json
 model_json = model.to_json()
-with open("model_024.json", "w") as json_file:
+with open("model_03.json", "w") as json_file:
     json_file.write(model_json)
 # save weights to HDF5
-model.save_weights("model_024.h5")
+model.save_weights("model_03.h5")
