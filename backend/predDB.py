@@ -20,13 +20,14 @@ class database(object):
     def connect(self):
         """connect to MySQL database"""
         try:
-            conn = mysql.connector.connect(host='localhost', database='testDB',user='root',password='#ChandraIsGr8')
+            conn = mysql.connector.connect(host='localhost', database='cs48',user='cs48',password='ThisIsASuperSecurePassword1234!!')
             if conn.is_connected():
                 print("Connected to mySQL database")
             return conn;
 
         except Error as e:
             print(e)
+            raise
 
     def disconnect(self, conn):
         """disconnect from MySQL database"""
@@ -38,20 +39,21 @@ class database(object):
         except Error as e:
             print(e)
 
-    def insertPredDataArray(self, conn, numRide, data):
+    def insertPredDataArray(self, conn, numRide, predictions):
         cursor = conn.cursor()
-        cursor.execute(( " ride%d" % numRide ))
-        pass
+        for i in range(len(predictions)):
+            prediction = predictions[i]
+            cursor.execute(( "INSERT INTO ride%d VALUES (%d)" % (numRide, prediction) ))
+        print("predictions inserted into database")
 
     def fetchPredDataArray(self, conn, numRide, data):
         try:
             cursor = conn.cursor()
-            cursor.execute(( "SELECT Prediction FROM ride%d" % numRide ))
+            cursor.execute(( "SELECT Predictions FROM ride%d" % numRide ))
 
             plottableData = []
 
             row = cursor.fetchone()
-            predData = row[0]
 
             while row is not None:
                 predData = row[0]
@@ -72,7 +74,5 @@ class database(object):
 
 if __name__ == '__main__':
     DB = database(1)
-    DB2 = database(0)
     DB.fetchPredDataArray(DB.conn, DB.numRide, DB.data)
-    DB2.fetchPredDataArray(DB.conn, DB.numRide, DB.data)
     DB.disconnect(DB.conn)
