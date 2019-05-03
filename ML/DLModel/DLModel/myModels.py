@@ -30,6 +30,7 @@ class myModels(object):
         dataset.drop('ride-6', axis=1, inplace=True)
         dataset.drop('ride-7', axis=1, inplace=True)
         dataset.drop('ride-8', axis=1, inplace=True)
+        dataset.drop('ride-9', axis=1, inplace=True)
         dataset.drop('day_of_month', axis=1, inplace=True)
         dataset.drop('minute', axis=1, inplace=True)
         dataset.drop('dlr_open', axis=1, inplace=True)
@@ -39,7 +40,7 @@ class myModels(object):
         dataset.drop('weather_daily_temperatureHigh', axis=1, inplace=True)
         dataset.drop('weather_daily_temperatureLow', axis=1, inplace=True)
         dataset.drop('weather_daily_precipProbability', axis=1, inplace=True)
-        dataset.columns = ['Week day', 'hour', 'Temp', 'Precip', 'Wait Ride 0', 'Open Ride 0', 'Wait Ride 1', 'Open Ride 1', 'Wait Ride 2', 'Open Ride 2', 'Wait Ride 3', 'Open Ride 3', 'Wait Ride 4', 'Open Ride 4', 'Wait Ride 5', 'Open Ride 5', 'Wait Ride 6', 'Open Ride 6', 'Wait Ride 7', 'Open Ride 7', 'Wait Ride 8', 'Open Ride 8']
+        dataset.columns = ['Week day', 'hour', 'Temp', 'Precip', 'Wait Ride 0', 'Open Ride 0', 'Wait Ride 1', 'Open Ride 1', 'Wait Ride 2', 'Open Ride 2', 'Wait Ride 3', 'Open Ride 3', 'Wait Ride 4', 'Open Ride 4', 'Wait Ride 5', 'Open Ride 5', 'Wait Ride 6', 'Open Ride 6', 'Wait Ride 7', 'Open Ride 7', 'Wait Ride 8', 'Open Ride 8', 'Wait Ride 9', 'Open Ride 9']
         dataset.index.name = 'date'
 
         self.values = dataset.values
@@ -56,7 +57,7 @@ class myModels(object):
         row = self.scaler.fit_transform(self.values)
         np.append(self.values, row, axis=0)
 
-    def setupModel(self, model_num, model_json, model_weights, numFeatures, ride):
+    def setupModel(self, model_num, model_json, model_weights, ride):
         self.model_list[model_num].setup(model_json, model_weights, numFeatures, ride)
 
     def predict(self, model_num, num_past_points):

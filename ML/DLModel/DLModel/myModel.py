@@ -8,8 +8,8 @@ from pandas import DataFrame
 from pandas import concat
 
 class myModel(object):
-    def setup(self, model_json, model_weights, numFeatures, ride):
-        self.n_features = numFeatures
+    def setup(self, model_json, model_weights, ride):
+        self.n_features = 24
         self.n_past_steps = 1
         self.f_predictor = 4 + 2 * ride;
         self.loadModel(model_json, model_weights)
