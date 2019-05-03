@@ -8,15 +8,9 @@ import java.nio.charset.Charset;
 public class DisneyRequests {
     private String apiKey;
 
-    public DisneyRequests() {
+    public DisneyRequests() throws Exception {
         //Reach out to Disney and get a nice API key
-        try {
-            apiKey = fetchAPIKey();
-        } catch (Exception e) {
-            System.out.println("Unable to get access_token from Disney");
-            e.printStackTrace();
-            System.exit(1);
-        }
+        apiKey = fetchAPIKey();
     }
 
     public String getApiKey() {
@@ -26,7 +20,6 @@ public class DisneyRequests {
     /*
         Requests JSON from a specific URL with our stored API key\
         Returns a JSONObject
-        If we encounter an error, exit the program.
      */
     public JSONObject getJsonFromURL(String url) throws IOException {
         //Prepare the request
@@ -44,7 +37,6 @@ public class DisneyRequests {
     /*
         getAPIKey
         This function reaches out to Disney for an auth token and returns it as a string.
-        Exit with 1 if we encounter an error getting the token
      */
     private String fetchAPIKey() throws Exception {
         URL obj = new URL("https://authorization.go.com/token");

@@ -12,7 +12,7 @@ public class DisneyRequestsTest {
         Test the expected case with a few known good URLs that we will use elsewhere in the program
         to make sure they a) return correctly and b) the program reads them correctly
      */
-    public void normalSuccessCase() {
+    public void normalSuccessCase() throws Exception {
         DisneyRequests dr = new DisneyRequests();
 
         //check API key
@@ -34,7 +34,7 @@ public class DisneyRequestsTest {
         Test the case where we input a completely invalid URL (404)
         Should throw an IOException
      */
-    public void invalidURLCase() throws IOException {
+    public void invalidURLCase() throws Exception {
         DisneyRequests dr = new DisneyRequests();
 
         //Bad URL, should throw an exception
@@ -48,7 +48,7 @@ public class DisneyRequestsTest {
         Test the case where we give it a valid, yet non-json URL
         Should throw JSONException
      */
-    public void validButNotJsonURL() throws JSONException, IOException {
+    public void validButNotJsonURL() throws Exception {
         DisneyRequests dr = new DisneyRequests();
 
         //Valud URL that does not contain uson
