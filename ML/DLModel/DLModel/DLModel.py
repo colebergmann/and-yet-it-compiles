@@ -19,7 +19,7 @@ def parse(x):
     return datetime.strptime(x, '%Y %m')
 
 # REPLACE THIS ADRESS WITH THE ADRESS OF YOUR DOWNLOADED CSV FILE
-dataset = read_csv('8rides-10min.csv',  parse_dates = [['year','month']], index_col=0, date_parser=parse)
+dataset = read_csv('data.csv',  parse_dates = [['year','month']], index_col=0, date_parser=parse)
 dataset.drop('ride-0', axis=1, inplace=True)
 dataset.drop('ride-1', axis=1, inplace=True)
 dataset.drop('ride-2', axis=1, inplace=True)
@@ -29,6 +29,7 @@ dataset.drop('ride-5', axis=1, inplace=True)
 dataset.drop('ride-6', axis=1, inplace=True)
 dataset.drop('ride-7', axis=1, inplace=True)
 dataset.drop('ride-8', axis=1, inplace=True)
+dataset.drop('ride-9', axis=1, inplace=True)
 dataset.drop('day_of_month', axis=1, inplace=True)
 dataset.drop('minute', axis=1, inplace=True)
 dataset.drop('dlr_open', axis=1, inplace=True)
@@ -39,7 +40,7 @@ dataset.drop('weather_daily_temperatureHigh', axis=1, inplace=True)
 dataset.drop('weather_daily_temperatureLow', axis=1, inplace=True)
 dataset.drop('weather_daily_precipProbability', axis=1, inplace=True)
 
-dataset.columns = ['Week day', 'hour', 'Temp', 'Precip', 'Wait Ride 0', 'Open Ride 0', 'Wait Ride 1', 'Open Ride 1', 'Wait Ride 2', 'Open Ride 2', 'Wait Ride 3', 'Open Ride 3', 'Wait Ride 4', 'Open Ride 4', 'Wait Ride 5', 'Open Ride 5', 'Wait Ride 6', 'Open Ride 6', 'Wait Ride 7', 'Open Ride 7', 'Wait Ride 8', 'Open Ride 8']
+dataset.columns = ['Week day', 'hour', 'Temp', 'Precip', 'Wait Ride 0', 'Open Ride 0', 'Wait Ride 1', 'Open Ride 1', 'Wait Ride 2', 'Open Ride 2', 'Wait Ride 3', 'Open Ride 3', 'Wait Ride 4', 'Open Ride 4', 'Wait Ride 5', 'Open Ride 5', 'Wait Ride 6', 'Open Ride 6', 'Wait Ride 7', 'Open Ride 7', 'Wait Ride 8', 'Open Ride 8', 'Wait Ride 9', 'Open Ride 9']
 dataset.index.name = 'date'
 
 # format dataset values for network
@@ -62,9 +63,9 @@ n_past_steps = 1
 
 # MESS WITH THIS!
 # how many steps(10 minute intervals) in future to predict
-n_future_steps = 12
+n_future_steps = 24
 
-n_rides = 9
+n_rides = 10
 n_external_features = 4
 
 n_features = n_external_features + 2 * n_rides
@@ -83,8 +84,8 @@ values = sts.series_to_supervised(values, n_past_steps, 1, n_future_steps-1)
 values = values.values
 
 #CAREFULLY MESS WITH THIS! IF THERE IS NOT ENOUGH TESTING DATA THE TESTS WILL BE INACURATE
-# number of data points to use as training data(out of 45329 points). Remaining data will be delegated for testing
-n_train_steps = 44000
+# number of data points to use as training data(out of 46723 points). Remaining data will be delegated for testing
+n_train_steps = 45000
 
 train = values[:n_train_steps, :]
 test = values[n_train_steps:, :]
@@ -115,7 +116,7 @@ model.compile(loss='mse', optimizer=opt)
 
 # fit network
 ####################################################################################################################
-history = model.fit(r_train_x, train_y, epochs=15, batch_size=90, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(r_train_x, train_y, epochs=17, batch_size=90, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################
@@ -166,7 +167,7 @@ pyplot.show()
 
 # save model to json
 model_json = model.to_json()
-with open("model_124.json", "w") as json_file:
+with open("model_024.json", "w") as json_file:
     json_file.write(model_json)
 # save weights to HDF5
-model.save_weights("model_124.h5")
+model.save_weights("model_024.h5")
