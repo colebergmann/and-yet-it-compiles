@@ -8,6 +8,9 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.Charset;
 
+/* This class is responsible for fetching and storing the current weather params at the moment this class is
+    instantiated. */
+
 public class LocalWeather {
     private double dayHigh;
     private double dayLow;
@@ -15,12 +18,11 @@ public class LocalWeather {
     private double tempNow;
     private double precipProbNow;
 
-    private static String API_KEY = "4d0a6eb0938d05c7baf766f0e6951b17";
+    //TODO: Encrypt this for Travis and revoke the committed API keys.
+    private String API_KEY = "4d0a6eb0938d05c7baf766f0e6951b17";
 
-    /*
-        Reach out to DarkSky and get the current weather forecast at Disneyland.
-        Update the local variables.
-     */
+    // Reach out to DarkSky and get the current weather forecast at Disneyland.
+    // Update the local variables.
     public LocalWeather() throws Exception {
         //Fetch weather
         JSONObject weather = getWeatherNow();
@@ -64,7 +66,7 @@ public class LocalWeather {
     */
     private JSONObject getWeatherNow() throws Exception {
         //Prepare the request
-        URL obj = new URL("https://api.darksky.net/forecast/4d0a6eb0938d05c7baf766f0e6951b17/33.812056,-117.918835");
+        URL obj = new URL("https://api.darksky.net/forecast/" + API_KEY + "/33.812056,-117.918835");
         HttpsURLConnection conn = (HttpsURLConnection) obj.openConnection();
         conn.setRequestMethod("GET");
 
@@ -72,10 +74,7 @@ public class LocalWeather {
         return streamToJson(conn.getInputStream());
     }
 
-    /*
-        JsonObject
-        This function parses an InputStream and returns it's corresponding JSONObject
-     */
+    // This function parses an InputStream and returns it's corresponding JSONObject
     private JSONObject streamToJson(InputStream is) throws IOException {
         // Read each line to a string
         BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));

@@ -5,6 +5,10 @@ import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
 
+
+/* This class is responsible for:
+   1) fetching and storing a valid Disney API key
+   2) Sending GET requests to Disney using our API key and returning the results as JSON objects  */
 public class DisneyRequests {
     private String apiKey;
 
@@ -17,10 +21,8 @@ public class DisneyRequests {
         return apiKey;
     }
 
-    /*
-        Requests JSON from a specific URL with our stored API key\
-        Returns a JSONObject
-     */
+    // Requests JSON from a specific URL with our stored API key\
+    // Returns a JSONObject
     public JSONObject getJsonFromURL(String url) throws IOException {
         //Prepare the request
         URL obj = new URL(url);
@@ -34,10 +36,8 @@ public class DisneyRequests {
     }
 
 
-    /*
-        getAPIKey
-        This function reaches out to Disney for an auth token and returns it as a string.
-     */
+
+    // This function reaches out to Disney for an auth token and returns it as a string.
     private String fetchAPIKey() throws Exception {
         URL obj = new URL("https://authorization.go.com/token");
         HttpsURLConnection conn = (HttpsURLConnection) obj.openConnection();
@@ -68,10 +68,7 @@ public class DisneyRequests {
         throw new Exception();
     }
 
-    /*
-        JsonObject
-        This function parses an InputStream and returns it's corresponding JSONObject
-     */
+    // This function parses an InputStream and returns it's corresponding JSONObject
     private JSONObject streamToJson(InputStream is) throws IOException {
         // Read each line to a string
         BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
