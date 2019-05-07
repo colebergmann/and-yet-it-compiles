@@ -14,13 +14,23 @@ class PlanGraph extends Component{
 				datasets: [
 					{
 						label:'Predicted Park Crowds',
-						data:popuData,
+						data: popuData,
 						borderColor: 'rgba(77, 112, 255, 1)',
 						backgroundColor: 'rgba(77, 112, 255, 1)'
 					}
 				]
 			}
 		}
+
+		/*function componentWillMount() {
+			this.getChartData();
+		}
+
+		function getChartData(){
+			$.getJSON("https://colebergmann.com/api").then(results => {
+				this.setState({data: results.popuData})
+			});
+		}*/
 	}
 
 	render(){

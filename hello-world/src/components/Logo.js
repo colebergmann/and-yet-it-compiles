@@ -7,6 +7,7 @@ function Logo() {
     return (
       <div>
         <Image
+        class="logoWText"
           img src={logo} alt="logo" 
           //src="./logo.png"
           height={100}
