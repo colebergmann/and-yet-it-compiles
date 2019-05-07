@@ -27,15 +27,15 @@ class RideForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Pick your ride:
+          <h2 class="paragraph" > Pick your ride: </h2>
           <select value={this.state.value} onChange={this.handleChange}>
+            <option value="Space Mountain">Space Mountain</option>
             <option value="Pirates of the Caribbean">Pirates of the Caribbean</option>
             <option value="Big Thunder Mountain Railroad">Big Thunder Mountain Railroad</option>
             <option value="Haunted Mansion">Haunted Mansion</option>
-            <option value="Space Mountain">Space Mountain</option>
             <option value="Splash Mountain">Splash Mountain</option>
             <option value="Matterhorn Bobsleds">Matterhorn Bobsleds</option>
-            <option value="Indiana Jones™ Adventure">Splash Mountain</option>
+            <option value="Indiana Jones™ Adventure">Indiana Jones™ Adventure</option>
             <option value="it’s a small world">it’s a small world</option>
             <option value="Star Tours – The Adventures Continue">Star Tours – The Adventures Continue</option>
             <option value="Jungle Cruise">Jungle Cruise</option>

@@ -15,8 +15,8 @@ class PlanGraph extends Component{
 					{
 						label:'Predicted Park Crowds',
 						data:popuData,
-						borderColor: 'rgba(63, 63, 191, 1)',
-						backgroundColor: 'rgba(63, 63, 191, 1)'
+						borderColor: 'rgba(77, 112, 255, 1)',
+						backgroundColor: 'rgba(77, 112, 255, 1)'
 					}
 				]
 			}
@@ -40,9 +40,19 @@ class PlanGraph extends Component{
 						},
 						scales: {
             				yAxes: [{
+            					scaleLabel: {
+            						display: true,
+            						labelString: 'Anticipated Crowds'
+            					},
                 				ticks: {
                     				beginAtZero: true
 				                }
+				            }],
+				            xAxes: [{
+				            	scaleLabel: {
+				            		display:true,
+				            		labelString: 'Days in the future'
+				            	}
 				            }]
 
 				        }

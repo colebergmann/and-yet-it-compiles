@@ -1,6 +1,6 @@
 //App.js
 
-import React from 'react';
+import React, { Component } from 'react';
 import Footer from "./Footer"
 import Header from "./Header"
 import List from "./List"
@@ -11,34 +11,42 @@ import RideForm from "./RideForm"
 import Chart from "./Chart"
 import BarGraph from "./BarGraph"
 import Logo from "./Logo"
+import Icon from "./Icon"
 import TodayButton from "./TodayButton"
 import PlanButton from "./PlanButton"
 import MyComponent from "./MyComponent"
 import BasicExample from "./BasicExample"
+import NavBar from "./NavBarLinks"
 
 
-//import AppRouter from "./AppRouter"
-//import { ReactComponent as Logo } from './Magic Minutes Transparent.png'; // Tell Webpack this JS file uses this image
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './Home';
+import Plan from './Plan';
+import Today from './Today';
 
-
-//import { Router, Route, browserHistory } from 'react-router'
-
-
-function App(){
-	return(
-		<div>
-			<nav>
-				<Logo />
-				<BasicExample />
-				
-			</nav>
-			<main>		
-				<h2>Thank you for visiting Magic Minutes!</h2>
-				<Footer />
-			</main>
-		</div>
-	)
+class App extends Component {
+  render() {
+    return (
+    <Router>
+        <div>
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <ul className="navbar-nav mr-auto">
+            <a><Icon /></a>
+            <a><Link to={'/'} className="nav-link"> Home  </Link></a>  
+            <a><Link to={'/today'} className="nav-link">Ride Times Today  </Link></a>
+            <a><Link to={'/plan'} className="nav-link">Plan Your Trip   </Link></a>
+          </ul>
+          </nav>
+          <hr />
+          <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/plan' component={Plan} />
+              <Route path='/today' component={Today} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
 
-
-export default App
+export default App;

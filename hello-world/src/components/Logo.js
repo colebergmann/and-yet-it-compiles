@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from 'react-image-resizer';
 import logo from './logo.png'; // Tell Webpack this JS file uses this image
@@ -10,8 +9,8 @@ function Logo() {
         <Image
           img src={logo} alt="logo" 
           //src="./logo.png"
-          height={300}
-          width={600}
+          height={100}
+          width={400}
         />
       </div>
     );

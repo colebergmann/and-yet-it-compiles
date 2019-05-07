@@ -17,8 +17,8 @@ class PopulationChart extends Component{
 						label:'Park Population',
 						//data:[46.06451613,44.5,47.23333333,48.36666667,52.06451613,50.79310345,49.83333333,46.76666667,42.79310345,56.03333333,46.65517241,42.96153846],
 						data:popData,
-						borderColor: 'rgba(255, 206, 86, .6)',
-						backgroundColor: 'rgba(255, 206, 86, .6)'
+						borderColor: 'rgba(57, 0, 189, 1)',
+						backgroundColor: 'rgba(57, 0, 189, 1)'
 						// [
 						// 'rgba(255, 99, 132, .6)','rgba(255, 99, 132, .6)','rgba(255, 99, 132, .6)',
 						// 'rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)',
@@ -57,19 +57,24 @@ class PopulationChart extends Component{
 						},
 						scales: {
             				yAxes: [{
+            					scaleLabel: {
+            						display: true,
+            						labelString: 'Number of Visitors'
+            					},
                 				ticks: {
-                    				beginAtZero: true,
-                    				fontColor: 'black'
+                    				beginAtZero: true
 				                }
 				            }],
 				            xAxes: [{
-				            	ticks:{
-				            		fontColor: 'black'
+				            	scaleLabel: {
+				            		display:true,
+				            		labelString: '2018'
 				            	}
-				            }],
+				            }]
 
 				        }
-					}}
+					}
+				}
 				/>
 			</div>
 		)

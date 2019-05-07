@@ -1,22 +1,67 @@
 /*index.css*/
 
+
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
+  font: 10px "Arial Black", Gadget, sans-serif;
   margin: 20px;
-  background: #00B8EC;
+  background: #aad7ff;
 }
 
+.logo {
+    float: middle;
+    align-self: center;
+    align-items: center;
+/*box*/
+  }
+
+.welc{
+  color: black;
+  font: 30px "Cinzel", Regular, serif;
+  text-align: center;
+  font-weight: bold;
+  margin: 20px;
+}
 .head{
 	/*background-color: pink;*/
   color: black;
-	font: 50px "Century Gothic", Futura, sans-serif;
+	font: 25px "Arial Black", Gadget, sans-serif;
   font-weight: bold;
   margin: 20px;
-
 }
 
+.paragraph{
+  font: 15px "Arial Black", Gadget, sans-serif;
+  margin: 20px;
+}
+
+nav {
+  width: 100%;
+
+  overflow: hidden;
+}
+nav a {
+    display: block;
+    float: left;
+    text-align: center;
+
+    font: 25px "Arial Black", Gadget, sans-serif;
+    color: #4e548a;
+
+   /*Padding Our Box*/
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+
+   
+}
+  nav a:hover {
+        background-color: #7d95f7;
+  }
+
 .foot{
-	font: 15px "Century Gothic", Futura, sans-serif;
+  float: right;
+	font: 15px "Comic Sans", Futura, sans-serif;
   font-weight: initial;
   margin: 20px;
 }
