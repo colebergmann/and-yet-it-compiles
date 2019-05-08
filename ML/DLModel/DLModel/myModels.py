@@ -1,4 +1,3 @@
-import sts
 import myModel
 from datetime import datetime
 import tensorflow as tf

@@ -63,7 +63,7 @@ n_past_steps = 1
 
 # MESS WITH THIS!
 # how many steps(10 minute intervals) in future to predict
-n_future_steps = 24
+n_future_steps = 90
 
 n_rides = 10
 n_external_features = 4
@@ -72,7 +72,7 @@ n_features = n_external_features + 2 * n_rides
 
 # MESS WITH THIS!
 # which ride to predict (rides are: 0, 1, 2, 3...)
-f_ride = 0
+f_ride = 9
 
 f_predictor = n_external_features + 2 * f_ride
 
@@ -116,7 +116,7 @@ model.compile(loss='mse', optimizer=opt)
 
 # fit network
 ####################################################################################################################
-history = model.fit(r_train_x, train_y, epochs=42, batch_size=40, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(r_train_x, train_y, epochs=50, batch_size=40, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################
@@ -167,7 +167,7 @@ pyplot.show()
 
 # save model to json
 model_json = model.to_json()
-with open("model_024.json", "w") as json_file:
+with open("model_990.json", "w") as json_file:
     json_file.write(model_json)
 # save weights to HDF5
-model.save_weights("model_024.h5")
+model.save_weights("model_990.h5")
