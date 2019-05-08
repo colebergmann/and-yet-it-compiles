@@ -2,9 +2,10 @@
 
 
 body {
-  font: 10px "Arial Black", Gadget, sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 20px;
-  background: #aad7ff;
+  background: #a4c8f4;
 }
 
 .image {
@@ -14,13 +15,14 @@ body {
   }
 
 .welc{
-  color: black;
-  font-family: 'Dancing Script', cursive;
+  color:  black;
+  font-family: 'Comic Sans', sans-serif;
+  display: block;
   font-size: 50px;
   text-align: center;
-  font-weight: bold;
   margin: 20px;
 }
+
 .info{
   font-family: 'Open Sans Condensed', sans-serif;
   color: black;
@@ -36,13 +38,13 @@ body {
 }
 
 .paragraph{
-  font: 15px "Arial Black", Gadget, sans-serif;
-  margin: 20px;
+  font: 20px "Comic Sans", sans;
+  margin: 30px;
 }
 
 nav {
   width: 100%;
-
+  height: 90px;
   overflow: hidden;
 }
 nav a {
@@ -67,7 +69,8 @@ nav a {
 
 .foot{
   float: right;
-	font: 15px "Comic Sans", Futura, sans-serif;
+  font-family: 'Tangerine', cursive;
+	font-size: 15px;
   font-weight: initial;
   margin: 20px;
 }

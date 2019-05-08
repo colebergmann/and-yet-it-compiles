@@ -1,6 +1,6 @@
-import Logo from './Logo'
 import PopulationChart from './PopulationChart'
 import Footer from './Footer'
+import HomeInfo from './HomeInfo'
 import React, { Component } from 'react';
 
 class Home extends Component {
@@ -8,7 +8,8 @@ class Home extends Component {
   return (
     <div>
     	<main>
-    		<a><h2 className = "welc"> Welcome to Magic Minutes!</h2></a>
+    		<span class = "welc" >Welcome to Magic Minutes</span>
+        <HomeInfo />
     	</main>
     	<body>
       		<PopulationChart />

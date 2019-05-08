@@ -9,8 +9,8 @@ function Icon() {
         <Image
           img src={icon} alt="icon" 
           //src="./logo.png"
-          height={60}
-          width={60}
+          height={50}
+          width={50}
         />
       </div>
     );
