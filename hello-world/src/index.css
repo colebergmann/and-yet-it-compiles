@@ -7,16 +7,16 @@ body {
   background: #aad7ff;
 }
 
-.logoWText {
+.image {
     float: middle;
-    justify-content: center;
     align-items: center;
 /*box*/
   }
 
 .welc{
   color: black;
-  font: 30px "Cinzel", Regular, serif;
+  font-family: 'Dancing Script', cursive;
+  font-size: 50px;
   text-align: center;
   font-weight: bold;
   margin: 20px;

@@ -8,8 +8,7 @@ class Home extends Component {
   return (
     <div>
     	<main>
-    		<a><h2 className = "welc"> Welcome to </h2></a>
-    		<a><Logo /></a>
+    		<a><h2 className = "welc"> Welcome to Magic Minutes!</h2></a>
     	</main>
     	<body>
       		<PopulationChart />
