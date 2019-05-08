@@ -1,5 +1,7 @@
 # predDB.py
-
+import sys
+sys.path.insert(0, "./MLImports")
+import myModels as mm
 import mysql.connector
 from mysql.connector import Error, MySQLConnection
 import json
@@ -10,6 +12,12 @@ class database(object):
         self.conn = self.connect()
         self.numRide = numRide
         self.data = {}
+
+    def setNumRide(self, numRide):
+        self.numRide = numRide
+
+    def formatNewPredictions(numRide):
+        newPredictions = []
 
 
     def writeToJSONFile(self, path, filename, data):
@@ -39,17 +47,28 @@ class database(object):
         except Error as e:
             print(e)
 
-    def insertPredDataArray(self, conn, numRide, predictions):
+    def insertPredData(self, conn, numRide, predictions):
         cursor = conn.cursor()
         for i in range(len(predictions)):
             prediction = predictions[i]
-            cursor.execute(( "INSERT INTO ride%d VALUES (%d)" % (numRide, prediction) ))
+            cursor.execute(( "INSERT INTO ride%d VALUES (%d, %d)" % (numRide, i,  prediction) ))
         print("predictions inserted into database")
+
+    def updatePredData(self, conn, numRide, newPredictions):
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM ride%d WHERE ID = 0" % numRide)
+        for i in range(89):
+            cursor.execute("UPDATE ride%d SET ID = %d WHERE ID = (%d + 1)" % (numRide, i, i))
+        cursor.execute("UPDATE ride%d SET Predictions = %d WHERE ID = 2" % (numRide, newPredictions[0]))
+        cursor.execute("UPDATE ride%d SET Predictions = %d WHERE ID = 5" % (numRide, newPredictions[1]))
+        cursor.execute("UPDATE ride%d SET Predictions = %d WHERE ID = 11" % (numRide, newPredictions[2]))
+        cursor.execute("UPDATE ride%d SET Predictions = %d WHERE ID = 23" % (numRide, newPredictions[3]))
+        cursor.execute("INSERT INTO ride%d VALUES (89, %d)" % (numRide, newPredictions[4]))
 
     def fetchPredDataArray(self, conn, numRide, data):
         try:
             cursor = conn.cursor()
-            cursor.execute(( "SELECT Predictions FROM ride%d" % numRide ))
+            cursor.execute(( "SELECT Predictions FROM ride%d ORDER BY ID ASC" % numRide ))
 
             plottableData = []
 
@@ -74,5 +93,8 @@ class database(object):
 
 if __name__ == '__main__':
     DB = database(1)
+    model = mm.myModels("./MLImports/data.csv")
+    model.setupModel(DB.numRide + 8, "./MLImports/model_03.json", "./MLImports/model_03.h5", 0)
+    DB.insertPredData(DB.conn, DB.numRide, model.predict(DB.numRide + 8,90))
     DB.fetchPredDataArray(DB.conn, DB.numRide, DB.data)
     DB.disconnect(DB.conn)
