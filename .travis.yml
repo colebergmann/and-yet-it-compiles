@@ -4,4 +4,4 @@ jdk:
 
 script:
   - cd data\ programs/LiveData
-  - ./gradlew test
+  - ./gradlew test --stacktrace
