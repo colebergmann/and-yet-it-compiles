@@ -1,9 +1,9 @@
 /*index.css*/
 
+@import url('https://fonts.googleapis.com/css?family=Sofia|Open+Sans+Condensed:300');
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Sofia', cursive;
   margin: 20px;
   background: #a4c8f4;
 }
@@ -16,11 +16,11 @@ body {
 
 .welc{
   color:  black;
-  font-family: 'Comic Sans', sans-serif;
   display: block;
   font-size: 50px;
   text-align: center;
   margin: 20px;
+  font-weight: bold;
 }
 
 .info{
@@ -43,8 +43,9 @@ body {
 }
 
 nav {
+  margin: 0px;
   width: 100%;
-  height: 90px;
+  height: 70px;
   overflow: hidden;
 }
 nav a {
@@ -52,14 +53,14 @@ nav a {
     float: left;
     text-align: center;
 
-    font: 25px "Arial Black", Gadget, sans-serif;
+    font: 20px "Arial Black", Gadget, sans-serif;
     color: #4e548a;
 
    /*Padding Our Box*/
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+    padding-top: 0px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
 
    
 }
@@ -69,7 +70,7 @@ nav a {
 
 .foot{
   float: right;
-  font-family: 'Tangerine', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 15px;
   font-weight: initial;
   margin: 20px;
