@@ -28,7 +28,7 @@ class myModel(object):
 
         r_values = processed.reshape((processed.shape[0], 1, 24))
         pred = self.model.predict(r_values).flatten()
-        pred = pred + processed[:,-24 + self.f_predictor]
+        pred = pred + processed[:,-24 + f_predictor]
         pred = pred * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
         return pred[-num_past_points:]
 

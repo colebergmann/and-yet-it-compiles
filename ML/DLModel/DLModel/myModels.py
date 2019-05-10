@@ -56,7 +56,7 @@ class myModels(object):
         self.model.setup(model_json, model_weights)
 
     def predict(self, ride, num_past_points):
-        return self.model.predict(self.values, num_past_points, ride, self.min, self.max)
+        return self.model.predict(self.values, ride, num_past_points, self.min, self.max)
 
 
 
