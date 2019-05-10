@@ -1,5 +1,5 @@
 /*WaitTime.js*/
-
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import React, {Component} from "react"
 import {Line,Bar} from "react-chartjs-2"
 	
@@ -130,6 +130,7 @@ class WaitTime extends Component{
 	      				<form onSubmit={this.handleSubmit}>
 			        <label>
 			          <h2 class="paragraph" > Pick your ride: </h2>
+
 			          <select value={this.state.value} onChange={this.handleChange}>
 			            <option value="0">Space Mountain</option>
 			            <option value="1">Pirates of the Caribbean</option>
