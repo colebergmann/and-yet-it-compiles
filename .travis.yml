@@ -4,8 +4,7 @@ jdk:
 
 script:
   - date
-  - rm -f /etc/localtime
-  - ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+  - sudo systemsetup -settimezone America/Los_Angeles
   - date
   - cd data\ programs/LiveData
   - ./gradlew test --stacktrace
