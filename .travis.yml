@@ -4,7 +4,7 @@ jdk:
 
 script:
   - date
-  - sudo timedatectl set-timezone PST
+  - sudo timedatectl set-timezone PDT
   - date
   - cd data\ programs/LiveData
   - ./gradlew test --stacktrace
