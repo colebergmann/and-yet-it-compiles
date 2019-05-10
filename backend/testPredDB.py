@@ -1,4 +1,5 @@
-# predDB.py
+# testPredDB.py
+
 import json
 import sys
 import time
@@ -147,30 +148,5 @@ class database(object):
 
 if __name__ == '__main__':
     DB = database()
-    # DB.insertPredData(DB.conn, 0, DB.formatRidePredictions(0) )
-    # DB.fetchPredDataArray(DB.conn, 0)
-    # DB.insertPredData(DB.conn, 1, DB.formatRidePredictions(1) )
-    # DB.fetchPredDataArray(DB.conn, 1)
-    # DB.insertPredData(DB.conn, 2, DB.formatRidePredictions(2) )
-    # DB.fetchPredDataArray(DB.conn, 2)
-    # DB.insertPredData(DB.conn, 3, DB.formatRidePredictions(3) )
-    # DB.fetchPredDataArray(DB.conn, 3)
-    # DB.insertPredData(DB.conn, 4, DB.formatRidePredictions(4) )
-    # DB.fetchPredDataArray(DB.conn, 4)
-    # DB.insertPredData(DB.conn, 5, DB.formatRidePredictions(5) )
-    # DB.insertPredData(DB.conn, 6, DB.formatRidePredictions(6) )
-    # DB.insertPredData(DB.conn, 7, DB.formatRidePredictions(7) )
-    # DB.insertPredData(DB.conn, 8, DB.formatRidePredictions(8) )
-    # DB.insertPredData(DB.conn, 9, DB.formatRidePredictions(9) )
-    while (True):
-        while (DB.model.getDataLength() == DB.lines):
-            DB.model.loadCSV("../../LiveData/data.csv")
-            print("Waiting for updated CSV")
-            time.sleep(10)
-        DB.lines = DB.model.getDataLength()
-        for i in range(10):
-            for j in range(5):
-                print(i*5 + j)
-                DB.model.setupModel("./MLimports/Saved Models/model_%d%d.json" % (i, DB.modelTimes[j]), "./MLimports/Saved Models/model_%d%d.h5" % (i, DB.modelTimes[j]))
-                DB.updatePredData(DB.conn, i, DB.formatNewPredictions(i))
-        DB.fetchAllPredDataArray(DB.conn)
+
+    print(time.time())
