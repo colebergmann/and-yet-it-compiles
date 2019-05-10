@@ -50,12 +50,14 @@ class myModels(object):
         self.values = self.scaler.fit_transform(self.values)
         self.min = self.scaler.data_min_
         self.max = self.scaler.data_max_
-
+        self.num_lines = self.values.size
+    def getDataLength(self):
+        return self.num_lines
     def setupModel(self, model_json, model_weights):
         tf.keras.backend.clear_session()
         self.model.setup(model_json, model_weights)
 
-    def predict(self, ride, num_past_points):
+    def predict(self, ride, num_past_points):   
         return self.model.predict(self.values, ride, num_past_points, self.min, self.max)
 
 
