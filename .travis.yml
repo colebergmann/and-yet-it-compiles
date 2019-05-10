@@ -4,8 +4,7 @@ jdk:
 
 script:
   - date
-  - sudo rm -f /etc/localtime
-  - sudo ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+  - sudo timedatectl set-timezone PST
   - date
   - cd data\ programs/LiveData
   - ./gradlew test --stacktrace
