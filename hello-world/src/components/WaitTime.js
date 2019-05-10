@@ -1,14 +1,9 @@
-/*SpaceMountain.js*/
+/*WaitTime.js*/
 
 import React, {Component} from "react"
-import {Bar, Line, Pie} from "react-chartjs-2"
-import { daytimeData, dayLabels } from "./TodayData";
+import {Line,Bar} from "react-chartjs-2"
 	
-/* Title function header*/
-
-
-
-class SpaceMountain extends Component{
+class WaitTime extends Component{
 
 	constructor(props){
 		fetch("http://colebergmann.com:5000/callPred/0")
@@ -19,7 +14,19 @@ class SpaceMountain extends Component{
 	            isLoaded: true,
 	            items: result,
 	            chartData:{
-	            	labels: ["1pm", "2pm", "3pm", "4pm", "5pm", "6", "7", "8", "9", "10", "11", "12"],
+	            	labels: ["12pm", "","","","","","","",
+	            	"", "1pm","","","","","","","",
+	            	"","2pm", "","","","","","", 
+	            	"", "", "3pm","","","","","","",
+	            	"", "", "4pm","","","","" ,"",
+	            	"", "", "","5pm","","","","", "",
+	            	"", "", "","6pm","","","","",
+	            	"", "", "","","7pm","","","", "",
+	            	"", "", "","","8pm","","","", 
+	            	"", "", "","","","9pm","","", "",
+	            	"", "", "","","","10pm","","", 
+	            	"", "", "","","","","11pm","", "",
+	            	"", "", "","","","","12am",""],
 	            	datasets:[
 	            		{
 	            			data: result,
@@ -48,7 +55,7 @@ class SpaceMountain extends Component{
 	      	isLoaded: false,
 	      	items: [],
 			chartData:{
-				labels: ["1pm", "2pm", "3pm", "4pm", "5pm", "6", "7", "8", "9", "10", "11", "12"],
+			labels: [],
 				datasets: [
 					{
 						label:'Wait Times',
@@ -76,7 +83,19 @@ class SpaceMountain extends Component{
 	            isLoaded: true,
 	            items: result,
 	            chartData:{
-	            	labels: ["1pm", "2pm", "3pm", "4pm", "5pm", "6", "7", "8", "9", "10", "11", "12"],
+	            	labels: ["12pm", "","","","","","","",
+	            	"", "1pm","","","","","","","",
+	            	"","2pm", "","","","","","", 
+	            	"", "", "3pm","","","","","","",
+	            	"", "", "4pm","","","","" ,"",
+	            	"", "", "","5pm","","","","", "",
+	            	"", "", "","6pm","","","","",
+	            	"", "", "","","7pm","","","", "",
+	            	"", "", "","","8pm","","","", 
+	            	"", "", "","","","9pm","","", "",
+	            	"", "", "","","","10pm","","", 
+	            	"", "", "","","","","11pm","", "",
+	            	"", "", "","","","","12am",""],
 	            	datasets:[
 	            		{
 	            			data: result,
@@ -165,4 +184,4 @@ class SpaceMountain extends Component{
 }
 
 
-export default SpaceMountain
+export default WaitTime

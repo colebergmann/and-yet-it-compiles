@@ -2,23 +2,6 @@
 
 import React, { Component } from 'react';
 
-/*import Footer from "./Footer"
-import Header from "./Header"
-import List from "./List"
-import InputBox from "./InputBox"
-import CheckBox from "./CheckBox"
-import ContactCard from "./ContactCard"
-import RideForm from "./RideForm"
-import Chart from "./Chart"
-import BarGraph from "./BarGraph"
-import Logo from "./Logo"
-import TodayButton from "./TodayButton"
-import PlanButton from "./PlanButton"
-import MyComponent from "./MyComponent"
-import BasicExample from "./BasicExample"
-import NavBar from "./NavBarLinks" */
-
-
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import Plan from './Plan';
