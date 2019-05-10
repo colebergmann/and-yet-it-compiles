@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ca04172b-1742-4d55-ac44-ffa5585763f5</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>test.py</StartupFile>
+    <StartupFile>DLModel.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,7 +25,11 @@
     <Compile Include="formatCSV.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="myModel.py">
+    <Compile Include="myModel.py" />
+    <Compile Include="myModelOld.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="myModels.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="sts.py">
