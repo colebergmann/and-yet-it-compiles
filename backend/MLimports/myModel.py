@@ -9,10 +9,7 @@ from pandas import DataFrame
 from pandas import concat
 
 class myModel(object):
-    def setup(self, model_json, model_weights, ride):
-        self.n_features = 24
-        self.n_past_steps = 1
-        self.f_predictor = 4 + 2 * ride;
+    def setup(self, model_json, model_weights):
         self.loadModel(model_json, model_weights)
 
     def loadModel(self, model_json, model_weights):
@@ -22,17 +19,15 @@ class myModel(object):
         self.model = tf.keras.models.model_from_json(loaded_model_json)
         self.model.load_weights(model_weights)
 
-    def predict(self, values, num_past_points, min, max):
-        self.processed = sts.series_to_supervised(values, self.n_past_steps, 0, 0)
-        self.processed = self.processed.values
-        n_obs = self.n_past_steps * self.n_features
-        self.processed = self.processed[:, :n_obs]
+    def predict(self, values, ride, num_past_points, min, max):
+        f_predictor = 4 + 2 * ride;
 
-        self.r_values = self.processed.reshape((self.processed.shape[0], self.n_past_steps, self.n_features))
-        pred = self.model.predict(self.r_values).flatten()
-        pred = pred + self.processed[:,-self.n_features + self.f_predictor]
-        pred = pred * (max[self.f_predictor] - min[self.f_predictor]) + min[self.f_predictor]
+        processed = sts.series_to_supervised(values, 1, 0, 0)
+        processed = processed.values
+        processed = processed[:, :24]
+
+        r_values = processed.reshape((processed.shape[0], 1, 24))
+        pred = self.model.predict(r_values).flatten()
+        pred = pred + processed[:,-24 + f_predictor]
+        pred = pred * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
         return pred[-num_past_points:]
-
-
-

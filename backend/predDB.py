@@ -1,12 +1,14 @@
 # predDB.py
+import json
 import sys
-sys.path.insert(0, "./MLimports")
+import time
+
 import myModels as mm
 import mysql.connector
 from mysql.connector import Error, MySQLConnection
-import json
 from pympler.tracker import SummaryTracker
-import time
+
+sys.path.insert(0, "./MLimports")
 
 class database(object):
 
@@ -14,7 +16,8 @@ class database(object):
         self.conn = self.connect()
         self.data = {}
         self.model = mm.myModels("../../LiveData/data.csv")
-        # modelTimes = [3,6,12,24,90]
+        self.lines = 0
+        self.modelTimes = [3,6,12,24,90]
         # for i in range(10):
         #     for j in range(5):
         #         self.model.setupModel(5 * i + j, "./MLimports/Saved Models/model_%d%d.json" % (i, modelTimes[j]), "./MLimports/Saved Models/model_%d%d.h5" % (i, modelTimes[j]), i )
@@ -30,18 +33,18 @@ class database(object):
         modelTimes = [3,6,12,24,90]
         for j in range(5):
             if (j > 0):
-                predictions[j] = list(self.model.predict(modelTimes[j] - modelTimes[j-1]))
+                predictions[j] = list(numRide, self.model.predict(modelTimes[j] - modelTimes[j-1]))
                 predictions[j-1].extend(predictions[j])
                 predictions[j] = predictions[j-1]
             else:
-                predictions[j] = list(self.model.predict(modelTimes[j]))
+                predictions[j] = list(self.model.predict(numRide, modelTimes[j]))
         return predictions[4]
 
     def formatNewPredictions(self, numRide):
         newPredictions = [None] * 5
-        modelTimes = [3,6,12,24,90]
+        # modelTimes = [3,6,12,24,90]
         for j in range(5):
-            newPredictions[j] = list(self.model.predict(1))[0]
+            newPredictions[j] = list(self.model.predict(numRide, 1))[0]
         return newPredictions
 
     def writeToJSONFile(self, path, filename, data):
@@ -90,7 +93,6 @@ class database(object):
         cursor.execute("UPDATE ride%d SET Predictions = %d WHERE ID = 11" % (numRide, newPredData[2]))
         cursor.execute("UPDATE ride%d SET Predictions = %d WHERE ID = 23" % (numRide, newPredData[3]))
         cursor.execute("INSERT INTO ride%d VALUES (89, %d)" % (numRide, newPredData[4]))
-        print("in updatePredData")
         self.conn.commit()
         cursor.close()
 
@@ -160,11 +162,14 @@ if __name__ == '__main__':
     # DB.insertPredData(DB.conn, 8, DB.formatRidePredictions(8) )
     # DB.insertPredData(DB.conn, 9, DB.formatRidePredictions(9) )
     while (True):
+        while (DB.model.getDataLength() == DB.lines):
+            DB.model.loadCSV("../../LiveData/data.csv")
+            print("Waiting for updated CSV")
+            time.sleep(10)
+        DB.lines = DB.model.getDataLength()
         for i in range(10):
             for j in range(5):
-                 self.model.setupModel("./MLimports/Saved Models/model_%d%d.json" % (i, modelTimes[j]), "./MLimports/Saved Models/model_%d%d.h5" % (i, modelTimes[j]), i )
+                print(i*5 + j)
+                DB.model.setupModel("./MLimports/Saved Models/model_%d%d.json" % (i, DB.modelTimes[j]), "./MLimports/Saved Models/model_%d%d.h5" % (i, DB.modelTimes[j]))
                 DB.updatePredData(DB.conn, i, DB.formatNewPredictions(i))
         DB.fetchAllPredDataArray(DB.conn)
-        print("Going to sleep. Goodnight")
-        time.sleep(600)
-        print("Goodmorning. Updating...")
