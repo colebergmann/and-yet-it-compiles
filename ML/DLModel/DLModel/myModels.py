@@ -13,7 +13,7 @@ from sklearn.preprocessing import MinMaxScaler
 class myModels(object):
     def __init__(self, csv):
         self.loadCSV(csv)
-        self.model_list = [myModel.myModel() for count in range(50)]
+        self.model = myModel.myModel()
 
     def parse(self, x):
         return datetime.strptime(x, '%Y %m')
@@ -51,16 +51,11 @@ class myModels(object):
         self.min = self.scaler.data_min_
         self.max = self.scaler.data_max_
 
-    def addRow(self, week_day, hour, temp, precip, wait0, open0, wait1, open1,  wait2, open2, wait3, open3, wait4, open4, wait5, open5, wait6, open6, wait7, open7, wait8, open8):
-        row = [week_day, hour, temp, precip, wait0, open0, wait1, open1,  wait2, open2, wait3, open3, wait4, open4, wait5, open5, wait6, open6, wait7, open7, wait8, open8]
-        row = self.scaler.fit_transform(self.values)
-        np.append(self.values, row, axis=0)
+    def setupModel(self, model_json, model_weights, ride):
+        self.model.setup(model_json, model_weights, ride)
 
-    def setupModel(self, model_num, model_json, model_weights, ride):
-        self.model_list[model_num].setup(model_json, model_weights, ride)
-
-    def predict(self, model_num, num_past_points):
-        return self.model_list[model_num].predict(self.values, num_past_points, self.min, self.max)
+    def predict(self, num_past_points):
+        return self.model.predict(self.values, num_past_points, self.min, self.max)
 
 
 
