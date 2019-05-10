@@ -3,5 +3,10 @@ jdk:
   - openjdk8
 
 script:
+  - date
+  - rm -f /etc/localtime
+  - ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+  - date
   - cd data\ programs/LiveData
   - ./gradlew test --stacktrace
+
