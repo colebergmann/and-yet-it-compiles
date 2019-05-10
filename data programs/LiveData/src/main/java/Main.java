@@ -5,9 +5,9 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Running main");
+        System.out.println("Fetching data...");
 
-        CSVManager csv = new CSVManager("sample.csv");
+        CSVManager csv = new CSVManager("data.csv");
 
         String[] desiredRides = new String[] {"353439","367492", "353405", "353295", "353363", "353355", "353377", "353435", "353347", "353437" };
         int[] roofs = new int[] {260,150,120,185,55,450,180,555,300,440};
@@ -15,10 +15,6 @@ public class Main {
         DisneyRequests dr = new DisneyRequests();           // Get API token and authenticate with Disney
         CurrentWaitTimes cw = new CurrentWaitTimes(dr);     // Fetch current wait times
         ParkHours ph = new ParkHours(dr);                   // Fetch park hours today
-
-        LocalWeather lw = new LocalWeather();               // Fetch current weather forecast from DarkSky
-
-        TableEntry newEntry = new TableEntry();             // Populate this with our desired data
 
         //Exit if park is not open
         int currentHour = Integer.parseInt(new SimpleDateFormat("HH").format(new Date()));
@@ -28,10 +24,14 @@ public class Main {
             closeHour = 24;
         }
 
-        if (!(currentHour < closeHour && currentHour > openHour)) {
-            System.out.println("Park is not open, exiting");
+        if (!(currentHour < closeHour && currentHour >= openHour)) {
+            System.out.println("Park is not open, exiting (" + openHour + "," + closeHour + ")" );
             System.exit(0);
         }
+
+        LocalWeather lw = new LocalWeather();               // Fetch current weather forecast from DarkSky
+
+        TableEntry newEntry = new TableEntry();             // Populate this with our desired data
 
         //Add weather data to our entry
         newEntry.setWeather(lw.getDayHigh(), lw.getDayLow(), lw.getDayPrecipProb(), lw.getTempNow(), lw.getPrecipProbNow());

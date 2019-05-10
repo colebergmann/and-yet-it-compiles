@@ -9,7 +9,7 @@ public class TableEntryTest {
     private int expectedYear = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
     private int expectedMonth = Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
     private int expectedDay = Integer.parseInt(new SimpleDateFormat("dd").format(new Date()));
-    private int expectedDOW = Integer.parseInt(new SimpleDateFormat("u").format(new Date()));
+    private int expectedDOW = Integer.parseInt(new SimpleDateFormat("u").format(new Date())) +1;
     private int expectedHour = Integer.parseInt(new SimpleDateFormat("HH").format(new Date()));
     private int expectedMinute = Integer.parseInt(new SimpleDateFormat("mm").format(new Date()));
     private String expectedCSVDateParams = expectedYear + "," + expectedMonth + "," + expectedDay + "," + expectedDOW + ","

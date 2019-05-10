@@ -1,6 +1,7 @@
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 // TableEntry is a data structure that holds one line of our data table
@@ -30,12 +31,14 @@ public class TableEntry {
 
     // Default constructor - Initialize date variables
     public TableEntry() {
-        year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
-        month = Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
-        day_of_month = Integer.parseInt(new SimpleDateFormat("dd").format(new Date()));
-        day_of_week = Integer.parseInt(new SimpleDateFormat("u").format(new Date()));
-        hour_of_day = Integer.parseInt(new SimpleDateFormat("HH").format(new Date()));
-        minute = Integer.parseInt(new SimpleDateFormat("mm").format(new Date()));
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH) + 1;
+        day_of_month = cal.get(Calendar.DAY_OF_MONTH);
+        day_of_week  = cal.get(Calendar.DAY_OF_WEEK);
+        hour_of_day = cal.get(Calendar.HOUR_OF_DAY);
+        minute = cal.get(Calendar.MINUTE);
     }
 
     //Construct from a csv string
@@ -50,7 +53,7 @@ public class TableEntry {
     }
 
     //Update park hours
-    public void setParkHours(ParkHours ph) {
+    void setParkHours(ParkHours ph) {
         dlr_open = ph.getDlOpenHour();
         dlr_close = ph.getDlCloseHour();
         dca_open = ph.getDcaOpenHour();
@@ -92,7 +95,7 @@ public class TableEntry {
         if (open) {
             rideOpen.add(1);
         } else {
-            rideOpen.add(1);
+            rideOpen.add(0);
         }
     }
 
@@ -124,28 +127,28 @@ public class TableEntry {
         String[] cols = input.split(",");
 
         //Parse the static vars
-        year = Integer.parseInt(cols[0]);
-        month = Integer.parseInt(cols[1]);
-        day_of_month = Integer.parseInt(cols[2]);
-        day_of_week = Integer.parseInt(cols[3]);
-        hour_of_day = Integer.parseInt(cols[4]);
-        minute = Integer.parseInt(cols[5]);
-        dlr_open = Integer.parseInt(cols[6]);
-        dca_open = Integer.parseInt(cols[7]);
-        dlr_close = Integer.parseInt(cols[8]);
-        dca_close = Integer.parseInt(cols[9]);
-        weather_daily_temperatureHigh = Double.parseDouble(cols[10]);
-        weather_daily_temperatureLow = Double.parseDouble(cols[11]);
-        weather_daily_precipProbability = Double.parseDouble(cols[12]);
-        weather_hourly_temperature = Double.parseDouble(cols[13]);
-        weather_hourly_precipProbability = Double.parseDouble(cols[14]);
+        year = Integer.parseInt(cols[0].trim());
+        month = Integer.parseInt(cols[1].trim());
+        day_of_month = Integer.parseInt(cols[2].trim());
+        day_of_week = Integer.parseInt(cols[3].trim());
+        hour_of_day = Integer.parseInt(cols[4].trim());
+        minute = Integer.parseInt(cols[5].trim());
+        dlr_open = Integer.parseInt(cols[6].trim());
+        dca_open = Integer.parseInt(cols[7].trim());
+        dlr_close = Integer.parseInt(cols[8].trim());
+        dca_close = Integer.parseInt(cols[9].trim());
+        weather_daily_temperatureHigh = Double.parseDouble(cols[10].trim());
+        weather_daily_temperatureLow = Double.parseDouble(cols[11].trim());
+        weather_daily_precipProbability = Double.parseDouble(cols[12].trim());
+        weather_hourly_temperature = Double.parseDouble(cols[13].trim());
+        weather_hourly_precipProbability = Double.parseDouble(cols[14].trim());
 
         //Parse each ride
         int i = 15;
         while (i < cols.length) {
-            rideIds.add(cols[i]);
-            waitTimes.add(Integer.parseInt(cols[i+1]));
-            rideOpen.add(Integer.parseInt(cols[i+2]));
+            rideIds.add(cols[i].trim());
+            waitTimes.add(Integer.parseInt(cols[i+1].trim()));
+            rideOpen.add(Integer.parseInt(cols[i+2].trim()));
             i += 3;
         }
     }
