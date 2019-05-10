@@ -1,3 +1,11 @@
-language: node_js
-node_js:
- - "node"
+language: java
+jdk:
+  - openjdk8
+
+script:
+  - date
+  - sudo timedatectl set-timezone America/Los_Angeles
+  - date
+  - cd data\ programs/LiveData
+  - ./gradlew test --stacktrace
+
