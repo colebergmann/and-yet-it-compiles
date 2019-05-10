@@ -2,45 +2,36 @@
 
 import React, {Component} from "react"
 import {Bar, Line, Pie} from "react-chartjs-2"
-import { daytimeData, dayLabels } from "./TodayData";
+import TodayData from './TodayData';
 
 /* Title function header*/
-class Chart extends Component{
+export default class Chart extends Component{
 
 	constructor(props){
 		super(props);
 		this.state = {
+			value: " ",
 			chartData:{
-				labels: dayLabels,
+				labels: ["1pm", "2pm", "3pm", "4pm", "5pm", "6", "7", "8", "9", "10", "11", "12"],
 				datasets: [
 					{
 						label:'Wait Times',
-						//data:[46.06451613,44.5,47.23333333,48.36666667,52.06451613,50.79310345,49.83333333,46.76666667,42.79310345,56.03333333,46.65517241,42.96153846],
-						data:daytimeData,
-						borderColor: 'rgba(20, 206, 206, 1)',
-						backgroundColor: 'rgba(20, 206, 206, 1)'
-						// [
-						// 'rgba(255, 99, 132, .6)','rgba(255, 99, 132, .6)','rgba(255, 99, 132, .6)',
-						// 'rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)',
-						// 'rgba(255, 206, 86, .6)','rgba(255, 206, 86, .6)','rgba(255, 206, 86, .6)',
-						// 'rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)',
-						// 'rgba(152, 162, 132, .6)','rgba(152, 162, 132, .6)','rgba(152, 162, 132, .6)',
-						// 'rgba(222, 200, 235, .6)','rgba(222, 200, 235, .6)','rgba(222, 200, 235, .6)',
-						// 'rgba(182, 162, 85, .6)','rgba(182, 162, 85, .6)','rgba(182, 162, 85, .6)',
-						// 'rgba(82, 92, 100, .6)','rgba(82, 92, 100, .6)','rgba(82, 92, 100, .6)',
-						// 'rgba(52, 190, 62, .6)','rgba(52, 190, 62, .6)','rgba(52, 190, 62, .6)',
-						// 'rgba(134, 77, 200, .6)','rgba(134, 77, 200, .6)','rgba(134, 77, 200, .6)',
-						// 'rgba(66, 190, 240, .6)','rgba(66, 190, 240, .6)','rgba(66, 190, 240, .6)',
-						// 'rgba(240, 132, 58, .6)','rgba(240, 132, 58, .6)','rgba(240, 132, 58, .6)'
-						// ]
+						data: <TodayData id={this.props.id} />,
+						borderColor: 'rgba(200, 150, 204, 1)',
+						backgroundColor: 'rgba(200, 150, 204, 1)'
 					}
 				]
 			}
 		}
 	}
 
+
+
 	render(){
 		return(
+			<h1>{this.props.value}</h1>
+			/*
+
 			<div className = "chart">
 				<Line
 					data={this.state.chartData}
@@ -72,9 +63,10 @@ class Chart extends Component{
 					}}
 				/>
 			</div>
+		*/
 		)
 	}
 }
 
 
-export default Chart
+
