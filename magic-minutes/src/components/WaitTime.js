@@ -1,7 +1,7 @@
 /*WaitTime.js*/
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+//import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import React, {Component} from "react"
-import {Line,Bar} from "react-chartjs-2"
+import {Line} from "react-chartjs-2"
 	
 class WaitTime extends Component{
 
@@ -48,7 +48,7 @@ class WaitTime extends Component{
 	      )
 		super(props);
 		this.state = {
-			value: "Space Mountain",
+			value: "Star Tours – The Adventures Continue",
 			error: null,
 	      	isLoaded: false,
 	      	items: [],
@@ -140,16 +140,15 @@ class WaitTime extends Component{
 			          <h2 class="paragraph" > Pick your ride: </h2>
 
 			          <select value={this.state.value} onChange={this.handleChange}>
-			            <option value="0">Space Mountain</option>
-			            <option value="1">Pirates of the Caribbean</option>
-			            <option value="2">Big Thunder Mountain Railroad</option>
-			            <option value="3">Haunted Mansion</option>
-			            <option value="4">Splash Mountain</option>
+			            <option value="0">Star Tours – The Adventures Continue</option>
+			            <option value="1">it’s a small world</option>
+			            <option value="2">Pirates of the Caribbean</option>
+			            <option value="3">Big Thunder Mountain Railroad</option>
+			            <option value="4">Indiana Jones™ Adventure</option>
 			            <option value="5">Matterhorn Bobsleds</option>
-			            <option value="6">Indiana Jones™ Adventure</option>
-			            <option value="7">it’s a small world</option>
-			            <option value="8">Star Tours – The Adventures Continue</option>
-			            <option value="9">Jungle Cruise</option>
+			            <option value="6">Space Mountain</option>
+			            <option value="7">Haunted Mansion</option>
+			            <option value="8">Splash Mountain</option>
 			          </select>
 			        </label>
 			        <input type="submit" value="Submit" />
