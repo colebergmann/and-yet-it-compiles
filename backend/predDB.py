@@ -121,7 +121,7 @@ class database(object):
         cursor.close()
 
     def fetchAllPredDataArray(self, conn,):
-        for i in range(10):
+        for i in range(9):
             try:
                 cursor = conn.cursor()
                 cursor.execute(( "SELECT Predictions FROM ride%d ORDER BY ID ASC" % i ))
@@ -168,7 +168,7 @@ if __name__ == '__main__':
             print("Waiting for updated CSV")
             time.sleep(10)
         DB.lines = DB.model.getDataLength()
-        for i in range(10):
+        for i in range(9):
             for j in range(5):
                 print(i*5 + j)
                 DB.model.setupModel("./MLimports/Saved Models/model_%d%d.json" % (i, DB.modelTimes[j]), "./MLimports/Saved Models/model_%d%d.h5" % (i, DB.modelTimes[j]))

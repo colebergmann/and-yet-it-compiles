@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ca04172b-1742-4d55-ac44-ffa5585763f5</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>DLModel.py</StartupFile>
+    <StartupFile>test.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
