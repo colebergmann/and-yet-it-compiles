@@ -109,17 +109,20 @@ public class TableEntry {
         };
         for (Object o : objs) {
             result.append(o.toString());
-            result.append(",");
+            result.append(", ");
         }
         for (int i = 0; i < rideIds.size(); i++) {
             result.append(rideIds.get(i));
-            result.append(",");
+            result.append(", ");
             result.append(waitTimes.get(i));
-            result.append(",");
+            result.append(", ");
             result.append(rideOpen.get(i));
-            result.append(",");
+
+            if (i != rideIds.size() - 1) {
+                result.append(", ");
+            }
         }
-        return result.substring(0,result.length() - 1);
+        return result.toString();
     }
 
     //Parse a csv string and update all the relevant table variables

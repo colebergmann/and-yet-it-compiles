@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hyperspace Mountain-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MagicMins" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jr4-D1-koh">
+                                <rect key="frame" x="35" y="711" width="304" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="BVT-mW-wcc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Change Ride" backgroundImage="button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Big Thunder Mountain Railroad" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToT-d4-14m">
+                                <rect key="frame" x="16" y="86" width="343" height="68.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now is a great time to go. The wait times will start increasing around 10:30 AM." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XR3-i1-LBf">
+                                <rect key="frame" x="16" y="162.33333333333334" width="343" height="46.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graphview" translatesAutoresizingMaskIntoConstraints="NO" id="lPg-RV-aGG">
+                                <rect key="frame" x="0.0" y="241" width="375" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="8Zb-Vb-Jv3"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TvT-xd-56k">
+                                <rect key="frame" x="8" y="269" width="359" height="265"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="265" id="pOq-Ju-MnQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1529411765" green="0.60784313729999995" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XR3-i1-LBf" secondAttribute="trailing" constant="16" id="2C3-JS-AW5"/>
+                            <constraint firstItem="ToT-d4-14m" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="5Sc-pg-6Bq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ToT-d4-14m" secondAttribute="trailing" constant="16" id="B5f-fB-C9e"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TvT-xd-56k" secondAttribute="trailing" constant="8" id="BJB-ri-90A"/>
+                            <constraint firstItem="jr4-D1-koh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="Oy4-lo-m2d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jr4-D1-koh" secondAttribute="trailing" constant="36" id="QYo-j5-zmA"/>
+                            <constraint firstItem="jr4-D1-koh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-16" id="WKd-0Q-onL"/>
+                            <constraint firstItem="ToT-d4-14m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Yjj-Ub-wuF"/>
+                            <constraint firstItem="TvT-xd-56k" firstAttribute="top" secondItem="XR3-i1-LBf" secondAttribute="bottom" constant="60" id="doB-VI-gVA"/>
+                            <constraint firstItem="XR3-i1-LBf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eD8-ga-CrD"/>
+                            <constraint firstItem="lPg-RV-aGG" firstAttribute="top" secondItem="XR3-i1-LBf" secondAttribute="bottom" constant="32" id="kei-mB-Dce"/>
+                            <constraint firstItem="XR3-i1-LBf" firstAttribute="top" secondItem="ToT-d4-14m" secondAttribute="bottom" constant="8" id="qU2-BJ-d8l"/>
+                            <constraint firstItem="TvT-xd-56k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="so9-ha-aaQ"/>
+                            <constraint firstItem="lPg-RV-aGG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yFg-D8-Dhn"/>
+                            <constraint firstItem="lPg-RV-aGG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="z3H-DT-lAZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Hyperspace Mountain" largeTitleDisplayMode="always" id="oyC-mY-5zQ"/>
+                    <connections>
+                        <outlet property="changeRideButton" destination="jr4-D1-koh" id="4Ad-Op-3JM"/>
+                        <outlet property="chartView" destination="TvT-xd-56k" id="HBV-w8-J2B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1533.5999999999999" y="282.26600985221677"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="button" width="335" height="57"/>
+        <image name="graphview" width="375" height="371"/>
+    </resources>
+</document>
