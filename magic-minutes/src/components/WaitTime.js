@@ -145,21 +145,21 @@ class WaitTime extends Component{
 	      		return (
 	      			<div>
 	      				<form onSubmit={this.handleSubmit}>
-			        <label>
-			          <h2 class="paragraph" > Pick your ride: </h2>
+			        	<label>
+			          		<h2 class="paragraph" > Pick your ride: </h2>
 
-			          <select value={this.state.value} onChange={this.handleChange}>
-			            <option value="0">Star Tours – The Adventures Continue</option>
-			            <option value="1">it’s a small world</option>
-			            <option value="2">Pirates of the Caribbean</option>
-			            <option value="3">Big Thunder Mountain Railroad</option>
-			            <option value="4">Indiana Jones™ Adventure</option>
-			            <option value="5">Matterhorn Bobsleds</option>
-			            <option value="6">Space Mountain</option>
-			            <option value="7">Haunted Mansion</option>
-			            <option value="8">Splash Mountain</option>
-			          </select>
-			        </label>
+					          <select value={this.state.value} onChange={this.handleChange}>
+					            <option value="0">Star Tours – The Adventures Continue</option>
+					            <option value="1">it’s a small world</option>
+					            <option value="2">Pirates of the Caribbean</option>
+					            <option value="3">Big Thunder Mountain Railroad</option>
+					            <option value="4">Indiana Jones™ Adventure</option>
+					            <option value="5">Matterhorn Bobsleds</option>
+					            <option value="6">Space Mountain</option>
+					            <option value="7">Haunted Mansion</option>
+					            <option value="8">Splash Mountain</option>
+			          		</select>
+			        	</label>
 			        <input type="submit" value="Submit" />
 			      </form>
 
@@ -177,16 +177,6 @@ class WaitTime extends Component{
 							display: false,
 							position: 'right'
 						},
-						options: {
-					        layout: {
-					            padding: {
-					                left: 50,
-					                right: 10,
-					                top: 100,
-					                bottom: 0
-					            }
-				        }
-				    },
 						scales: {
             				yAxes: [{
             					scaleLabel:{
