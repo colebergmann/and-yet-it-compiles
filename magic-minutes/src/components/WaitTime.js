@@ -35,8 +35,7 @@ class WaitTime extends Component{
 	            			data: result,
 	            			label:'Wait Times',
 							backgroundColor: 'rgb(51, 153, 255)',
-							backgroundColor: 'rgb(51, 153, 255)'
-	            		}
+								            		}
 	            	],
 	            }
 	          });
@@ -118,7 +117,7 @@ class WaitTime extends Component{
 
 
 							backgroundColor: 'rgb(51, 153, 255)',
-							backgroundColor: 'rgb(51, 153, 255)'
+							
 	            		}
 	            	]
 	            }
@@ -135,7 +134,7 @@ class WaitTime extends Component{
 
 
 	render(){
-			const { error, isLoaded, items } = this.state;
+			const { error, isLoaded} = this.state;
 	    	if (error) {
 		    	return <div>Error: {error.message}</div>;
 		    }
