@@ -1,7 +1,7 @@
 /*WaitTime.js*/
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+//import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import React, {Component} from "react"
-import {Line,Bar} from "react-chartjs-2"
+import {Line} from "react-chartjs-2"
 	
 class WaitTime extends Component{
 
@@ -14,25 +14,29 @@ class WaitTime extends Component{
 	            isLoaded: true,
 	            items: result,
 	            chartData:{
-	            	labels: ["12pm", "","","","","","1pm","",
-	            	"", "","","","","","2pm","","",
-	            	"","", "","","","3pm","","", 
-	            	"", "", "","","","4pm","","","",
-	            	"", "", "","","5pm","","" ,"",
-	            	"", "", "","","6pm","","","", "",
-	            	"", "", "","7pm","","","","",
-	            	"", "", "","8pm","","","","", "",
-	            	"", "", "9pm","","","","","", 
-	            	"", "", "10pm","","","","","", "",
-	            	"", "11pm", "","",""],
+	            	labels:
+	            	["8", "8:10","8:20","8:30","8:40","8:50",
+	            	"9", "9:10","9:20","9:30","9:40","9:50",
+	            	"10", "10:10","10:20","10:30","10:40","10:50",
+	            	"11", "11:10","11:20","11:30","11:40","11:50",
+	            	"12", "12:10","12:20","12:30","12:40","12:50",
+					"1", "1:10","1:20","1:30","1:40","1:50",
+	            	"2", "2:10","2:20","2:30","2:40","2:50",
+	            	"3", "3:10","3:20","3:30","3:40","3:50",
+	            	"4", "4:10","4:20","4:30","4:40","4:50",
+	            	"5", "5:10","5:20","5:30","5:40","5:50",
+	            	"6", "6:10","6:20","6:30","6:40","6:50",
+	            	"7", "7:10","7:20","7:30","7:40","7:50",
+					"8", "8:10","8:20","8:30","8:40","8:50",
+	            	"9", "9:10","9:20","9:30","9:40","9:50",
+	            	"10", "10:10","10:20","10:30","10:40","10:50"],
 	            	datasets:[
 	            		{
 	            			data: result,
 	            			label:'Wait Times',
 							backgroundColor: 'rgb(51, 153, 255)',
-							backgroundColor: 'rgb(51, 153, 255)'
-	            		}
-	            	]
+								            		}
+	            	],
 	            }
 	          });
 	        },
@@ -48,7 +52,7 @@ class WaitTime extends Component{
 	      )
 		super(props);
 		this.state = {
-			value: "Space Mountain",
+			value: "Star Tours – The Adventures Continue",
 			error: null,
 	      	isLoaded: false,
 	      	items: [],
@@ -81,17 +85,21 @@ class WaitTime extends Component{
 	            isLoaded: true,
 	            items: result,
 	            chartData:{
-	            	labels: ["12pm", "","","","","","1pm","",
-	            	"", "","","","","","2pm","","",
-	            	"","", "","","","3pm","","", 
-	            	"", "", "","","","4pm","","","",
-	            	"", "", "","","5pm","","" ,"",
-	            	"", "", "","","6pm","","","", "",
-	            	"", "", "","7pm","","","","",
-	            	"", "", "","8pm","","","","", "",
-	            	"", "", "9pm","","","","","", 
-	            	"", "", "10pm","","","","","", "",
-	            	"", "11pm", "","",""],
+	            	labels:["8", "8:10","8:20","8:30","8:40","8:50",
+	            	"9", "9:10","9:20","9:30","9:40","9:50",
+	            	"10", "10:10","10:20","10:30","10:40","10:50",
+	            	"11", "11:10","11:20","11:30","11:40","11:50",
+	            	"12", "12:10","12:20","12:30","12:40","12:50",
+					"1", "1:10","1:20","1:30","1:40","1:50",
+	            	"2", "2:10","2:20","2:30","2:40","2:50",
+	            	"3", "3:10","3:20","3:30","3:40","3:50",
+	            	"4", "4:10","4:20","4:30","4:40","4:50",
+	            	"5", "5:10","5:20","5:30","5:40","5:50",
+	            	"6", "6:10","6:20","6:30","6:40","6:50",
+	            	"7", "7:10","7:20","7:30","7:40","7:50",
+					"8", "8:10","8:20","8:30","8:40","8:50",
+	            	"9", "9:10","9:20","9:30","9:40","9:50",
+	            	"10", "10:10","10:20","10:30","10:40","10:50"],
 	            	datasets:[
 	            		{
 	            			data: result,
@@ -109,7 +117,7 @@ class WaitTime extends Component{
 
 
 							backgroundColor: 'rgb(51, 153, 255)',
-							backgroundColor: 'rgb(51, 153, 255)'
+							
 	            		}
 	            	]
 	            }
@@ -126,7 +134,7 @@ class WaitTime extends Component{
 
 
 	render(){
-			const { error, isLoaded, items } = this.state;
+			const { error, isLoaded} = this.state;
 	    	if (error) {
 		    	return <div>Error: {error.message}</div>;
 		    }
@@ -136,22 +144,21 @@ class WaitTime extends Component{
 	      		return (
 	      			<div>
 	      				<form onSubmit={this.handleSubmit}>
-			        <label>
-			          <h2 class="paragraph" > Pick your ride: </h2>
+			        	<label>
+			          		<h2 class="paragraph" > Pick your ride: </h2>
 
-			          <select value={this.state.value} onChange={this.handleChange}>
-			            <option value="0">Space Mountain</option>
-			            <option value="1">Pirates of the Caribbean</option>
-			            <option value="2">Big Thunder Mountain Railroad</option>
-			            <option value="3">Haunted Mansion</option>
-			            <option value="4">Splash Mountain</option>
-			            <option value="5">Matterhorn Bobsleds</option>
-			            <option value="6">Indiana Jones™ Adventure</option>
-			            <option value="7">it’s a small world</option>
-			            <option value="8">Star Tours – The Adventures Continue</option>
-			            <option value="9">Jungle Cruise</option>
-			          </select>
-			        </label>
+					          <select value={this.state.value} onChange={this.handleChange}>
+					            <option value="0">Star Tours – The Adventures Continue</option>
+					            <option value="1">it’s a small world</option>
+					            <option value="2">Pirates of the Caribbean</option>
+					            <option value="3">Big Thunder Mountain Railroad</option>
+					            <option value="4">Indiana Jones™ Adventure</option>
+					            <option value="5">Matterhorn Bobsleds</option>
+					            <option value="6">Space Mountain</option>
+					            <option value="7">Haunted Mansion</option>
+					            <option value="8">Splash Mountain</option>
+			          		</select>
+			        	</label>
 			        <input type="submit" value="Submit" />
 			      </form>
 
@@ -166,19 +173,33 @@ class WaitTime extends Component{
 							fontColor: 'black'
 						},
 						legend:{
-							display: true,
+							display: false,
 							position: 'right'
 						},
 						scales: {
             				yAxes: [{
+            					scaleLabel:{
+            						display: true,
+            						labelString: "minutes",
+            						fontColor: 'black'
+            					},         						
                 				ticks: {
                     				beginAtZero: true,
                     				fontColor: 'black'
 				                }
 				            }],
 				            xAxes: [{
+
 				            	ticks:{
-				            		fontColor: 'black'
+				            		callback: function(value, index, values) {
+				            			if(index < 24){
+				            				return value + 'am';
+				            			}else{
+			                        		return value + 'pm';
+				            			}
+
+			                    	},
+				            		fontColor: 'black',
 				            	}
 				            }],
 

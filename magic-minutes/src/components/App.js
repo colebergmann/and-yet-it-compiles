@@ -7,7 +7,8 @@ import Home from './Home';
 import Plan from './Plan';
 import Today from './Today';
 import Information from './Information';
-import Icon from "./Icon"
+import Icon from "./Icon";
+
 
 class App extends Component {
   render() {

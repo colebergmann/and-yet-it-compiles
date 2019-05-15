@@ -6,10 +6,17 @@ import math
 
 sys.path.insert(0, "./MLimports")
 
+sys.path.insert(0, "./MLimports")
+
 import myModels as mm
 import mysql.connector
 from mysql.connector import Error, MySQLConnection
+<<<<<<< HEAD
  
+=======
+from pympler.tracker import SummaryTracker
+
+>>>>>>> 3f6485a8103999ed80cca89de69af66fe5619003
 
 class database(object):
 

@@ -1,4 +1,3 @@
-import Footer from './Footer'
 import WaitTime from './WaitTime'
 import React, { Component } from 'react';
 
