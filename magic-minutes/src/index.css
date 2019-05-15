@@ -1,6 +1,6 @@
 /*index.css*/
 
-@import url('https://fonts.googleapis.com/css?family=Sofia|Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Sofia|Open+Sans+Condensed:300|Cabin');
 
 body {
   font-family: 'Sofia', cursive;
@@ -9,17 +9,24 @@ body {
   /*background: #dfecf6;*/
 }
 
-.image {
-    float: right;
-    align-items: right;
-  }
+.disneypic {
+  border-radius:30px;
+}
+
+.pic-container {
+  display: block;
+  text-align: center;
+  ma-height: 450px;
+  max-width: 900px;
+}
 
 .welc{
   color:  black;
   display: block;
   font-size: 50px;
   text-align: center;
-  margin: 20px;
+  padding-top: 40px;
+  padding-bottom: 20px;
   font-weight: bold;
   font-family: 'Sofia', cursive;
 }
@@ -43,12 +50,8 @@ body {
 }
 
 .paragraph{
-  font: 20px "Comic Sans", sans;
-  margin: 30px;
-}
-
-.icon {
-  padding-left: 10px;
+  font: 20px 'Cabin', sans-serif;
+  margin: 20px;
 }
 
 .foot{

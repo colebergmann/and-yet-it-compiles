@@ -18,7 +18,7 @@ class App extends Component {
         <div>
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">
-            <Icon />
+            <a><Link to={'./information'} className="nav-link"> <Icon />  </Link></a>
             </a>
             <button
               class="navbar-toggler"
@@ -46,12 +46,14 @@ class App extends Component {
             </div>
           </nav>
 
+          <div class="container">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/information" component={Information} />
             <Route path="/plan" component={Plan} />
             <Route path="/today" component={Today} />
           </Switch>
+          </div>
         </div>
       </Router>
     );
