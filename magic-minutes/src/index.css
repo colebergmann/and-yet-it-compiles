@@ -66,6 +66,12 @@ body {
   margin-bottom: 40px;
 }
 
+.paragraph2{
+  font: 20px 'Cabin', sans-serif;
+  float: left;
+  margin-right: 10px;
+}
+
 .foot{
   float: right;
   font-family: 'Cabin', sans-serif;

@@ -148,7 +148,7 @@ class WaitTime extends Component{
 	      			<div>
 	      				<form onSubmit={this.handleSubmit}>
 			        	<label>
-			          		<h2 class="paragraph" > Pick your ride: </h2>
+			          		<h2 class="paragraph2" > Pick your ride:  </h2>
 
 					          <select value={this.state.value} onChange={this.handleChange}>
 					            <option value="0">Star Tours – The Adventures Continue</option>
