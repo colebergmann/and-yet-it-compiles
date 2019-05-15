@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#">
             <a><Link to={'/information'} className="nav-link"> <Icon />  </Link></a>
             </a>

@@ -19,8 +19,8 @@ class PlanGraph extends Component{
 	            		{
 	            			data: result,
 							label:'Predicted Park Crowds', 
-      						backgroundColor: 'rgba(0, 25, 137, .65)',
-      						borderColor: 'rgba(0, 25, 137, 1)',
+      						backgroundColor: 'rgba(83, 158, 205, .75)',
+      						borderColor: 'rgba(83, 158, 205, 1)',
       						pointBorderWidth: 1,
       						pointRadius: 1,
       						pointHitRadius: 10
