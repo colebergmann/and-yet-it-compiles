@@ -1,6 +1,7 @@
 //Info Page
 import React, { Component } from 'react';
 import Logo from './Logo';
+import Footer from './Footer'
 import outline from './outline.jpg'
 
 class Information extends Component {
@@ -21,16 +22,13 @@ class Information extends Component {
     		efficient day at Disneyland parks. Thus, making the happiest place on earth even happier.</h3></a>
     	</main>
     	<body>
-    		<a><h4 className ="foot"> Thanks for Visiting! </h4></a>
+    		<a><h4 className ="visit"> Thanks for Visiting! </h4></a>
     		<Logo />
       	</body>
         <footer>
-            <span className = "bottom"> Created By: </span>
-            <span className = "bottom"> Denver Simmons, </span>
-            <span className = "bottom"> Ryan Mitchell, </span>
-            <span className = "bottom"> Olivia Clough, </span>
-            <span className = "bottom"> Cole Bergmann, </span>
-            <span className = "bottom"> and Abby Wysopal </span>
+            <span className = "bottom"> Created By: Denver Simmons, Ryan Mitchell, 
+            Olivia Clough, Cole Bergmann, and Abby Wysopal</span>
+            <Footer />
         </footer>  
     </div>
   );

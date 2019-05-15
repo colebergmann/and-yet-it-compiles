@@ -12,7 +12,9 @@ class PlanGraph extends Component{
 	            isLoaded: true,
 	            items: result,
 	            chartData:{
-					labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
+					labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+					"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+					"21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
 	            	datasets:[
 	            		{
 	            			data: result,
@@ -43,12 +45,15 @@ class PlanGraph extends Component{
 	      	isLoaded: false,
 	      	items: [],
 			chartData:{
-			labels: [],
+			labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+					"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+					"21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
 				datasets: [
 					{
+						data: [],
 						label:'Predicted Park Crowds', 
-						backgroundColor: 'rgba(0, 25, 137, 1)',
-      					borderColor: 'rgba(0, 25, 137, 1)',
+						backgroundColor: 'rgba(83, 158, 205, .75)',
+      					borderColor: 'rgba(83, 158, 205, 1)',
 					}
 				]
 			}

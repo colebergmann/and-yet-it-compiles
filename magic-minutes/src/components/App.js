@@ -18,7 +18,7 @@ class App extends Component {
         <div>
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">
-            <a><Link to={'./information'} className="nav-link"> <Icon />  </Link></a>
+            <a><Link to={'/information'} className="nav-link"> <Icon />  </Link></a>
             </a>
             <button
               class="navbar-toggler"
