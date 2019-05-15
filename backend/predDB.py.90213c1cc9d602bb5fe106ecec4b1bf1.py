@@ -21,7 +21,7 @@ class database(object):
         self.lines = 0
         self.modelTimes = [3,6,12,24,90]
         self.modelDays = [7, 14, 21, 28]
-        self.liveData = [None] * 9
+        self.liveData = [[]] * 9
         self.minuteIndex = 0
         self.newPredictions = [None] * 5
         # for i in range(10):
@@ -67,14 +67,15 @@ class database(object):
         return values
 
     def formatLiveData(self):
-        self.minuteIndex = int((math.floor(int(time.ctime().split(" ")[3].split(":")[0]) * 60 + int(time.ctime().split(" ")[3].split(":")[1])) - 480) / 10)
+        startTime = time.ctime()
+        startTime = time.ctime().split(" ")
+        minutes = time.ctime().split(" ")[3].split(":")
+        minutes = int(time.ctime().split(" ")[3].split(":")[0]) * 60 + int(time.ctime().split(" ")[3].split(":")[1]) - 480
+        self.minuteIndex = int(math.floor(int(time.ctime().split(" ")[3].split(":")[0]) * 60 + int(time.ctime().split(" ")[3].split(":")[1]) - 480 / 10))
         live = self.formatCSV("../../LiveData/data.csv")
         for i in range(9):
-            liveArray = []
             for j in range(0, self.minuteIndex):
-                liveArray.append(int(live[(len(live) - 1 ) - j][i*2 + 4]))
-            self.liveData[i] = liveArray
-            print (self.liveData[i])
+                self.liveData[i].append(int(live[(len(live) - 1 ) - j][i*2 + 4]))
 
     def formatRidePredictions(self, numRide):
         predictions = [None] * 5
@@ -198,8 +199,8 @@ class database(object):
         
         cursor.close()
 
-    def fetchAllPredDataArray(self, conn, populationData):
-        self.data[10] = populationData
+    def fetchAllPredDataArray(self, conn):
+        # self.data[10] = populationData
         self.formatLiveData()
         for i in range(9):
             try:
@@ -219,15 +220,13 @@ class database(object):
             except Error as e:
                 print(e)
             
-            dataArray = [0 for x in range(90)]
+            dataArray = []
 
-            for j in range(self.minuteIndex):
-                print(j)
-                print(self.liveData[i][j])
-                dataArray[j] = self.liveData[i][j]
+            for j in range(self.minuteIndex + 1):
+                dataArray.append(self.liveData[i][j])
 
-            for k in range(self.minuteIndex, 90):
-                dataArray[k] = plottableData[k - self.minuteIndex]
+            for k in range(self.minuteIndex + 1, 90):
+                dataArray.append(plottableData[k - (self.minuteIndex + 1)])
 
             self.data[i] = dataArray
             
@@ -237,9 +236,9 @@ class database(object):
 
 if __name__ == '__main__':
     DB = database()
-    populations = [None] * 30
-    for k in range(30):
-        populations[k] = 42
+    # populations = [None] * 30
+    # for k in range(30):
+    #     populations[k] = 42
     # DB.insertPredData(DB.conn, 0, DB.formatRidePredictions(0) )
     # DB.fetchPredDataArray(DB.conn, 0)
     # DB.insertPredData(DB.conn, 1, DB.formatRidePredictions(1) )
@@ -267,6 +266,4 @@ if __name__ == '__main__':
                 print(5 * i + j)
                 DB.formatNewPredictions(i, j)
             DB.updatePredData(DB.conn, i, DB.newPredictions)
-        print(DB.minuteIndex)
-        DB.fetchAllPredDataArray(DB.conn, populations)
-        DB.liveData = [] * 9
+        DB.fetchAllPredDataArray(DB.conn)
