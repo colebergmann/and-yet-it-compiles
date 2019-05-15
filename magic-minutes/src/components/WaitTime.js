@@ -2,7 +2,8 @@
 //import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import React, {Component} from "react"
 import {Line} from "react-chartjs-2"
-	
+import 'bootstrap/dist/css/bootstrap.css';
+
 class WaitTime extends Component{
 
 	constructor(props){
@@ -11,6 +12,7 @@ class WaitTime extends Component{
 	      .then(
 	        (result) => {
 	          this.setState({
+				value: "0",	          	
 	            isLoaded: true,
 	            items: result,
 	            chartData:{
@@ -33,14 +35,50 @@ class WaitTime extends Component{
 	            	datasets:[
 	            		{
 	            			data: result,
-	            			label:'Wait Times',
-							backgroundColor: 'rgb(51, 153, 255)',
-							pointBorderWidth: 1,
-      						pointRadius: 1,
-      						pointHitRadius: 10
+							backgroundColor: 'rgba(83, 158, 205, .75)',
+	      					borderColor: 'rgba(83, 158, 205, 1)',
 						}
 	            	],
-	            }
+	            },
+	            	            chartOptions:{
+						title: {
+							display:true,
+							fontSize:25,
+							fontColor: 'black'
+						},
+						legend:{
+							display: false,
+							position: 'right'
+						},
+						scales: {
+            				yAxes: [{
+            					scaleLabel:{
+            						display: true,
+            						labelString: "minutes",
+            						fontColor: 'black'
+            					},         						
+                				ticks: {
+                    				beginAtZero: true,
+                    				fontColor: 'black'
+				                }
+				            }],
+				            xAxes: [{
+
+				            	ticks:{
+				            		callback: function(value, index, values) {
+				            			if(index < 24){
+				            				return value + 'am';
+				            			}else{
+			                        		return value + 'pm';
+				            			}
+
+			                    	},
+				            		fontColor: 'black',
+				            	}
+				            }],
+
+				        }
+				}
 	          });
 	        },
 	        // Note: it's important to handle errors here
@@ -55,7 +93,7 @@ class WaitTime extends Component{
 	      )
 		super(props);
 		this.state = {
-			value: "Star Tours – The Adventures Continue",
+			value: "0",
 			error: null,
 	      	isLoaded: false,
 	      	items: [],
@@ -63,9 +101,8 @@ class WaitTime extends Component{
 			labels: [],
 				datasets: [
 					{
-						label:'Wait Times',
-						borderColor: 'rgba(20, 206, 206, 1)',
-						backgroundColor: 'rgba(20, 206, 206, 1)'
+						backgroundColor: 'rgba(83, 158, 205, .75)',
+      					borderColor: 'rgba(83, 158, 205, 1)',
 					}
 				]
 			}
@@ -106,72 +143,16 @@ class WaitTime extends Component{
 	            	datasets:[
 	            		{
 	            			data: result,
-	            			label:'Wait Times',
-	            			/*	
-							space moutnaint
-							backgroundColor: 'rgb(51, 153, 255)',
-							backgroundColor: 'rgb(51, 153, 255)'
-
-							pirates
-
-							borderColor: 'rgb(255,165,0)',
-							backgroundColor: 'rgb(255,0,0)'
-	            			*/
-
-
-							backgroundColor: 'rgb(51, 153, 255)',
+							backgroundColor: 'rgba(83, 158, 205, .75)',
+	      					borderColor: 'rgba(83, 158, 205, 1)',
 							
 	            		}
 	            	]
-	            }
-	          });
-	        },
-	        (error) => {
-	          this.setState({
-	            isLoaded: true,
-	            error
-	          });
-	        }
-	      )
-  	}
 
-
-	render(){
-			const { error, isLoaded} = this.state;
-	    	if (error) {
-		    	return <div>Error: {error.message}</div>;
-		    }
-	    	else if (!isLoaded) {
-	      		return <div>Loading...</div>;
-	    	} else {
-	      		return (
-	      			<div>
-	      				<form onSubmit={this.handleSubmit}>
-			        	<label>
-			          		<h2 class="paragraph2" > Pick your ride:  </h2>
-
-					          <select value={this.state.value} onChange={this.handleChange}>
-					            <option value="0">Star Tours – The Adventures Continue</option>
-					            <option value="1">it’s a small world</option>
-					            <option value="2">Pirates of the Caribbean</option>
-					            <option value="3">Big Thunder Mountain Railroad</option>
-					            <option value="4">Indiana Jones™ Adventure</option>
-					            <option value="5">Matterhorn Bobsleds</option>
-					            <option value="6">Space Mountain</option>
-					            <option value="7">Haunted Mansion</option>
-					            <option value="8">Splash Mountain</option>
-			          		</select>
-			        	</label>
-			        <input type="submit" value="Submit" />
-			      </form>
-
-			<div className = "chart">
-				<Line
-					data={this.state.chartData}
-					options={{
+	            },
+	            chartOptions:{
 						title: {
 							display:true,
-							text:"Disneyland Wait Time",
 							fontSize:25,
 							fontColor: 'black'
 						},
@@ -207,7 +188,50 @@ class WaitTime extends Component{
 				            }],
 
 				        }
-					}}
+				}
+	          });
+	        },
+	        (error) => {
+	          this.setState({
+	            isLoaded: true,
+	            error
+	          });
+	        }
+	      )
+  	}
+
+
+	render(){
+			const { error, isLoaded} = this.state;
+	    	if (error) {
+		    	return <div>Error: {error.message}</div>;
+		    }
+	    	else if (!isLoaded) {
+	      		return <div>Loading...</div>;
+	    	} else {
+	      		return (
+	      			<div>
+	      				<form onSubmit={this.handleSubmit}>
+			        	<label>
+					          <select value={this.state.value} onChange={this.handleChange}>
+					            <option value="0">Star Tours – The Adventures Continue</option>
+					            <option value="1">it’s a small world</option>
+					            <option value="2">Pirates of the Caribbean</option>
+					            <option value="3">Big Thunder Mountain Railroad</option>
+					            <option value="4">Indiana Jones™ Adventure</option>
+					            <option value="5">Matterhorn Bobsleds</option>
+					            <option value="6">Space Mountain</option>
+					            <option value="7">Haunted Mansion</option>
+					            <option value="8">Splash Mountain</option>
+			          		</select>
+			        	</label>
+			        <input type="submit" value="Submit" />
+			      </form>
+
+			<div className = "chart">
+				<Line
+					data={this.state.chartData}
+					options={this.state.chartOptions}
 				/>
 			</div>
 			</div>
