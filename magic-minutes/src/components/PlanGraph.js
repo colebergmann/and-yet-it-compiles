@@ -83,6 +83,7 @@ class PlanGraph extends Component{
             						display: true,
             						labelString: 'Anticipated Crowds',
             						fontSize: 15,
+            						fontColor: 'black',
             						fontFamily: 'Cabin'
             					},
                 				ticks: {
@@ -94,6 +95,7 @@ class PlanGraph extends Component{
 				            		display:true,
 				            		labelString: 'Days in the future',
 				            		fontSize: 15,
+				            		fontColor: 'black',
 				            		fontFamily: 'Cabin'
 				            	}
 				            }]
