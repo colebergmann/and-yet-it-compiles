@@ -59,3 +59,7 @@ class myModels(object):
 
     def predict(self, ride, num_past_points):   
         return self.model.predict(self.values, ride, num_past_points, self.min, self.max)
+
+
+
+

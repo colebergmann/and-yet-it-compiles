@@ -6,17 +6,10 @@ import math
 
 sys.path.insert(0, "./MLimports")
 
-sys.path.insert(0, "./MLimports")
-
 import myModels as mm
 import mysql.connector
 from mysql.connector import Error, MySQLConnection
-<<<<<<< HEAD
  
-=======
-from pympler.tracker import SummaryTracker
-
->>>>>>> 3f6485a8103999ed80cca89de69af66fe5619003
 
 class database(object):
 
@@ -229,8 +222,6 @@ class database(object):
             dataArray = [0 for x in range(90)]
 
             for j in range(self.minuteIndex):
-                print(j)
-                print(self.liveData[i][j])
                 dataArray[j] = self.liveData[i][j]
 
             for k in range(self.minuteIndex, 90):

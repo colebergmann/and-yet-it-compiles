@@ -156,7 +156,21 @@ class database(object):
             cursor.close()
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     DB = database()
 
     print(time.time())
 >>>>>>> 3f6485a8103999ed80cca89de69af66fe5619003
+=======
+    # DB = database()
+
+    currentTime = time.ctime(time.time())
+    timeArray = currentTime.split(' ')
+    print(timeArray)
+    minuteArray = timeArray[3].split(':')
+    print(minuteArray)
+    numMinutes = 60 * int(minuteArray[0]) + int(minuteArray[1])
+    print (numMinutes)
+    while (( numMinutes >= 480) and (numMinutes <= 719)):
+        pass
+>>>>>>> aadba82c419f0d5708d4b1c4796da05c88296e64
