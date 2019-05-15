@@ -11,7 +11,7 @@ class Home extends Component {
     	<main>
     		<span class = "welc" >Welcome to Magic Minutes</span>
         <div class="pic-container">
-					<img class="disneypic" src={disneylandcur} height={450} width={900}></img>
+					<img class="disneypic" src={disneylandcur} alt="" height={400} width={800}></img>
 				</div>
         <HomeInfo />
     	</main>

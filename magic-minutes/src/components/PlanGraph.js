@@ -1,27 +1,5 @@
-//Chart.js
-
 import React, {Component} from "react"
 import {Line} from "react-chartjs-2"
-//import PlanGraphContainer from "./PlanGraphContainer"
-//import { popuData, dayLabels } from "./FakePlanGraph";
-
-/*
-class PlanGraphContainer extends Component {
-  state = {
-    dataToPass: []
-  };
-
-  async componentDidMount() {
-    const response = await fetch('http://colebergmann.com:5000/callPred/10');
-    const data = await response.json(); 
-    this.setState({dataToPass: data});
-  }
-
-  render() {
-    return <PlanGraph data={this.state.dataToPass} />
-  }
-}
-*/
 
 
 class PlanGraph extends Component{
@@ -39,8 +17,11 @@ class PlanGraph extends Component{
 	            		{
 	            			data: result,
 							label:'Predicted Park Crowds', 
-							borderColor: 'rgba(77, 112, 255, 1)',
-							backgroundColor: 'rgba(77, 112, 255, 1)'
+      						backgroundColor: 'rgba(0, 25, 137, .65)',
+      						borderColor: 'rgba(0, 25, 137, 1)',
+      						pointBorderWidth: 1,
+      						pointRadius: 1,
+      						pointHitRadius: 10
 	            		}
 	            	],
 	            }
@@ -66,8 +47,8 @@ class PlanGraph extends Component{
 				datasets: [
 					{
 						label:'Predicted Park Crowds', 
-						borderColor: 'rgba(77, 112, 255, 1)',
-						backgroundColor: 'rgba(77, 112, 255, 1)'
+						backgroundColor: 'rgba(0, 25, 137, 1)',
+      					borderColor: 'rgba(0, 25, 137, 1)',
 					}
 				]
 			}
@@ -83,17 +64,21 @@ class PlanGraph extends Component{
 						title: {
 							display:true,
 							text:"Predicted Park Crowds",
-							fontSize:25
+							fontFamily: 'Cabin',
+							fontColor: 'black',
+							fontSize:30
 						},
 						legend:{
-							display: true,
+							display: false,
 							position: 'right'
 						},
 						scales: {
             				yAxes: [{
             					scaleLabel: {
             						display: true,
-            						labelString: 'Anticipated Crowds'
+            						labelString: 'Anticipated Crowds',
+            						fontSize: 15,
+            						fontFamily: 'Cabin'
             					},
                 				ticks: {
                     				beginAtZero: true
@@ -102,7 +87,9 @@ class PlanGraph extends Component{
 				            xAxes: [{
 				            	scaleLabel: {
 				            		display:true,
-				            		labelString: 'Days in the future'
+				            		labelString: 'Days in the future',
+				            		fontSize: 15,
+				            		fontFamily: 'Cabin'
 				            	}
 				            }]
 

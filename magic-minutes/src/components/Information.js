@@ -1,7 +1,7 @@
 //Info Page
-
-import Logo from './Logo'
 import React, { Component } from 'react';
+import Logo from './Logo';
+import outline from './outline.jpg'
 
 class Information extends Component {
 	render() {
@@ -9,6 +9,9 @@ class Information extends Component {
     <div>
     	<main>
     		<a><h2 className = "welc"> A little about our site . . .</h2></a>
+            <div class="pic-container">
+                <img class="disneypic" src={outline} height={300} width={200}></img>
+            </div>
     		<a><h3 className = "paragraph"> Disneyland Parks in Anaheim, California attracts on average over 
     		44,000 visitors per day. Each visitor arrives at Disneyland with the risk of waiting in 
     		line for multiple hours per attraction. Unnecessary stress is imposed upon visitors when 

@@ -35,7 +35,10 @@ class WaitTime extends Component{
 	            			data: result,
 	            			label:'Wait Times',
 							backgroundColor: 'rgb(51, 153, 255)',
-								            		}
+							pointBorderWidth: 1,
+      						pointRadius: 1,
+      						pointHitRadius: 10
+						}
 	            	],
 	            }
 	          });

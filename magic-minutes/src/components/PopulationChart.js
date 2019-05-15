@@ -15,24 +15,13 @@ class PopulationChart extends Component{
 				datasets: [
 					{
 						label:'Park Population',
-						//data:[46.06451613,44.5,47.23333333,48.36666667,52.06451613,50.79310345,49.83333333,46.76666667,42.79310345,56.03333333,46.65517241,42.96153846],
 						data:popData,
-						borderColor: 'rgba(57, 0, 189, 1)',
-						backgroundColor: 'rgba(57, 0, 189, 1)'
-						// [
-						// 'rgba(255, 99, 132, .6)','rgba(255, 99, 132, .6)','rgba(255, 99, 132, .6)',
-						// 'rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)',
-						// 'rgba(255, 206, 86, .6)','rgba(255, 206, 86, .6)','rgba(255, 206, 86, .6)',
-						// 'rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)','rgba(52, 162, 235, .6)',
-						// 'rgba(152, 162, 132, .6)','rgba(152, 162, 132, .6)','rgba(152, 162, 132, .6)',
-						// 'rgba(222, 200, 235, .6)','rgba(222, 200, 235, .6)','rgba(222, 200, 235, .6)',
-						// 'rgba(182, 162, 85, .6)','rgba(182, 162, 85, .6)','rgba(182, 162, 85, .6)',
-						// 'rgba(82, 92, 100, .6)','rgba(82, 92, 100, .6)','rgba(82, 92, 100, .6)',
-						// 'rgba(52, 190, 62, .6)','rgba(52, 190, 62, .6)','rgba(52, 190, 62, .6)',
-						// 'rgba(134, 77, 200, .6)','rgba(134, 77, 200, .6)','rgba(134, 77, 200, .6)',
-						// 'rgba(66, 190, 240, .6)','rgba(66, 190, 240, .6)','rgba(66, 190, 240, .6)',
-						// 'rgba(240, 132, 58, .6)','rgba(240, 132, 58, .6)','rgba(240, 132, 58, .6)'
-						// ]
+						backgroundColor: 'rgba(83, 158, 205, .75)',
+      					borderColor: 'rgba(83, 158, 205, 1)',
+      					pointBorderWidth: 1,
+      					pointRadius: 1,
+      					pointHitRadius: 10
+						
 					}
 				]
 			}
@@ -48,18 +37,22 @@ class PopulationChart extends Component{
 						title: {
 							display:true,
 							text:"Disneyland Park Population",
-							fontSize:25,
-							fontColor: 'black'
+							fontSize:30,
+							fontColor: 'black',
+							fontFamily: 'Cabin'
 						},
 						legend:{
-							display: true,
+							display: false,
 							position: 'right'
 						},
 						scales: {
             				yAxes: [{
             					scaleLabel: {
             						display: true,
-            						labelString: 'Number of Visitors'
+            						labelString: 'Number of Visitors',
+            						fontSize: 15,
+            						fontColor: 'black',
+            						fontFamily: 'Cabin'
             					},
                 				ticks: {
                     				beginAtZero: true
@@ -68,7 +61,10 @@ class PopulationChart extends Component{
 				            xAxes: [{
 				            	scaleLabel: {
 				            		display:true,
-				            		labelString: '2018'
+				            		labelString: '2018',
+				            		fontSize: 15,
+				            		fontColor: 'black',
+				            		fontFamily: 'Cabin'
 				            	}
 				            }]
 
