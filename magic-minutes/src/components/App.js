@@ -23,7 +23,7 @@ class App extends Component {
             <a><Link to={'/plan'} className="nav-link">Plan Your Trip   </Link></a>
           </ul>
           </nav>
-          <hr />
+
           <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/information' component={Information} />
