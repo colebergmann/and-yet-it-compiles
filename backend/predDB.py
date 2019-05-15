@@ -74,7 +74,6 @@ class database(object):
             for j in range(0, self.minuteIndex):
                 liveArray.append(int(live[(len(live) - 1 ) - j][i*2 + 4]))
             self.liveData[i] = liveArray
-            print (self.liveData[i])
 
     def formatRidePredictions(self, numRide):
         predictions = [None] * 5
