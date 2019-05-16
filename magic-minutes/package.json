@@ -16,8 +16,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-      "build": "react-scripts build",
-      "homepage": "http://magic-minutes.com",
+    "build": "react-scripts build",
+    "homepage": "http://colebergmann.github.io/magic-minutes",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

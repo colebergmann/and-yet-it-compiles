@@ -1,27 +1,5 @@
-//Chart.js
-
 import React, {Component} from "react"
 import {Line} from "react-chartjs-2"
-//import PlanGraphContainer from "./PlanGraphContainer"
-//import { popuData, dayLabels } from "./FakePlanGraph";
-
-/*
-class PlanGraphContainer extends Component {
-  state = {
-    dataToPass: []
-  };
-
-  async componentDidMount() {
-    const response = await fetch('http://colebergmann.com:5000/callPred/10');
-    const data = await response.json(); 
-    this.setState({dataToPass: data});
-  }
-
-  render() {
-    return <PlanGraph data={this.state.dataToPass} />
-  }
-}
-*/
 
 
 class PlanGraph extends Component{
@@ -34,13 +12,18 @@ class PlanGraph extends Component{
 	            isLoaded: true,
 	            items: result,
 	            chartData:{
-					labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
+					labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+					"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+					"21", "22", "23", "24", "25", "26", "27", "28"],
 	            	datasets:[
 	            		{
 	            			data: result,
 							label:'Predicted Park Crowds', 
-							borderColor: 'rgba(77, 112, 255, 1)',
-							backgroundColor: 'rgba(77, 112, 255, 1)'
+      						backgroundColor: 'rgba(83, 158, 205, .75)',
+      						borderColor: 'rgba(83, 158, 205, 1)',
+      						pointBorderWidth: 1,
+      						pointRadius: 1,
+      						pointHitRadius: 10
 	            		}
 	            	],
 	            }
@@ -62,12 +45,15 @@ class PlanGraph extends Component{
 	      	isLoaded: false,
 	      	items: [],
 			chartData:{
-			labels: [],
+			labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+					"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+					"21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
 				datasets: [
 					{
+						data: [],
 						label:'Predicted Park Crowds', 
-						borderColor: 'rgba(77, 112, 255, 1)',
-						backgroundColor: 'rgba(77, 112, 255, 1)'
+						backgroundColor: 'rgba(83, 158, 205, .75)',
+      					borderColor: 'rgba(83, 158, 205, 1)',
 					}
 				]
 			}
@@ -83,17 +69,22 @@ class PlanGraph extends Component{
 						title: {
 							display:true,
 							text:"Predicted Park Crowds",
-							fontSize:25
+							fontFamily: 'Cabin',
+							fontColor: 'black',
+							fontSize:30
 						},
 						legend:{
-							display: true,
+							display: false,
 							position: 'right'
 						},
 						scales: {
             				yAxes: [{
             					scaleLabel: {
             						display: true,
-            						labelString: 'Anticipated Crowds'
+            						labelString: 'Anticipated Crowds',
+            						fontSize: 15,
+            						fontColor: 'black',
+            						fontFamily: 'Cabin'
             					},
                 				ticks: {
                     				beginAtZero: true
@@ -102,7 +93,10 @@ class PlanGraph extends Component{
 				            xAxes: [{
 				            	scaleLabel: {
 				            		display:true,
-				            		labelString: 'Days in the future'
+				            		labelString: 'Days in the future',
+				            		fontSize: 15,
+				            		fontColor: 'black',
+				            		fontFamily: 'Cabin'
 				            	}
 				            }]
 

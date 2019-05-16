@@ -1,25 +1,50 @@
 /*index.css*/
 
-@import url('https://fonts.googleapis.com/css?family=Sofia|Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Sofia|Open+Sans+Condensed:300|Cabin');
 
 body {
   font-family: 'Sofia', cursive;
   margin: 20px;
-  background: #dfecf6;
+  background: #bababa;
+  /*background: #dfecf6;*/
 }
 
-.image {
-    float: right;
-    align-items: right;
-  }
+.disneypic {
+ border-radius:30px;
+}
+
+.pic-container {
+  /*display: block;
+  text-align: center;
+  max-height: 450px;
+  max-width: 900px;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo{
+  margin-top: 20px;
+  float: left;
+}
 
 .welc{
   color:  black;
   display: block;
   font-size: 50px;
   text-align: center;
-  margin: 20px;
+  padding-top: 40px;
+  padding-bottom: 20px;
   font-weight: bold;
+  font-family: 'Sofia', cursive;
+}
+
+.nav-item {
+  font-size: 1.5em;
+}
+
+.navbar{
+  background-color: black;
 }
 
 .info{
@@ -37,47 +62,41 @@ body {
 }
 
 .paragraph{
-  font: 20px "Comic Sans", sans;
-  margin: 30px;
+  font: 20px 'Cabin', sans-serif;
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
-nav {
-  margin: 0px;
-  width: 100%;
-  height: 70px;
-  overflow: hidden;
-  background: #81b6df;
-  /*background: #a4c8f4;*/
+.paragraph2{
+  font: 20px 'Cabin', sans-serif;
+  float: left;
+  margin-right: 10px;
 }
-nav a {
-    display: block;
-    float: left;
-    text-align: center;
 
-    font: 20px "Arial Black", Gadget, sans-serif;
-    color: #4e548a;
-
-   /*Padding Our Box*/
-    padding-top: 0px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-
-   
+.visit{
+  float:right;
+  font-family: 'Cabin', sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
-  nav a:hover {
-        background-color: #7d95f7;
-  }
 
 .foot{
   float: right;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Cabin', sans-serif;
 	font-size: 15px;
   font-weight: initial;
-  margin: 20px;
+  margin-top: 100px;
+  margin-bottom: 20px;
 }
 
 .bottom{
-  font: 15px "Comic Sans", Futura, sans-serif;
+  float: left;
+  font-family: 'Cabin', sans-serif;
+  font-size: 15px;
   font-weight: initial;
+  margin-top: 100px;
+  margin-bottom: 20px;
 }

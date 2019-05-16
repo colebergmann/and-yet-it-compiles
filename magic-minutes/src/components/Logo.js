@@ -7,7 +7,7 @@ function Logo() {
     return (
       <div>
         <Image
-        class="image"
+        className="foot"
           img src={logo} alt="logo" 
           //src="./logo.png"
           height={100}

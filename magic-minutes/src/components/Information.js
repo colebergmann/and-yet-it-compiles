@@ -1,7 +1,8 @@
 //Info Page
-
-import Logo from './Logo'
 import React, { Component } from 'react';
+import Logo from './Logo';
+import Footer from './Footer'
+import outline from './outline.jpg'
 
 class Information extends Component {
 	render() {
@@ -9,6 +10,9 @@ class Information extends Component {
     <div>
     	<main>
     		<a><h2 className = "welc"> A little about our site . . .</h2></a>
+            <div class="pic-container">
+                <img class="disneypic" src={outline} height={300} width={200}></img>
+            </div>
     		<a><h3 className = "paragraph"> Disneyland Parks in Anaheim, California attracts on average over 
     		44,000 visitors per day. Each visitor arrives at Disneyland with the risk of waiting in 
     		line for multiple hours per attraction. Unnecessary stress is imposed upon visitors when 
@@ -18,16 +22,13 @@ class Information extends Component {
     		efficient day at Disneyland parks. Thus, making the happiest place on earth even happier.</h3></a>
     	</main>
     	<body>
-    		<a><h4 className ="foot"> Thanks for Visiting! </h4></a>
+    		<a><h4 className ="visit"> Thanks for Visiting! </h4></a>
     		<Logo />
       	</body>
         <footer>
-            <span className = "bottom"> Created By: </span>
-            <span className = "bottom"> Denver Simmons, </span>
-            <span className = "bottom"> Ryan Mitchell, </span>
-            <span className = "bottom"> Olivia Clough, </span>
-            <span className = "bottom"> Cole Bergmann, </span>
-            <span className = "bottom"> and Abby Wysopal </span>
+            <span className = "bottom"> Created By: Denver Simmons, Ryan Mitchell, 
+            Olivia Clough, Cole Bergmann, and Abby Wysopal</span>
+            <Footer />
         </footer>  
     </div>
   );
