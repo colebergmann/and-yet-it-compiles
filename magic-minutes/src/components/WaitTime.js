@@ -63,6 +63,8 @@ class WaitTime extends Component{
             						fontFamily: 'Cabin'
             					},         						
                 				ticks: {
+                					min: 0,
+                					max: 140,
                     				beginAtZero: true,
                     				fontColor: 'black'
 				                }
@@ -168,6 +170,7 @@ class WaitTime extends Component{
 						},
 						scales: {
             				yAxes: [{
+
             					scaleLabel:{
             						display: true,
             						labelString: "Minutes",
@@ -177,6 +180,8 @@ class WaitTime extends Component{
             					},         						
                 				ticks: {
                     				beginAtZero: true,
+                    				min: 0,
+                    				max: 140,
                     				fontColor: 'black'
 				                }
 				            }],
