@@ -12,7 +12,8 @@ class WaitTime extends Component{
 	      .then(
 	        (result) => {
 	          this.setState({
-				value: "0",	          	
+				value: "0",
+				name: "Star Tours – The Adventures Continue",
 	            isLoaded: true,
 	            items: result,
 	            chartData:{
@@ -41,7 +42,9 @@ class WaitTime extends Component{
 	            	],
 	            },
 	            chartOptions:{
+
 						title: {
+							text: "Wait Times ",
 							display:true,
 							fontSize:25,
 							fontColor: 'black'
@@ -86,6 +89,7 @@ class WaitTime extends Component{
 		super(props);
 		this.state = {
 			value: "0",
+			name: "Star Tours – The Adventures Continue",
 			error: null,
 	      	isLoaded: false,
 	      	items: [],
@@ -145,6 +149,7 @@ class WaitTime extends Component{
 	            },
 	            chartOptions:{
 						title: {
+							text: "Wait Times ",
 							display:true,
 							fontSize:25,
 							fontColor: 'black'
