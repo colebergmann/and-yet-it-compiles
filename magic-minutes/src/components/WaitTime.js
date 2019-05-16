@@ -184,7 +184,6 @@ class WaitTime extends Component{
             					},         						
                 				ticks: {
                     				beginAtZero: true,
-
                     				fontColor: 'black'
 				                }
 				            }],
