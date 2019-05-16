@@ -14,13 +14,13 @@ class PlanGraph extends Component{
 	            chartData:{
 					labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
 					"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-					"21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
+					"21", "22", "23", "24", "25", "26", "27", "28"],
 	            	datasets:[
 	            		{
 	            			data: result,
 							label:'Predicted Park Crowds', 
-      						backgroundColor: 'rgba(0, 25, 137, .65)',
-      						borderColor: 'rgba(0, 25, 137, 1)',
+      						backgroundColor: 'rgba(83, 158, 205, .75)',
+      						borderColor: 'rgba(83, 158, 205, 1)',
       						pointBorderWidth: 1,
       						pointRadius: 1,
       						pointHitRadius: 10
@@ -83,6 +83,7 @@ class PlanGraph extends Component{
             						display: true,
             						labelString: 'Anticipated Crowds',
             						fontSize: 15,
+            						fontColor: 'black',
             						fontFamily: 'Cabin'
             					},
                 				ticks: {
@@ -94,6 +95,7 @@ class PlanGraph extends Component{
 				            		display:true,
 				            		labelString: 'Days in the future',
 				            		fontSize: 15,
+				            		fontColor: 'black',
 				            		fontFamily: 'Cabin'
 				            	}
 				            }]

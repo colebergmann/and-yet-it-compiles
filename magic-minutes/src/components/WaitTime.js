@@ -38,6 +38,9 @@ class WaitTime extends Component{
 	            			data: result,
 							backgroundColor: 'rgba(83, 158, 205, .75)',
 	      					borderColor: 'rgba(83, 158, 205, 1)',
+	      					pointBorderWidth: 1,
+      						pointRadius: 1,
+      						pointHitRadius: 10
 						}
 	            	],
 	            },
@@ -57,16 +60,26 @@ class WaitTime extends Component{
             				yAxes: [{
             					scaleLabel:{
             						display: true,
-            						labelString: "minutes",
-            						fontColor: 'black'
+            						labelString: "Minutes",
+            						fontColor: 'black',
+            						fontSize: 15,
+            						fontFamily: 'Cabin'
             					},         						
                 				ticks: {
+                					min: 0,
+                					max: 140,
                     				beginAtZero: true,
                     				fontColor: 'black'
 				                }
 				            }],
 				            xAxes: [{
-
+				            	scaleLabel:{
+            						display: true,
+            						labelString: "Time",
+            						fontColor: 'black',
+            						fontSize: 15,
+            						fontFamily: 'Cabin'
+            					},
 				            	ticks:{
 				            		fontColor: 'black',
 				            	}
@@ -142,7 +155,9 @@ class WaitTime extends Component{
 	            			data: result,
 							backgroundColor: 'rgba(83, 158, 205, .75)',
 	      					borderColor: 'rgba(83, 158, 205, 1)',
-							
+							pointBorderWidth: 1,
+      						pointRadius: 1,
+      						pointHitRadius: 10
 	            		}
 	            	]
 
@@ -160,18 +175,29 @@ class WaitTime extends Component{
 						},
 						scales: {
             				yAxes: [{
+
             					scaleLabel:{
             						display: true,
-            						labelString: "minutes",
-            						fontColor: 'black'
+            						labelString: "Minutes",
+            						fontColor: 'black',
+            						fontSize: 15,
+            						fontFamily: 'Cabin'
             					},         						
                 				ticks: {
                     				beginAtZero: true,
+                    				min: 0,
+                    				max: 140,
                     				fontColor: 'black'
 				                }
 				            }],
 				            xAxes: [{
-
+				            	scaleLabel:{
+            						display: true,
+            						labelString: "Time",
+            						fontColor: 'black',
+            						fontSize: 15,
+            						fontFamily: 'Cabin'
+            					},
 				            	ticks:{
 				            		fontColor: 'black',
 				            	}
@@ -203,7 +229,8 @@ class WaitTime extends Component{
 	      			<div>
 	      				<form onSubmit={this.handleSubmit}>
 			        	<label>
-					          <select value={this.state.value} onChange={this.handleChange}>
+			        			<h2 class="paragraph2" > Pick your ride: </h2>
+					          	<select value={this.state.value} onChange={this.handleChange}>
 					            <option value="0">Star Tours – The Adventures Continue</option>
 					            <option value="1">it’s a small world</option>
 					            <option value="2">Pirates of the Caribbean</option>
