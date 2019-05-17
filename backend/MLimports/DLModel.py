@@ -103,6 +103,7 @@ test_y = test_y - test_x[:,-n_features + f_predictor]
 r_train_x = train_x.reshape((train_x.shape[0], n_past_steps, n_features))
 r_test_x = test_x.reshape((test_x.shape[0], n_past_steps, n_features))
 
+
 # MESS WITH THIS
 # design network
 ####################################################################################################################

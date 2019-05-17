@@ -33,4 +33,26 @@ paths:
             items:
               properties:
                 prediction:
-                  type: "array"
+                  type: "object"
+  /graph/{ride_id}:
+    get:
+      operationId: "callPred2.read"
+      tags:
+        - "callPred2"
+      summary: "The prediction data structure supported by the server application"
+      description: "Read the list of predictions"
+      parameters:
+        - name: ride_id
+          in: path
+          description: ID of the ride to get
+          type: string
+          required: True
+      responses:
+        200:
+          description: "Successful read prediction operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                prediction:
+                  type: "object"
