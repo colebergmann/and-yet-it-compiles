@@ -21,14 +21,17 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DLPopModel.py" />
     <Compile Include="DLModel.py" />
     <Compile Include="formatCSV.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="myModelPop.py" />
     <Compile Include="myModel.py" />
     <Compile Include="myModelOld.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="myModelsPop.py" />
     <Compile Include="myModels.py">
       <SubType>Code</SubType>
     </Compile>

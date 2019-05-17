@@ -19,29 +19,14 @@ def parse(x):
     return datetime.strptime(x, '%Y %m')
 
 # REPLACE THIS ADRESS WITH THE ADRESS OF YOUR DOWNLOADED CSV FILE
-dataset = read_csv('data.csv',  parse_dates = [['year','month']], index_col=0, date_parser=parse)
-dataset.drop('ride-0', axis=1, inplace=True)
-dataset.drop('ride-1', axis=1, inplace=True)
-dataset.drop('ride-2', axis=1, inplace=True)
-dataset.drop('ride-3', axis=1, inplace=True)
-dataset.drop('ride-4', axis=1, inplace=True)
-dataset.drop('ride-5', axis=1, inplace=True)
-dataset.drop('ride-6', axis=1, inplace=True)
-dataset.drop('ride-7', axis=1, inplace=True)
-dataset.drop('ride-8', axis=1, inplace=True)
-dataset.drop('ride-9', axis=1, inplace=True)
-dataset.drop('day_of_month', axis=1, inplace=True)
-dataset.drop('minute', axis=1, inplace=True)
+dataset = read_csv('C:\\Users\\denve\\OneDrive\\Documents\\MLData\\pdata.csv',  parse_dates = [['year','month']], index_col=0, date_parser=parse)
 dataset.drop('dlr_open', axis=1, inplace=True)
 dataset.drop('dca_open', axis=1, inplace=True)
 dataset.drop('dlr_close', axis=1, inplace=True)
 dataset.drop('dca_close', axis=1, inplace=True)
-dataset.drop('weather_daily_temperatureHigh', axis=1, inplace=True)
-dataset.drop('weather_daily_temperatureLow', axis=1, inplace=True)
-dataset.drop('weather_daily_precipProbability', axis=1, inplace=True)
 
-dataset.columns = ['Week day', 'hour', 'Temp', 'Precip', 'Wait Ride 0', 'Open Ride 0', 'Wait Ride 1', 'Open Ride 1', 'Wait Ride 2', 'Open Ride 2', 'Wait Ride 3', 'Open Ride 3', 'Wait Ride 4', 'Open Ride 4', 'Wait Ride 5', 'Open Ride 5', 'Wait Ride 6', 'Open Ride 6', 'Wait Ride 7', 'Open Ride 7', 'Wait Ride 8', 'Open Ride 8', 'Wait Ride 9', 'Open Ride 9']
-dataset.index.name = 'date'
+dataset.columns = ['date', 'weather_daily_tempHigh', 'weather_daily_tempLow', 'weather_daily_precip', 'park_population']
+dataset.index.name = ['date']
 
 # format dataset values for network
 ####################################################################################################################
@@ -63,18 +48,11 @@ n_past_steps = 1
 
 # MESS WITH THIS!
 # how many steps(10 minute intervals) in future to predict
-n_future_steps = 90
+n_future_steps = 21
 
-n_rides = 10
-n_external_features = 4
+n_features = 5
 
-n_features = n_external_features + 2 * n_rides
-
-# MESS WITH THIS!
-# which ride to predict (rides are: 0, 1, 2, 3...)
-f_ride = 9
-
-f_predictor = n_external_features + 2 * f_ride
+f_predictor = 4
 
 # frame as supervised learning (shift data)
 values = sts.series_to_supervised(values, n_past_steps, 1, n_future_steps-1)
@@ -84,8 +62,8 @@ values = sts.series_to_supervised(values, n_past_steps, 1, n_future_steps-1)
 values = values.values
 
 #CAREFULLY MESS WITH THIS! IF THERE IS NOT ENOUGH TESTING DATA THE TESTS WILL BE INACURATE
-# number of data points to use as training data(out of 46723 points). Remaining data will be delegated for testing
-n_train_steps = 40000
+# number of data points to use as training data. Remaining data will be delegated for testing
+n_train_steps = 400
 
 train = values[:n_train_steps, :]
 test = values[n_train_steps:, :]
@@ -109,7 +87,7 @@ r_test_x = test_x.reshape((test_x.shape[0], n_past_steps, n_features))
 ####################################################################################################################
 model = ts.keras.models.Sequential()
 model.add(ts.keras.layers.LSTM(200, return_sequences=False, input_shape=(n_past_steps, n_features)))
-model.add(ts.keras.layers.Dropout(0.1))
+model.add(ts.keras.layers.Dropout(0.3))
 model.add(ts.keras.layers.Dense(30, activation = 'relu'))
 model.add(ts.keras.layers.Dense(1))
 opt = ts.keras.optimizers.Adam(lr=0.001)
@@ -117,7 +95,7 @@ model.compile(loss='mse', optimizer=opt)
 
 # fit network
 ####################################################################################################################
-history = model.fit(r_train_x, train_y, epochs=50, batch_size=40, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(r_train_x, train_y, epochs=39, batch_size=10, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################
@@ -168,7 +146,7 @@ pyplot.show()
 
 # save model to json
 model_json = model.to_json()
-with open("model_990.json", "w") as json_file:
+with open("model_p28.json", "w") as json_file:
     json_file.write(model_json)
 # save weights to HDF5
-model.save_weights("model_990.h5")
+model.save_weights("model_p28.h5")

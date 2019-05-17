@@ -7,6 +7,7 @@ import math
 sys.path.insert(0, "./MLimports")
 
 import myModels as mm
+import myModelsPop as mmp
 import mysql.connector
 from mysql.connector import Error, MySQLConnection
  
@@ -17,13 +18,14 @@ class database(object):
         self.conn = self.connect()
         self.data = {}
         self.model = mm.myModels("../../LiveData/data.csv")
-        # self.modelPop = mm.MyModels("../../LiveData/population.csv")
+        self.popModel = mmp.myModels("../../LiveData/park_population.csv")
         self.lines = 0
         self.modelTimes = [3,6,12,24,90]
         self.modelDays = [7, 14, 21, 28]
-        self.liveData = [None] * 9
+        self.liveData = [None] * 10
         self.minuteIndex = 0
         self.newPredictions = [None] * 5
+        self.newPopulations = [None] * 4
         # for i in range(10):
         #     for j in range(5):
         #         self.model.setupModel(5 * i + j, "./MLimports/Saved Models/model_%d%d.json" % (i, modelTimes[j]), "./MLimports/Saved Models/model_%d%d.h5" % (i, modelTimes[j]), i )
@@ -69,10 +71,10 @@ class database(object):
     def formatLiveData(self):
         self.minuteIndex = int((math.floor(int(time.ctime().split(" ")[3].split(":")[0]) * 60 + int(time.ctime().split(" ")[3].split(":")[1])) - 480) / 10)
         live = self.formatCSV("../../LiveData/data.csv")
-        for i in range(9):
+        for i in range(10):
             liveArray = []
             for j in range(0, self.minuteIndex):
-                liveArray.append(int(live[(len(live) - 1 ) - j][i*2 + 4]))
+                liveArray.append(int(live[(len(live) - self.minuteIndex ) + j][i*2 + 4]))
             self.liveData[i] = liveArray
 
     def formatRidePredictions(self, numRide):
@@ -95,22 +97,19 @@ class database(object):
         populations = [None] * 4
         for i in range(4):
             if (i > 0):
-                populations[i] = list(self.modelPop.predict("population", self.modelDays[j] - self.modelDays[j-1]))
+                populations[i] = list(self.popModel.predict(self.modelDays[j] - self.modelDays[j-1]))
                 tempPop = populations[i-1]
                 tempPop.extend(populations[i])
                 populations[i] = tempPop
             else:
-                populations[i] = list(self.modelPop.predict("population", self.modelDays[i]))
+                populations[i] = list(self.popModel.predict(self.modelDays[i]))
         return populations[3]
 
-    def formatNewPopulation(self):
-        newPopulations = [None] * 4
-        for i in range(4):
-            newPopulations[i] = list(self.modelPop.predict("population", 1))[0]
-        return newPopulations
+    def formatNewPopulation(self, k):
+        self.newPopulations[k] = list(self.popModel.predict(1))[0]
 
     def formatLastPopulation(self):
-        lastPop = list(self.modelPop.predict("population", 1))[0]
+        lastPop = list(self.popModel.predict(1))[0]
         return lastPop
 
     def formatNewPredictions(self, numRide, j):
@@ -150,6 +149,18 @@ class database(object):
             cursor.execute( "INSERT INTO ride%d (ID, Predictions) VALUES (%d, %d)" % (numRide, i,  prediction) )
         self.conn.commit()
         print("predictions inserted into database")
+        cursor.close()
+
+    def updatePopData(self, conn, newPopData):
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM population WHERE DAY = 0")
+        for i in range(89):
+            cursor.execute("UPDATE population SET DAY = %d WHERE DAY = (%d + 1)" % (i, i))
+        cursor.execute("UPDATE population SET Population = %d WHERE DAY = 6" % (self.newPopulations[0]))
+        cursor.execute("UPDATE population SET Population = %d WHERE DAY = 13" % (self.newPopulations[1]))
+        cursor.execute("UPDATE population SET Population = %d WHERE DAY = 20" % (self.newPopulations[2]))
+        cursor.execute("INSERT INTO population VALUES (27, %d)" % (self.newPopulations[3]))
+        self.conn.commit()
         cursor.close()
 
     def updatePredData(self, conn, numRide, newPredData):
@@ -197,10 +208,28 @@ class database(object):
         
         cursor.close()
 
-    def fetchAllPredDataArray(self, conn, populationData):
-        self.data[10] = populationData
+    def fetchAllPredDataArray(self, conn):
+        try:
+                cursor = conn.cursor()
+                cursor.execute(( "SELECT Population FROM population ORDER BY DAY ASC"))
+
+
+                newPop = []
+
+                row = cursor.fetchone()
+
+                while row is not None:
+                    predPop = row[0]
+                    newPop.append(predPop * 167)
+                    row = cursor.fetchone()
+
+        except Error as e:
+             print(e)
+
+
+        self.data[10] = newPop
         self.formatLiveData()
-        for i in range(9):
+        for i in range(10):
             try:
                 cursor = conn.cursor()
                 cursor.execute(( "SELECT Predictions FROM ride%d ORDER BY ID ASC" % i ))
@@ -212,6 +241,8 @@ class database(object):
 
                 while row is not None:
                     predData = row[0]
+                    if predData < 5:
+                        predData = 5
                     plottableData.append(predData)
                     row = cursor.fetchone()
 
@@ -234,9 +265,9 @@ class database(object):
 
 if __name__ == '__main__':
     DB = database()
-    populations = [None] * 30
-    for k in range(30):
-        populations[k] = 42
+    # populations = [None] * 30
+    # for k in range(30):
+    #     populations[k] = 42
     # DB.insertPredData(DB.conn, 0, DB.formatRidePredictions(0) )
     # DB.fetchPredDataArray(DB.conn, 0)
     # DB.insertPredData(DB.conn, 1, DB.formatRidePredictions(1) )
@@ -258,12 +289,16 @@ if __name__ == '__main__':
             print("Waiting for updated CSV")
             time.sleep(10)
         DB.lines = DB.model.getDataLength()
-        for i in range(9):
+        if ((math.floor(int(time.ctime().split(" ")[3].split(":")[0]) * 60 + int(time.ctime().split(" ")[3].split(":")[1])) - 480) < 0):
+            for k in range(4):
+                DB.popModel.setupModel("./MLimports/model_p%d.json" % (DB.modelDays[k]), "./MLimports/model_p%d.h5" % (DB.modelDays[k]))
+                DB.formatNewPopulation(k)
+            DB.updatePopData(DB.conn, DB.newPopulations)
+        for i in range(10):
             for j in range(5):
                 DB.model.setupModel("./MLimports/Saved Models/model_%d%d.json" % (i, DB.modelTimes[j]), "./MLimports/Saved Models/model_%d%d.h5" % (i, DB.modelTimes[j])) 
                 print(5 * i + j)
                 DB.formatNewPredictions(i, j)
             DB.updatePredData(DB.conn, i, DB.newPredictions)
-        print(DB.minuteIndex)
-        DB.fetchAllPredDataArray(DB.conn, populations)
-        DB.liveData = [] * 9
+        DB.fetchAllPredDataArray(DB.conn)
+        DB.liveData = [None] * 10

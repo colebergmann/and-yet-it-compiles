@@ -19,16 +19,12 @@ class myModel(object):
         self.model = tf.keras.models.model_from_json(loaded_model_json)
         self.model.load_weights(model_weights)
 
-    def predict(self, values, ride, num_past_points, min, max):
-        f_predictor = 4 + 2 * ride;
+    def predict(self, values, num_past_points, min, max):
+        f_predictor = 4;
 
-        #processed = sts.series_to_supervised(values, 1, 0, 0)
-        #processed = processed.values
-        #processed = processed[:, :24]
-
-        r_values = values.reshape((values.shape[0], 1, 24))
+        r_values = values.reshape((values.shape[0], 1, 5))
         pred = self.model.predict(r_values).flatten()
-        pred = pred + values[:,-24 + f_predictor]
+        pred = pred + values[:,-5 + f_predictor]
         pred = pred * (max[f_predictor] - min[f_predictor]) + min[f_predictor]
         return pred[-num_past_points:]
 
