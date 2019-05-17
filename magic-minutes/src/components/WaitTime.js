@@ -242,11 +242,12 @@ class WaitTime extends Component{
 					            <option value="1">it’s a small world</option>
 					            <option value="2">Pirates of the Caribbean</option>
 					            <option value="3">Big Thunder Mountain Railroad</option>
-					            <option value="4">Indiana Jones™ Adventure</option>
-					            <option value="5">Matterhorn Bobsleds</option>
-					            <option value="6">Space Mountain</option>
-					            <option value="7">Haunted Mansion</option>
-					            <option value="8">Splash Mountain</option>
+					            <option value="4">Jungle Cruise</option>
+					            <option value="5">Indiana Jones™ Adventure</option>
+					            <option value="6">Matterhorn Bobsleds</option>
+					            <option value="7">Space Mountain</option>
+					            <option value="8">Haunted Mansion</option>
+					            <option value="9">Splash Mountain</option>
 			          		</select>
 			        	</label>
 			        <input type="submit" value="Submit" />
