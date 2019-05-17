@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 class WaitTime extends Component{
 
 	constructor(props){
-		fetch("http://colebergmann.com:5000/callPred/0")
+		fetch("http://colebergmann.com:5000/graph/0")
 	      .then(res => res.json())
 	      .then(
 	        (result) => {
@@ -15,7 +15,7 @@ class WaitTime extends Component{
 				value: "0",
 				name: "Star Tours – The Adventures Continue",
 	            isLoaded: true,
-	            items: result,
+	            items: result["array"],
 	            chartData:{
 	            	labels:
 	            	["8am", " "," ","8:30am"," "," ",
@@ -35,7 +35,7 @@ class WaitTime extends Component{
 	            	"10pm", " "," ","10:30pm"," "," "],
 	            	datasets:[
 	            		{
-	            			data: result,
+	            			data: result["array"],
 							backgroundColor: 'rgba(83, 158, 205, .75)',
 	      					borderColor: 'rgba(83, 158, 205, 1)',
 	      					pointBorderWidth: 1,
@@ -68,6 +68,7 @@ class WaitTime extends Component{
                 				ticks: {
 
                     				beginAtZero: true,
+                    				min: 0,
                     				fontColor: 'black'
 				                }
 				            }],
@@ -125,13 +126,13 @@ class WaitTime extends Component{
 
 	handleSubmit(event) {
 		event.preventDefault();
-    	fetch("http://colebergmann.com:5000/callPred/"+this.state.value)
+    	fetch("http://colebergmann.com:5000/graph/"+this.state.value)
 	      .then(res => res.json())
 	      .then(
 	        (result) => {
 	          this.setState({
 	            isLoaded: true,
-	            items: result,
+	            items: result["array"],
 	            chartData:{
 	            	labels:
 	            	["8", " "," ","8:30"," "," ",
@@ -151,7 +152,7 @@ class WaitTime extends Component{
 	            	"10", " "," ","10:30"," "," "],
 	            	datasets:[
 	            		{
-	            			data: result,
+	            			data: result["array"],
 							backgroundColor: 'rgba(83, 158, 205, .75)',
 	      					borderColor: 'rgba(83, 158, 205, 1)',
 							pointBorderWidth: 1,
@@ -184,6 +185,7 @@ class WaitTime extends Component{
             					},         						
                 				ticks: {
                     				beginAtZero: true,
+                    				min: 0,
                     				fontColor: 'black'
 				                }
 				            }],
@@ -232,11 +234,12 @@ class WaitTime extends Component{
 					            <option value="1">it’s a small world</option>
 					            <option value="2">Pirates of the Caribbean</option>
 					            <option value="3">Big Thunder Mountain Railroad</option>
-					            <option value="4">Indiana Jones™ Adventure</option>
-					            <option value="5">Matterhorn Bobsleds</option>
-					            <option value="6">Space Mountain</option>
-					            <option value="7">Haunted Mansion</option>
-					            <option value="8">Splash Mountain</option>
+					            <option value="4">Jungle Cruise</option>
+					            <option value="5">Indiana Jones™ Adventure</option>
+					            <option value="6">Matterhorn Bobsleds</option>
+					            <option value="7">Space Mountain</option>
+					            <option value="8">Haunted Mansion</option>
+					            <option value="9">Splash Mountain</option>
 			          		</select>
 			        	</label>
 			        <input type="submit" value="Submit" />
