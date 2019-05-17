@@ -45,7 +45,6 @@ Chart.pluginService.register({
 class WaitTime extends Component{
 
 	constructor(props){
-		//fetch("http://colebergmann.com:5000/callPred/0")
 		fetch("http://colebergmann.com:5000/graph/0")
 	      .then(res => res.json())
 	      .then(
@@ -197,7 +196,7 @@ class WaitTime extends Component{
 	handleSubmit(event) {
 		event.preventDefault();
     	//fetch("http://colebergmann.com:5000/callPred/"+this.state.value)
-    	fetch("http://colebergmann.com:5000/graph/0"+this.state.value)
+    	fetch("http://colebergmann.com:5000/graph/"+this.state.value)
 	      .then(res => res.json())
 	      .then(
 	        (result) => {
@@ -209,9 +208,56 @@ class WaitTime extends Component{
 	            	datasets:[
 	            		{
 	            			data: result["array"],
+							backgroundColor: 'rgba(83, 158, 205, .75)',
+	      					borderColor: 'rgba(83, 158, 205, 1)',
+							pointBorderWidth: 1,
+      						pointRadius: 1,
+      						pointHitRadius: 10
 	            		}
 	            	]
 	            },
+	            chartOptions:{
+						title: {
+							text: "Wait Times ",
+							display:true,
+							fontSize:25,
+							fontColor: 'black'
+						},
+						legend:{
+							display: false,
+							position: 'right'
+						},
+						scales: {
+            				yAxes: [{
+
+            					scaleLabel:{
+            						display: true,
+            						labelString: "Minutes",
+            						fontColor: 'black',
+            						fontSize: 15,
+            						fontFamily: 'Cabin'
+            					},         						
+                				ticks: {
+                    				beginAtZero: true,
+                    				min: 0,
+                    				fontColor: 'black'
+				                }
+				            }],
+				            xAxes: [{
+				            	scaleLabel:{
+            						display: true,
+            						labelString: "Time",
+            						fontColor: 'black',
+            						fontSize: 15,
+            						fontFamily: 'Cabin'
+            					},
+				            	ticks:{
+				            		fontColor: 'black',
+				            	}
+				            }],
+
+				        }
+				}
 	          });
 	        },
 	        (error) => {
@@ -242,11 +288,12 @@ class WaitTime extends Component{
 					            <option value="1">it’s a small world</option>
 					            <option value="2">Pirates of the Caribbean</option>
 					            <option value="3">Big Thunder Mountain Railroad</option>
-					            <option value="4">Indiana Jones™ Adventure</option>
-					            <option value="5">Matterhorn Bobsleds</option>
-					            <option value="6">Space Mountain</option>
-					            <option value="7">Haunted Mansion</option>
-					            <option value="8">Splash Mountain</option>
+					            <option value="4">Jungle Cruise</option>
+					            <option value="5">Indiana Jones™ Adventure</option>
+					            <option value="6">Matterhorn Bobsleds</option>
+					            <option value="7">Space Mountain</option>
+					            <option value="8">Haunted Mansion</option>
+					            <option value="9">Splash Mountain</option>
 			          		</select>
 			        	</label>
 			        <input type="submit" value="Submit" />

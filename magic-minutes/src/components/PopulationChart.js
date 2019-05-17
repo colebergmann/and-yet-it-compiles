@@ -9,6 +9,7 @@ class PopulationChart extends Component{
 
 	constructor(props){
 		super(props);
+
 		this.state = {
 			chartData:{
 				labels: yearLabels,
@@ -26,7 +27,10 @@ class PopulationChart extends Component{
 				]
 			}
 		}
-	}
+}
+
+
+	
 
 	render(){
 		return(
