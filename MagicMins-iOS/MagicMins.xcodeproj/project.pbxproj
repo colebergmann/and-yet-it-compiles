@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6902F94A3E676D8387F03CA1 /* Pods_MagicMinsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47E76238FC685A557D0D8EF /* Pods_MagicMinsTests.framework */; };
 		CA981335B09545D55CEBB715 /* Pods_MagicMins.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC24BD013463722582DE183 /* Pods_MagicMins.framework */; };
+		ED4CAF99228D392A00E40C8F /* RideSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4CAF98228D392A00E40C8F /* RideSelectorViewController.swift */; };
+		ED50794C228DF9FC009B079E /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED50794B228DF9FC009B079E /* BalloonMarker.swift */; };
 		EDD0130122864BA6001A1C4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD0130022864BA6001A1C4E /* AppDelegate.swift */; };
 		EDD0130322864BA6001A1C4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD0130222864BA6001A1C4E /* ViewController.swift */; };
 		EDD0130622864BA6001A1C4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD0130422864BA6001A1C4E /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 		99F149AB43FF1C59A722CF59 /* Pods-MagicMinsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagicMinsTests.debug.xcconfig"; path = "Target Support Files/Pods-MagicMinsTests/Pods-MagicMinsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A47E76238FC685A557D0D8EF /* Pods_MagicMinsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagicMinsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE69BB07E86C27A987D96401 /* Pods-MagicMins.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagicMins.debug.xcconfig"; path = "Target Support Files/Pods-MagicMins/Pods-MagicMins.debug.xcconfig"; sourceTree = "<group>"; };
+		ED4CAF98228D392A00E40C8F /* RideSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideSelectorViewController.swift; sourceTree = "<group>"; };
+		ED50794B228DF9FC009B079E /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		EDD012FD22864BA6001A1C4E /* MagicMins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicMins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD0130022864BA6001A1C4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDD0130222864BA6001A1C4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 			children = (
 				EDD0130022864BA6001A1C4E /* AppDelegate.swift */,
 				EDD0130222864BA6001A1C4E /* ViewController.swift */,
+				ED50794B228DF9FC009B079E /* BalloonMarker.swift */,
+				ED4CAF98228D392A00E40C8F /* RideSelectorViewController.swift */,
 				EDD0130422864BA6001A1C4E /* Main.storyboard */,
 				EDD0130722864BA8001A1C4E /* Assets.xcassets */,
 				EDD0130922864BA8001A1C4E /* LaunchScreen.storyboard */,
@@ -237,12 +243,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MagicMins/Pods-MagicMins-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +310,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDD0130322864BA6001A1C4E /* ViewController.swift in Sources */,
+				ED4CAF99228D392A00E40C8F /* RideSelectorViewController.swift in Sources */,
 				EDD0130122864BA6001A1C4E /* AppDelegate.swift in Sources */,
+				ED50794C228DF9FC009B079E /* BalloonMarker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

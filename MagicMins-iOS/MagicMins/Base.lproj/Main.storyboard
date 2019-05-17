@@ -28,6 +28,9 @@
                                 <state key="normal" title="Change Ride" backgroundImage="button">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeRide:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tvl-QO-aaQ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Big Thunder Mountain Railroad" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToT-d4-14m">
                                 <rect key="frame" x="16" y="86" width="343" height="68.333333333333314"/>
@@ -79,11 +82,71 @@
                     <connections>
                         <outlet property="changeRideButton" destination="jr4-D1-koh" id="4Ad-Op-3JM"/>
                         <outlet property="chartView" destination="TvT-xd-56k" id="HBV-w8-J2B"/>
+                        <outlet property="rideMessage" destination="XR3-i1-LBf" id="lHF-bE-oBt"/>
+                        <outlet property="rideTitle" destination="ToT-d4-14m" id="Tb1-91-rWK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1533.5999999999999" y="282.26600985221677"/>
+        </scene>
+        <!--Ride Selector View Controller-->
+        <scene sceneID="qXt-Ue-T0D">
+            <objects>
+                <viewController storyboardIdentifier="selector" id="cvu-As-Vxh" customClass="RideSelectorViewController" customModule="MagicMins" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3jN-DE-ZNS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eA3-Og-wyR">
+                                <rect key="frame" x="20" y="143.33333333333331" width="335" height="634.66666666666674"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="1ra-Zq-PqO" rowHeight="60" style="IBUITableViewCellStyleDefault" id="WWk-CS-plt">
+                                        <rect key="frame" x="0.0" y="28" width="335" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WWk-CS-plt" id="KF3-Vu-ybr">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="59.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Big thunder mountain" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1ra-Zq-PqO">
+                                                    <rect key="frame" x="15" y="0.0" width="305" height="59.666666666666664"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Ride" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0v-RZ-t2I">
+                                <rect key="frame" x="20" y="88" width="335" height="45.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ewT-HF-IvF" firstAttribute="trailing" secondItem="T0v-RZ-t2I" secondAttribute="trailing" constant="20" id="106-1e-ELC"/>
+                            <constraint firstItem="T0v-RZ-t2I" firstAttribute="top" secondItem="ewT-HF-IvF" secondAttribute="top" constant="44" id="OKn-O5-8Du"/>
+                            <constraint firstItem="T0v-RZ-t2I" firstAttribute="leading" secondItem="ewT-HF-IvF" secondAttribute="leading" constant="20" id="UoI-b2-A26"/>
+                            <constraint firstItem="eA3-Og-wyR" firstAttribute="leading" secondItem="ewT-HF-IvF" secondAttribute="leading" constant="20" id="Xol-o8-Cfm"/>
+                            <constraint firstItem="eA3-Og-wyR" firstAttribute="top" secondItem="T0v-RZ-t2I" secondAttribute="bottom" constant="10" id="ehU-hp-9ui"/>
+                            <constraint firstItem="ewT-HF-IvF" firstAttribute="trailing" secondItem="eA3-Og-wyR" secondAttribute="trailing" constant="20" id="eoa-uE-eRb"/>
+                            <constraint firstItem="eA3-Og-wyR" firstAttribute="bottom" secondItem="ewT-HF-IvF" secondAttribute="bottom" id="ijc-Ik-UcD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ewT-HF-IvF"/>
+                    </view>
+                    <connections>
+                        <outlet property="table" destination="eA3-Og-wyR" id="67e-Pq-3oF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="seN-0O-RUT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2298.4000000000001" y="282.26600985221677"/>
         </scene>
     </scenes>
     <resources>

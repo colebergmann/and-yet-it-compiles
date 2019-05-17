@@ -7,7 +7,7 @@ target 'MagicMins' do
 
   # Pods for MagicMins
   pod 'Charts'
-
+  pod 'Alamofire'
   target 'MagicMinsTests' do
     inherit! :search_paths
     # Pods for testing
