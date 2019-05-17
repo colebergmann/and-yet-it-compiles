@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlanGraph from './PlanGraph'
 import Footer from './Footer'
+//import subFooter from './subFooter'
 import PlanInfo from './PlanInfo'
 import castle from './castle.jpg'
 
@@ -14,7 +15,10 @@ class Plan extends Component {
 	 	   </div>
       <PlanInfo />
       <PlanGraph />
-      <Footer />
+      <footer>
+            <span className = "subfoot">i am the footer</span>
+            <Footer />
+        </footer> 
     </div>
   );
 }

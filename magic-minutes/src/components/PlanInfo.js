@@ -10,7 +10,7 @@ function PlanInfo(){
 				but not necessarily the huge crowds that come with 
 				it? We want to help! By using our planning tool, 
 				you are able to see a prediction of park population 
-				for the uncoming 28 days. Planning your visit has 
+				for the upcoming 28 days. Planning your visit has 
 					never been easier.
 			</h3>
 		</header>

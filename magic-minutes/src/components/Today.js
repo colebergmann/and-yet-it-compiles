@@ -1,6 +1,7 @@
 import WaitTime from './WaitTime'
 import React, { Component } from 'react';
 import Footer from './Footer'
+//import subFooter from './subFooter'
 import california from './california.jpg'
 
 class Today extends Component {
@@ -18,7 +19,10 @@ class Today extends Component {
 	 	shown throughout the next 12 hours to choose the best time to hop on. Make the most
 	 	of your visit!</h2>
     	<WaitTime />
-      <Footer />
+    <footer>
+            <span className = "subfoot">i am the footer</span>
+            <Footer />
+        </footer>  
     </div>
   );
   }

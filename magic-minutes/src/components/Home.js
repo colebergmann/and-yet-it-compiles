@@ -1,5 +1,6 @@
 import PopulationChart from './PopulationChart'
 import Footer from './Footer'
+//import subFooter from './subFooter'
 import HomeInfo from './HomeInfo'
 import React, { Component } from 'react';
 import disneylandcur from './disneylandcur.jpg';
@@ -17,8 +18,11 @@ class Home extends Component {
     	</main>
     	<body>
       		<PopulationChart />
-      		<Footer />
       	</body>
+        <footer>
+            <span className = "subfoot">i am the footer</span>
+            <Footer />
+        </footer> 
     </div>
   );
 }
