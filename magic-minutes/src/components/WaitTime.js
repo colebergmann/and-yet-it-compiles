@@ -197,7 +197,7 @@ class WaitTime extends Component{
 	handleSubmit(event) {
 		event.preventDefault();
     	//fetch("http://colebergmann.com:5000/callPred/"+this.state.value)
-    	fetch("http://colebergmann.com:5000/graph/0"+this.state.value)
+    	fetch("http://colebergmann.com:5000/graph/"+this.state.value)
 	      .then(res => res.json())
 	      .then(
 	        (result) => {
