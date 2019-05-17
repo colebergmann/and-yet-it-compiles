@@ -117,7 +117,7 @@ model.compile(loss='mse', optimizer=opt)
 
 # fit network
 ####################################################################################################################
-history = model.fit(r_train_x, train_y, epochs=50, batch_size=40, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
+history = model.fit(r_train_x, train_y, epochs=65, batch_size=40, validation_data=(r_test_x, test_y), verbose=1, shuffle=False)
 
 # plot training history
 ####################################################################################################################
