@@ -9,7 +9,9 @@ import Today from "./Today";
 import Information from "./Information";
 import Icon from "./Icon";
 import 'bootstrap/dist/css/bootstrap.css';
-//import 'bootstrap/dist/js/bootstrap.min.js';
+import 'jquery/dist/jquery.min.js';
+import 'popper.js/dist/popper.min.js';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 class App extends Component {
   render() {

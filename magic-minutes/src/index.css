@@ -3,10 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Sofia|Open+Sans+Condensed:300|Cabin');
 
 body {
-  font-family: 'Sofia', cursive;
-  margin: 20px;
-  background: #bababa;
-  /*background: #dfecf6;*/
+  font:'Cabin', sans-serif;
 }
 
 .disneypic {
@@ -34,7 +31,7 @@ body {
   font-size: 50px;
   text-align: center;
   padding-top: 40px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   font-weight: bold;
   font-family: 'Sofia', cursive;
 }

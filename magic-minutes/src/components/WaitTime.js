@@ -46,7 +46,7 @@ class WaitTime extends Component{
 
 	constructor(props){
 		//fetch("http://colebergmann.com:5000/callPred/0")
-		fetch("http://colebergmann.com:5000/graph/0")
+		fetch("https://colebergmann.com:5000/graph/0")
 	      .then(res => res.json())
 	      .then(
 	        (result) => {
@@ -197,7 +197,7 @@ class WaitTime extends Component{
 	handleSubmit(event) {
 		event.preventDefault();
     	//fetch("http://colebergmann.com:5000/callPred/"+this.state.value)
-    	fetch("http://colebergmann.com:5000/graph/"+this.state.value)
+    	fetch("https://colebergmann.com:5000/graph/"+this.state.value)
 	      .then(res => res.json())
 	      .then(
 	        (result) => {
@@ -234,24 +234,25 @@ class WaitTime extends Component{
 	    	} else {
 	      		return (
 	      			<div>
-	      				<form onSubmit={this.handleSubmit}>
-			        	<label>
-			        			<h2 class="paragraph2" > Pick your ride: </h2>
-					          	<select value={this.state.value} onChange={this.handleChange}>
-					            <option value="0">Star Tours – The Adventures Continue</option>
-					            <option value="1">it’s a small world</option>
-					            <option value="2">Pirates of the Caribbean</option>
-					            <option value="3">Big Thunder Mountain Railroad</option>
-					            <option value="4">Jungle Cruise</option>
-					            <option value="5">Indiana Jones™ Adventure</option>
-					            <option value="6">Matterhorn Bobsleds</option>
-					            <option value="7">Space Mountain</option>
-					            <option value="8">Haunted Mansion</option>
-					            <option value="9">Splash Mountain</option>
-			          		</select>
-			        	</label>
-			        <input type="submit" value="Submit" />
-			      </form>
+								<div class="ride-form-wrapper">
+									<form class="form-inline ride-form" onSubmit={this.handleSubmit}>
+										<div class="form-group mx-sm-3 mb-2">
+											<select class="form-control form-control-lg" value={this.state.value} onChange={this.handleChange}>
+												<option value="0">Star Tours – The Adventures Continue</option>
+												<option value="1">it’s a small world</option>
+												<option value="2">Pirates of the Caribbean</option>
+												<option value="3">Big Thunder Mountain Railroad</option>
+												<option value="4">Jungle Cruise</option>
+												<option value="5">Indiana Jones™ Adventure</option>
+												<option value="6">Matterhorn Bobsleds</option>
+												<option value="7">Space Mountain</option>
+												<option value="8">Haunted Mansion</option>
+												<option value="9">Splash Mountain</option>
+											</select>
+										</div>
+										<button type="submit" class="btn btn-primary btn-lg mb-2">Submit</button>
+										</form>
+									</div>
 			<div className = "chart">
 				<Line
 					data={this.state.chartData}

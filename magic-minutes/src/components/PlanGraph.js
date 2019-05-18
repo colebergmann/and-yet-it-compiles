@@ -4,7 +4,7 @@ import {Line} from "react-chartjs-2"
 
 class PlanGraph extends Component{
 	constructor(props){
-		fetch("http://colebergmann.com:5000/callPred/10")
+		fetch("https://colebergmann.com:5000/callPred/10")
 	      .then(res => res.json())
 	      .then(
 	        (result) => {
