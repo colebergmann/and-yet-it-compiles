@@ -93,11 +93,8 @@ class WaitTime extends Component{
 							//8:20 = (162, 162)
 							// x = 172 - (index * (5))
 							// lineY: [x , x]
-							//(0,0) = 1:30
-
 						    
-						    lineY: [172 - (result["predIndex"] * 5.25), 172 - (result["predIndex"] * 5.25)],
-
+						    lineY: [172 - (result["predIndex"] * 5), 172 - (result["predIndex"] * 5)],
 						    lineColor: "rgba(50, 155, 255, 0.85)",
 						      // text: 'current time',
 						      // textPosition: 10,
