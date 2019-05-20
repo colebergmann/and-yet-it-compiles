@@ -27,6 +27,7 @@ class PopulationChart extends Component{
 				]
 			}
 		}
+
 }
 
 
