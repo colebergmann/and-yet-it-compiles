@@ -16,7 +16,7 @@ class Today extends Component {
 	 	<h2 className = "paragraph">Don't want to spend your day waiting in lines? 
 	 	Use our Ride Times tool below to see predictive wait times for rides throughout
 	 	the park! Simply pick your favorite ride and check the displayed wait times 
-	 	shown throughout the next 12 hours to choose the best time to hop on. Make the most
+	 	shown during park hours to choose the best time to hop on. Make the most
 	 	of your visit!</h2>
     	<WaitTime />
     <footer>
