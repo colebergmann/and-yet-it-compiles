@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CurrentWaitTimesTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-05-13T16:57:47" hostname="169-231-146-134.wireless.ucsb.edu" time="0.419">
+  <properties/>
+  <testcase name="testInvalidCW" classname="CurrentWaitTimesTest" time="0.001"/>
+  <testcase name="testInvalidWaits" classname="CurrentWaitTimesTest" time="0.417"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

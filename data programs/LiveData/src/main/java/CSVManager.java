@@ -5,7 +5,7 @@ public class CSVManager {
 
     private File file;
     private PrintWriter pw;
-    public static String header = "year,month,day_of_month,day_of_week,hour_of_day,minute,dlr_open,dca_open,dlr_close,dca_close,weather_daily_temperatureHigh,weather_daily_temperatureLow,weather_daily_precipProbability,weather_hourly_temperature,weather_hourly_precipProbability,ride-0,wait-0,open-0,ride-1,wait-1,open-1,ride-2,wait-2,open-2,ride-3,wait-3,open-3,ride-4,wait-4,open-4,ride-5,wait-5,open-5,ride-6,wait-6,open-6,ride-7,wait-7,open-7,ride-8,wait-8,open-8,ride-9,wait-9,open-9";
+    public static String header = "year, month, day_of_month, day_of_week, hour_of_day, minute, dlr_open, dca_open, dlr_close, dca_close, weather_daily_temperatureHigh, weather_daily_temperatureLow, weather_daily_precipProbability, weather_hourly_temperature, weather_hourly_precipProbability, ride-0, wait-0, open-0, ride-1 ,wait-1, open-1, ride-2, wait-2, open-2, ride-3, wait-3, open-3, ride-4, wait-4, open-4, ride-5, wait-5, open-5, ride-6, wait-6, open-6, ride-7, wait-7, open-7, ride-8, wait-8, open-8, ride-9, wait-9, open-9";
 
     //Check if a csv exists at the given location. If not, create a new file
     public CSVManager(String filepath) throws Exception {
