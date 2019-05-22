@@ -60,16 +60,17 @@ class ViewController: UIViewController {
         self.setChart(vals: Array(repeating: 0, count: 90))
         currentRide = id
         rideTitle.text = RideSelectorViewController.names[id]
-        rideMessage.text = "Loading..."
+        rideMessage.text = "Loading...\n\n\n"
         
-        Alamofire.request("http://colebergmann.com:5000/callPred/\(id)", method: .get)
+        Alamofire.request("https://colebergmann.com:5000/graph/\(id)", method: .get)
             .responseJSON { response in
                 switch response.result {
                 case .success:
                     if let result = response.result.value {
-                        let arr = result as! [Double]
+                        let res = result as! NSDictionary
+                        let arr = res["array"] as! [Double]
                         self.setChart(vals: arr)
-                        self.updateSubtext(data: arr)
+                        self.updateSubtext(data: arr, currentIndex: res["predIndex"] as! Int)
                     } else {
                         self.showError(error: "API returned an unexpected response")
                     }
@@ -79,14 +80,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateSubtext(data: [Double]) {
-        //get the index of our current time
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        let currentIndex = hour*6 + minute/10 - 8*6
-        
+    func updateSubtext(data: [Double], currentIndex: Int) {
         //Set limit line
         if lcv.xAxis.limitLines.count > 0 {
             lcv.xAxis.removeLimitLine(lcv.xAxis.limitLines[0])
@@ -111,7 +105,10 @@ class ViewController: UIViewController {
                 absoluteMin = i
             }
         }
-        let periodAvg = periodTotal / (89-currentIndex)
+        let periodAvg = 0
+        if (currentIndex != 89) {
+            periodTotal / (89-currentIndex)
+        }
         
         var message = ""
         
@@ -126,7 +123,11 @@ class ViewController: UIViewController {
         } else {
             // handle firstMin and latestMin cases
             let minTime = indexToTime(i: absoluteMin)
-            message += " The wait time is expected to start decreasing in about \((firstMin - currentIndex) * 10) minutes, reaching an absolute minimum at \(minTime)."
+            if (currentIndex == firstMin) {
+                message += " The wait time isn't expected to get much shorter throughout the day, but it will reach an absolute minimum at \(minTime)."
+            } else {
+                message += " The wait time is expected to start decreasing substantially in about \((firstMin - currentIndex) * 10) minutes, reaching an absolute minimum at \(minTime)."
+            }
             
         }
         rideMessage.text = message
@@ -136,7 +137,8 @@ class ViewController: UIViewController {
     func indexToTime(i: Int) -> String{
         let index = i + 6*8
         let hours = index/6
-        let minutes = (index % 6) * 10
+        var minutes = String((index % 6) * 10)
+        if (minutes == "0") {minutes = "00"}
         if (hours < 12) {
             return "\(hours):\(minutes) PM"
         } else if (hours == 12) {
@@ -159,21 +161,17 @@ class ViewController: UIViewController {
     {
         public func stringForValue(_ value: Double, axis: AxisBase?) -> String
         {
-            //print(value)
-            if (Int(value)%6 != 0) {
-                return "";
+            /*
+            print(value)
+            var hour = 8 + (Int(value) / 6)
+            let minute = (Int(value) % 60) * 10
+            if (hour > 12) {
+                hour -= 12
             }
-            let hour = 8 + (Int(value) % 6)
-            if (hour == 24) {
-                return "12AM"
-            }
-            if (hour == 12) {
-                return "12PM"
-            }
-            if (hour < 12) {
-                return "\(hour)AM";
-            }
-            return "\(hour-12)PM";
+            */
+            
+            // TODO: Make this accurately return the x-axis. Currently just using a label in the storyboard.
+            return ""
         }
     }
     
@@ -239,8 +237,9 @@ class ViewController: UIViewController {
         lcv.pinchZoomEnabled = false
         lcv.setScaleEnabled(false)
         
-        lcv.xAxis.labelCount = 15
-        lcv.xAxis.avoidFirstLastClippingEnabled = false
+        
+        //lcv.xAxis.avoidFirstLastClippingEnabled = false
+        lcv.xAxisRenderer.computeAxisValues(min: 0, max: 89)
         
         data.addDataSet(line1) //Adds the line to the dataSet
         lcv.data = data //finally - it adds the chart data to the chart and causes an update

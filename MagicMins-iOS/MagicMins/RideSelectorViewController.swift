@@ -14,6 +14,7 @@ class RideSelectorViewController: UIViewController, UITableViewDelegate, UITable
     "it’s a small world",
     "Pirates of the Caribbean",
     "Big Thunder Mountain Railroad",
+    "Jungle Juice",
     "Indiana Jones™ Adventure",
     "Matterhorn Bobsleds",
     "Space Mountain",

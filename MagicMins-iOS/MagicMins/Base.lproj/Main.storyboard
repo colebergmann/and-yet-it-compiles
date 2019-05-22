@@ -45,15 +45,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graphview" translatesAutoresizingMaskIntoConstraints="NO" id="lPg-RV-aGG">
-                                <rect key="frame" x="0.0" y="241" width="375" height="350"/>
+                                <rect key="frame" x="16" y="229" width="343" height="350.00000000000091"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="8Zb-Vb-Jv3"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TvT-xd-56k">
-                                <rect key="frame" x="8" y="269" width="359" height="265"/>
+                                <rect key="frame" x="24" y="257" width="327" height="265"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8AM     10AM     12PM     2PM     4PM     6PM     8PM     10PM " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lB-Sp-sdZ">
+                                        <rect key="frame" x="8" y="253" width="319" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="4lB-Sp-sdZ" firstAttribute="leading" secondItem="TvT-xd-56k" secondAttribute="leading" constant="8" id="B0W-7R-zzy"/>
+                                    <constraint firstAttribute="trailing" secondItem="4lB-Sp-sdZ" secondAttribute="trailing" id="RuP-Xm-C2E"/>
+                                    <constraint firstAttribute="bottom" secondItem="4lB-Sp-sdZ" secondAttribute="bottom" id="d0x-Ff-bNy"/>
                                     <constraint firstAttribute="height" constant="265" id="pOq-Ju-MnQ"/>
                                 </constraints>
                             </view>
@@ -63,18 +74,18 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XR3-i1-LBf" secondAttribute="trailing" constant="16" id="2C3-JS-AW5"/>
                             <constraint firstItem="ToT-d4-14m" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="5Sc-pg-6Bq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ToT-d4-14m" secondAttribute="trailing" constant="16" id="B5f-fB-C9e"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TvT-xd-56k" secondAttribute="trailing" constant="8" id="BJB-ri-90A"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TvT-xd-56k" secondAttribute="trailing" constant="24" id="BJB-ri-90A"/>
                             <constraint firstItem="jr4-D1-koh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="Oy4-lo-m2d"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jr4-D1-koh" secondAttribute="trailing" constant="36" id="QYo-j5-zmA"/>
                             <constraint firstItem="jr4-D1-koh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-16" id="WKd-0Q-onL"/>
                             <constraint firstItem="ToT-d4-14m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Yjj-Ub-wuF"/>
-                            <constraint firstItem="TvT-xd-56k" firstAttribute="top" secondItem="XR3-i1-LBf" secondAttribute="bottom" constant="60" id="doB-VI-gVA"/>
+                            <constraint firstItem="TvT-xd-56k" firstAttribute="top" secondItem="XR3-i1-LBf" secondAttribute="bottom" constant="48" id="doB-VI-gVA"/>
                             <constraint firstItem="XR3-i1-LBf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eD8-ga-CrD"/>
-                            <constraint firstItem="lPg-RV-aGG" firstAttribute="top" secondItem="XR3-i1-LBf" secondAttribute="bottom" constant="32" id="kei-mB-Dce"/>
+                            <constraint firstItem="lPg-RV-aGG" firstAttribute="top" secondItem="XR3-i1-LBf" secondAttribute="bottom" constant="20" id="kei-mB-Dce"/>
                             <constraint firstItem="XR3-i1-LBf" firstAttribute="top" secondItem="ToT-d4-14m" secondAttribute="bottom" constant="8" id="qU2-BJ-d8l"/>
-                            <constraint firstItem="TvT-xd-56k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="so9-ha-aaQ"/>
-                            <constraint firstItem="lPg-RV-aGG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yFg-D8-Dhn"/>
-                            <constraint firstItem="lPg-RV-aGG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="z3H-DT-lAZ"/>
+                            <constraint firstItem="TvT-xd-56k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="so9-ha-aaQ"/>
+                            <constraint firstItem="lPg-RV-aGG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="yFg-D8-Dhn"/>
+                            <constraint firstItem="lPg-RV-aGG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-16" id="z3H-DT-lAZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -151,6 +162,6 @@
     </scenes>
     <resources>
         <image name="button" width="335" height="57"/>
-        <image name="graphview" width="375" height="371"/>
+        <image name="graphview" width="3125" height="3467"/>
     </resources>
 </document>
