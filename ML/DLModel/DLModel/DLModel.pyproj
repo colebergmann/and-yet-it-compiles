@@ -31,6 +31,7 @@
     <Compile Include="myModelOld.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="myModelsNew.py" />
     <Compile Include="myModelsPop.py" />
     <Compile Include="myModels.py">
       <SubType>Code</SubType>
