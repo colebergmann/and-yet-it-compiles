@@ -1,1 +1,389 @@
-
+{
+  "id": "4f90d819-67d7-4a98-b919-287c2ff326a8",
+  "version": "2.0",
+  "name": "Magic minutes final product testing",
+  "url": "https://magic-minute.me",
+  "tests": [{
+    "id": "33aa935f-86bf-414f-829c-49155b7803fa",
+    "name": "testing all components",
+    "commands": [{
+      "id": "4113c23a-2d3c-464f-ad17-b899ba217ca3",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "69fe6cb9-c22f-47f3-b304-a2e172dd8f1c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1183x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "101bb16a-6847-49e4-a6f1-842e7218f19f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.chartjs-render-monitor",
+      "targets": [
+        ["css=.chartjs-render-monitor", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/body/div/canvas", "xpath:idRelative"],
+        ["xpath=//canvas", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a861f9f-8e32-48c8-b34f-7eed843fd1c7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(2) .nav-link",
+      "targets": [
+        ["css=.nav-item:nth-child(2) .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Ride Times Today')]", "xpath:link"],
+        ["xpath=//div[@id='navbarNav']/ul/li[2]/a/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/today')]", "xpath:href"],
+        ["xpath=//li[2]/a/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2d5f55d-84ca-4f9b-a3d0-93c20dcfe54f",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.nav-item:nth-child(2) .nav-link",
+      "targets": [
+        ["css=.nav-item:nth-child(2) .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Ride Times Today')]", "xpath:link"],
+        ["xpath=//div[@id='navbarNav']/ul/li[2]/a/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/today')]", "xpath:href"],
+        ["xpath=//li[2]/a/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07a44d6c-224b-441a-99c9-f54e2fe78674",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.nav-item:nth-child(2) .nav-link",
+      "targets": [
+        ["css=.nav-item:nth-child(2) .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Ride Times Today')]", "xpath:link"],
+        ["xpath=//div[@id='navbarNav']/ul/li[2]/a/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/today')]", "xpath:href"],
+        ["xpath=//li[2]/a/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c9d685d-d5b1-4dfe-9759-38cee8f08d8b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control",
+      "targets": [
+        ["css=.form-control", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d70adbf6-a3a6-431f-8dc2-8f5fd893068c",
+      "comment": "",
+      "command": "select",
+      "target": "css=.form-control",
+      "targets": [],
+      "value": "label=it’s a small world"
+    }, {
+      "id": "ebbe479a-80e5-4b21-a4b0-02acf0df0671",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8ef1b29-fd05-48ea-945e-2992a3ecc183",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control",
+      "targets": [
+        ["css=.form-control", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "31e0f3b3-c66f-4936-b330-c1adfc31bca5",
+      "comment": "",
+      "command": "select",
+      "target": "css=.form-control",
+      "targets": [],
+      "value": "label=Pirates of the Caribbean"
+    }, {
+      "id": "20ceedc5-2a94-41f1-9f07-09d551af38a7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "346e1c7e-5436-4c7d-aed3-4a68709f8063",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control",
+      "targets": [
+        ["css=.form-control", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "da3c70b5-94af-4e0f-884b-219567857e10",
+      "comment": "",
+      "command": "select",
+      "target": "css=.form-control",
+      "targets": [],
+      "value": "label=Big Thunder Mountain Railroad"
+    }, {
+      "id": "6736d143-f10c-4a77-9593-b7f1ebe9b923",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2f0acb5e-ea81-46f8-8d02-f23e722d529a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control",
+      "targets": [
+        ["css=.form-control", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ae1686f-654a-4391-9216-6b82c42ce3c8",
+      "comment": "",
+      "command": "select",
+      "target": "css=.form-control",
+      "targets": [],
+      "value": "label=Jungle Cruise"
+    }, {
+      "id": "3d66c79e-80db-4ced-a7ae-79a963683832",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "06fd361c-99fd-4d9b-8fc2-22f505b036e7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control",
+      "targets": [
+        ["css=.form-control", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae117371-3f94-4809-a544-3a3513dd0f28",
+      "comment": "",
+      "command": "select",
+      "target": "css=.form-control",
+      "targets": [],
+      "value": "label=Indiana Jones™ Adventure"
+    }, {
+      "id": "56bf8b49-543e-4a2d-9006-3b02c2b92a4f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "16b6f515-a247-44c9-b6d3-69d5d02a3319",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control",
+      "targets": [
+        ["css=.form-control", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ed7e4af5-bdb3-42f8-bcca-9d6ac40fdeeb",
+      "comment": "",
+      "command": "select",
+      "target": "css=.form-control",
+      "targets": [],
+      "value": "label=Matterhorn Bobsleds"
+    }, {
+      "id": "7805346c-6782-47b4-b50f-630af5f6431d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7bf50b40-faba-4637-bb1d-5d30e8bdab4d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control",
+      "targets": [
+        ["css=.form-control", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d7be9b41-d4d5-4558-8824-b780f1bc24ba",
+      "comment": "",
+      "command": "select",
+      "target": "css=.form-control",
+      "targets": [],
+      "value": "label=Space Mountain"
+    }, {
+      "id": "1c83fb04-1587-4e9a-afca-e1f773e999da",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f83c8023-277e-4cd8-8a03-ee150c8ff183",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control",
+      "targets": [
+        ["css=.form-control", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ff905f7-e0e3-4997-a28a-092854e40551",
+      "comment": "",
+      "command": "select",
+      "target": "css=.form-control",
+      "targets": [],
+      "value": "label=Haunted Mansion"
+    }, {
+      "id": "2142c77d-6fea-4117-845d-ad2946bb2218",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "09d521c6-0d98-40f4-a5fa-6c529d21976c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control",
+      "targets": [
+        ["css=.form-control", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "773c274f-f054-4cb9-b833-04b821145da1",
+      "comment": "",
+      "command": "select",
+      "target": "css=.form-control",
+      "targets": [],
+      "value": "label=Splash Mountain"
+    }, {
+      "id": "85c1bb43-f54b-4dc8-b8b9-f61450045850",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5094312b-f499-463b-ad1f-a104be6785f1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(3) .nav-link",
+      "targets": [
+        ["css=.nav-item:nth-child(3) .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Plan Your Trip')]", "xpath:link"],
+        ["xpath=//div[@id='navbarNav']/ul/li[3]/a/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/plan')]", "xpath:href"],
+        ["xpath=//li[3]/a/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f2b3070c-6b9e-4963-bf6a-995d700c3858",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > img",
+      "targets": [
+        ["css=div:nth-child(1) > img", "css:finder"],
+        ["xpath=//img[@alt='icon']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/nav/a/a/a/div/div/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "260537c4-98b9-4d8c-ae1b-cf61c2b7bcfb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["33aa935f-86bf-414f-829c-49155b7803fa"]
+  }],
+  "urls": ["https://magic-minute.me/"],
+  "plugins": []
+}
