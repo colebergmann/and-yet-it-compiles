@@ -16,6 +16,7 @@ https://magic-minute.me/
 1. Fork it!
 2. Create your feature branch: git checkout -b my-new-feature
 3. Navigate to the correct folder for your feature using cd folder-name
+
 3a. Current folders are: ML, backend, magic-minutes, MagicMins-iOS, data programs, historical_data
 4. Commit your changes: git commit -am 'Add some feature'
 5. Push to the branch: git push origin my-new-feature
