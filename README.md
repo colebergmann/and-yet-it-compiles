@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="/magic-minutes/src/components/logo.png" alt=""/>
+</p>
+
 # and-yet-it-compiles
 [![Build Status](https://travis-ci.com/colebergmann/and-yet-it-compiles.svg?branch=master)](https://travis-ci.com/colebergmann/and-yet-it-compiles)
 
