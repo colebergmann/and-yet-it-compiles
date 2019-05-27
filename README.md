@@ -3,18 +3,26 @@
 </p>
 
 # and-yet-it-compiles
+
+**Overview**
+
+  Magic Minutes in a website application and mobile application for ISO users by UCSB students. The web application allows the user to see predictive ride wait times and population density on a graph. The user is able to harness our trained models and predict the best day to attend Disneyland based on average wait times and park population density. The user will also be able to use daily predictions to plan when to go on individual rides in the park.
+ 
+
 [![Build Status](https://travis-ci.com/colebergmann/and-yet-it-compiles.svg?branch=master)](https://travis-ci.com/colebergmann/and-yet-it-compiles)
 
-# Web App
+**Web App**
+
 https://magic-minute.me/
 
 
-# Installation Steps
+**Installation Steps**
+
 1. git clone https://github.com/colebergmann/and-yet-it-compiles.git
 2. cd and-yet-it-compiles/magic-minutes/
 3. npm start
 
-# Contributing
+**Contributing**
 1. Fork it!
 2. Create your feature branch: git checkout -b my-new-feature
 3. Navigate to the correct folder for your feature using cd folder-name (Current folders are: ML, backend, magic-minutes, MagicMins-iOS, data programs, historical_data)
@@ -22,3 +30,12 @@ https://magic-minute.me/
 5. Push to the branch: git push origin my-new-feature
 6. Submit a pull request to master
 
+**Contributors**
+
+Name                | Github   
+-------------       | -------------    
+Abby Wysopal        | [@abbywysopal](https://github.com/abbywysopal)             
+Olivia Clough       | [@oliviaclough](https://github.com/oliviaclough)             
+Denver Simmons      | [@dsimmmons](https://github.com/dsimmmons)           
+Cole Bergmann       | [@colebergmann](https://github.com/colebergmann)   
+Ryan Mitchell       | [@rykien42](https://github.com/rykien42) 
