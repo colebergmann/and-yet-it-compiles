@@ -11,6 +11,7 @@
 
 [![Build Status](https://travis-ci.com/colebergmann/and-yet-it-compiles.svg?branch=master)](https://travis-ci.com/colebergmann/and-yet-it-compiles)
 
+
 **Web App**
 
 https://magic-minute.me/
@@ -22,6 +23,7 @@ https://magic-minute.me/
 2. cd and-yet-it-compiles/magic-minutes/
 3. npm start
 
+
 **Contributing**
 1. Fork it!
 2. Create your feature branch: git checkout -b my-new-feature
@@ -29,6 +31,7 @@ https://magic-minute.me/
 4. Commit your changes: git commit -am 'Add some feature'
 5. Push to the branch: git push origin my-new-feature
 6. Submit a pull request to master
+
 
 **Contributors**
 
