@@ -6,11 +6,9 @@ https://magic-minute.me/
 
 
 # Installation Steps
-1. Clone the github repository into an empty folder
-2. Navigate into the magic-minutes folder using the command cd magic-minutes
-3. Run the command npm install
-4. Run the command npm start, web app will open on your default browser as the local host.
-
+1. git clone https://github.com/colebergmann/and-yet-it-compiles.git
+2. cd and-yet-it-compiles/magic-minutes/
+3. npm start
 
 # Contributing
 1. Fork it!
