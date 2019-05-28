@@ -23,11 +23,11 @@ https://magic-minute.me/
 2. cd and-yet-it-compiles/magic-minutes/
 3. npm start
 
-**IOS App Installation**
+**iOS App Installation**
 
 1. git clone https://github.com/colebergmann/and-yet-it-compiles.git
-2. In Xcode, open 'and-yet-it-compiles/MagicMins-iOS/MagicMins.xcodeproj'
-3. *cole needs to fill in*
+2. In Xcode, open 'and-yet-it-compiles/MagicMins-iOS/MagicMins.xcworkspace'
+3. Select your target device/simulator in the top right corner and build!
 
 
 **Contributing**
