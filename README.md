@@ -6,7 +6,7 @@
 
 **Overview**
 
-  Magic Minutes in a website application and mobile application for ISO users by UCSB students. The web application allows the user to see predictive ride wait times and population density on a graph. The user is able to harness our trained models and predict the best day to attend Disneyland based on average wait times and park population density. The user will also be able to use daily predictions to plan when to go on individual rides in the park.
+  Magic Minutes in a website application and mobile application for iOS by UCSB students. The web application allows the user to see predictive ride wait times and population density on a graph. The user is able to harness our trained models and predict the best day to attend Disneyland based on average wait times and park population density. The user will also be able to use daily predictions to plan when to go on individual rides in the park.
  
 
 [![Build Status](https://travis-ci.com/colebergmann/and-yet-it-compiles.svg?branch=master)](https://travis-ci.com/colebergmann/and-yet-it-compiles)
